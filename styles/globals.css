@@ -164,6 +164,7 @@ select {
 .menu > img {
     width: 24px;
     height: 24px;
+    display: none;
 }
 
 .header_form {
@@ -845,7 +846,7 @@ select {
 }
 
 .logo_container {
-    height: 100px;
+    height: 40px;
 }
 
 .side_middle_wrap {
@@ -4159,6 +4160,10 @@ select {
 @media (max-width: 1280px) and (min-width: 60px) {
     .xl-off {
         display: none;
+    }
+
+    .l-flex {
+        display: flex !important;
     }
 
     .xl-pad5 {

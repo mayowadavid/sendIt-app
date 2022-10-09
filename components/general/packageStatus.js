@@ -37,28 +37,28 @@ const PackageStatus = () => {
         <div className="header_status m10 mpad5 flex_row">
             <div className="header_status_start status_gap flex_row">
                 <div className="status_wrap flex_column">
-                    {statusStateCheck.overview == true ? <Image alt="sendit" onClick={handleOverview} src="/svg/mark.svg" /> : 
+                    {statusStateCheck.overview == true ? <img  alt="sendit" onClick={handleOverview} src="/svg/mark.svg" /> : 
                     <div className='status_circle flex_row'><p>01</p></div>}
                     <p>Overview</p>
                 </div>
             </div>
             <div className="header_status_next flex_row">
                 <div className="status_wrap flex_column">
-                {statusStateCheck.details == true ? <Image alt="sendit" onClick={handleDetails} src="/svg/mark.svg" /> : 
+                {statusStateCheck.details == true ? <img  alt="sendit" onClick={handleDetails} src="/svg/mark.svg" /> : 
                     <div className='status_circle flex_row'><p>02</p></div>}
                     <p>Details</p>
                 </div>
             </div>
             <div className="header_status_next flex_row">
                 <div className="status_wrap flex_column">
-                    {statusStateCheck.preview == true ? <Image alt="sendit" onClick={handlePreview} src="/svg/mark.svg" /> : 
+                    {statusStateCheck.preview == true ? <img  alt="sendit" onClick={handlePreview} src="/svg/mark.svg" /> : 
                     <div className='status_circle flex_row'><p>03</p></div>}
                     <p>Preview</p>
                 </div>
             </div>
             <div className="header_status_next flex_row">
                 <div className="status_wrap flex_column">
-                {statusStateCheck.amount == true ? <Image alt="sendit" onClick={handleAmount} src="/svg/mark.svg" /> : 
+                {statusStateCheck.amount == true ? <img  alt="sendit" onClick={handleAmount} src="/svg/mark.svg" /> : 
                     <div className='status_circle flex_row'><p>04</p></div>}
                     <p>Amount</p>
                 </div>

@@ -11,7 +11,7 @@ const AddFund = () => {
                         <p>Top-up Funds</p>
                     </div>
                     <div className="wallet_pop_cancel flex_row">
-                        <Image alt="sendit" src="svg/cross.svg" />
+                        <img  alt="sendit" src="svg/cross.svg" />
                     </div>
                 </div>
                 <div className="wallet_body_layout">
@@ -58,41 +58,41 @@ const AddFund = () => {
                 </div>
                 <div className="side_middle_wrap">
                     <div className="profile_icon icon_wrap">
-                        <Image alt="sendit" src="svg/profile.svg" />
+                        <img  alt="sendit" src="svg/profile.svg" />
                     </div>
                     <div className="box_icon icon_wrap">
-                        <Image alt="sendit" src="svg/box.svg" />
+                        <img  alt="sendit" src="svg/box.svg" />
                     </div>
                     <div className="transaction_icon icon_wrap">
-                        <Image alt="sendit" src="svg/transaction.svg" />
+                        <img  alt="sendit" src="svg/transaction.svg" />
                     </div>
                     <div className="wallet_icon icon_wrap">
-                        <Image alt="sendit" src="svg/wallet.svg" />
+                        <img  alt="sendit" src="svg/wallet.svg" />
                     </div>
                 </div>
                 <div className="side_footer_wrap">
                     <div className="settings_icon icon_wrap">
-                        <Image alt="sendit" src="svg/setting.svg" />
+                        <img  alt="sendit" src="svg/setting.svg" />
                     </div>
                     <div className="logOut_icon icon_wrap">
-                        <Image alt="sendit" src="svg/logout.svg" />
+                        <img  alt="sendit" src="svg/logout.svg" />
                     </div>
                 </div>
             </div>
             <div className="right_wrap">
                 <div className="header flex_row">
                     <div className="message_icon top_wrap">
-                        <Image alt="sendit" src="svg/chat.svg" />
+                        <img  alt="sendit" src="svg/chat.svg" />
                     </div>
                     <div className="notifications_icon top_wrap">
-                        <Image alt="sendit" src="svg/notification.svg" />
+                        <img  alt="sendit" src="svg/notification.svg" />
                     </div>
                     <div className="avatar_wrap flex_row">
                         <div className="avatar_icon">
-                            <Image alt="sendit" src="svg/avatar.svg" />
+                            <img  alt="sendit" src="svg/avatar.svg" />
                         </div>
                         <p>David</p>
-                        <Image alt="sendit" src="svg/drop-arrow.svg" />
+                        <img  alt="sendit" src="svg/drop-arrow.svg" />
                     </div>
                 </div>
                 <div className="inner_space">

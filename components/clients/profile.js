@@ -53,7 +53,7 @@ const Profile = () => {
                 </div>
                 <div className="profile_form flex_column">
                     <div className="user_profile">
-                        <Image alt="sendit" src="svg/avatar.svg" />
+                        <img  alt="sendit" src="svg/avatar.svg" />
                     </div>
                     <div className="user_profile_form">
                         <form>

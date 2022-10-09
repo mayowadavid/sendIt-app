@@ -50,7 +50,7 @@ const Package = () => {
                             <div className="shipperGallery">
                                 <p>Images</p>
                                 <div className="shipGaller_wrap flex_column">
-                                    <Image alt="sendit" src="svg/gallery.svg" />
+                                    <img  alt="sendit" src="svg/gallery.svg" />
                                     <p>Drag Image Here or browse</p>
                                 </div>
                             </div>

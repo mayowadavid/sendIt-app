@@ -23,7 +23,7 @@ const SubscriptionPlan = () => {
                     <p>Edit Subscription Plan</p>
                 </div>
                 <div className="subscription_col flex_row">
-                    <Image alt="sendit" onClick={closeMainPop} src="/svg/close_small.svg" />
+                    <img  alt="sendit" onClick={closeMainPop} src="/svg/close_small.svg" />
                 </div>
             </div>
             <div className="subscription_inner_wrap">

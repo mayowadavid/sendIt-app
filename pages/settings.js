@@ -1,10 +1,10 @@
 import React from 'react'
 import Settings from "../components/clients/settings"
 
-const Settings = () => {
+const Setting = () => {
   return (
     <Settings />
   )
 }
 
-export default Settings
+export default Setting

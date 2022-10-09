@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import { MainContext } from '../context/mainContext'
+import Image from 'next/image'
 
 const Preview = () => {
     const {statusState, setStatusState} = useContext(MainContext);
@@ -80,26 +81,26 @@ const Preview = () => {
                     </div>
                     <div className="shipper_gallery">
                         <div className="shipper_display_image">
-                            <img className="xl10" src="/img/clip.png" alt=""/>
+                            <Image className="xl10" src="/Image/clip.png" alt=""/>
                         </div>
                         <div className="shipper_select_image_row xl10 flex_row">
                             <div className="shipper_select_con">
-                                <img src="/img/clip.png" alt=""/>
+                                <Image src="/Image/clip.png" alt=""/>
                             </div>
                             <div className="shipper_select_con">
-                                <img src="/img/category3.png" alt=""/>
+                                <Image src="/Image/category3.png" alt=""/>
                             </div>
                             <div className="shipper_select_con">
-                                <img src="/img/category5.png" alt=""/>
+                                <Image src="/Image/category5.png" alt=""/>
                             </div>
                             <div className="shipper_select_con">
-                                <img src="/img/category2.png" alt=""/>
+                                <Image src="/Image/category2.png" alt=""/>
                             </div>
                             <div className="shipper_select_con">
-                                <img src="/img/category2.png" alt=""/>
+                                <Image src="/Image/category2.png" alt=""/>
                             </div>
                             <div className="shipper_select_con">
-                                <img src="/img/category2.png" alt=""/>
+                                <Image src="/Image/category2.png" alt=""/>
                             </div>
                         </div>
                     </div>

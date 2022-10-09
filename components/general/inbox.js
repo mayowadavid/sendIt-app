@@ -1,4 +1,5 @@
 import React from 'react'
+import Image from 'next/image'
 
 const Inbox = () => {
   return (
@@ -9,41 +10,41 @@ const Inbox = () => {
             </div>
             <div className="side_middle_wrap">
                 <div className="profile_icon icon_wrap">
-                    <img src="svg/profile.svg" alt=""/>
+                    <Image src="svg/profile.svg" alt=""/>
                 </div>
                 <div className="box_icon icon_wrap">
-                    <img src="svg/box.svg" alt=""/>
+                    <Image src="svg/box.svg" alt=""/>
                 </div>
                 <div className="transaction_icon icon_wrap">
-                    <img src="svg/transaction.svg" alt=""/>
+                    <Image src="svg/transaction.svg" alt=""/>
                 </div>
                 <div className="wallet_icon icon_wrap">
-                    <img src="svg/wallet.svg" alt=""/>
+                    <Image src="svg/wallet.svg" alt=""/>
                 </div>
             </div>
             <div className="side_footer_wrap">
                 <div className="settings_icon icon_wrap">
-                    <img src="svg/setting.svg" alt=""/>
+                    <Image src="svg/setting.svg" alt=""/>
                 </div>
                 <div className="logOut_icon icon_wrap">
-                    <img src="svg/logout.svg" alt=""/>
+                    <Image src="svg/logout.svg" alt=""/>
                 </div>
             </div>
         </div>
         <div className="right_wrap xl10">
             <div className="header flex_row">
                 <div className="message_icon top_wrap">
-                    <img src="svg/chat.svg" alt=""/>
+                    <Image src="svg/chat.svg" alt=""/>
                 </div>
                 <div className="notifications_icon top_wrap">
-                    <img src="svg/notification.svg" alt=""/>
+                    <Image src="svg/notification.svg" alt=""/>
                 </div>
                 <div className="avatar_wrap flex_row">
                     <div className="avatar_icon">
-                        <img src="svg/avatar.svg" alt=""/>
+                        <Image src="svg/avatar.svg" alt=""/>
                     </div>
                     <p>David</p>
-                    <img src="svg/drop-arrow.svg" alt=""/>
+                    <Image src="svg/drop-arrow.svg" alt=""/>
                 </div>
             </div>
             <div className="inner_space xl-pad5">
@@ -56,18 +57,18 @@ const Inbox = () => {
                             <div className="client_contact_header">
                                 <div className="conversation_filter">
                                     <div className="conversation_filter_by xl9">
-                                        <p>All Conversation</p> <img src="img/Arrow - Down 2.png" alt=""/>
+                                        <p>All Conversation</p> <Image src="Image/Arrow - Down 2.png" alt=""/>
                                     </div>
                                 </div>
                                 <div className="client_search">
-                                    <img src="svg/search.svg" alt=""/>
+                                    <Image src="svg/search.svg" alt=""/>
                                 </div>
                             </div>
                             <div className="client_contact_list">
                                 <div className="individual_contact">
                                     <div className="individual_contact_row">
                                         <div className="individual_avatar_holder">
-                                            <img src="img/featured3.png" alt=""/>
+                                            <Image src="Image/featured3.png" alt=""/>
                                         </div>
                                         <div className="individual_contact_title flex_row">
                                             <p>Jenny Wilson</p>
@@ -83,7 +84,7 @@ const Inbox = () => {
                                 <div className="individual_contact">
                                     <div className="individual_contact_row">
                                         <div className="individual_avatar_holder">
-                                            <img src="img/featured3.png" alt=""/>
+                                            <Image src="Image/featured3.png" alt=""/>
                                         </div>
                                         <div className="individual_contact_title flex_row">
                                             <p>Jenny Wilson</p>
@@ -99,7 +100,7 @@ const Inbox = () => {
                                 <div className="individual_contact">
                                     <div className="individual_contact_row">
                                         <div className="individual_avatar_holder">
-                                            <img src="img/featured3.png" alt=""/>
+                                            <Image src="Image/featured3.png" alt=""/>
                                         </div>
                                         <div className="individual_contact_title flex_row">
                                             <p>Jenny Wilson</p>
@@ -115,7 +116,7 @@ const Inbox = () => {
                                 <div className="individual_contact">
                                     <div className="individual_contact_row">
                                         <div className="individual_avatar_holder">
-                                            <img src="img/featured3.png" alt=""/>
+                                            <Image src="Image/featured3.png" alt=""/>
                                         </div>
                                         <div className="individual_contact_title flex_row">
                                             <p>Jenny Wilson</p>
@@ -131,7 +132,7 @@ const Inbox = () => {
                                 <div className="individual_contact">
                                     <div className="individual_contact_row">
                                         <div className="individual_avatar_holder">
-                                            <img src="img/featured3.png" alt=""/>
+                                            <Image src="Image/featured3.png" alt=""/>
                                         </div>
                                         <div className="individual_contact_title flex_row">
                                             <p>Jenny Wilson</p>
@@ -147,7 +148,7 @@ const Inbox = () => {
                                 <div className="individual_contact">
                                     <div className="individual_contact_row">
                                         <div className="individual_avatar_holder">
-                                            <img src="img/featured3.png" alt=""/>
+                                            <Image src="Image/featured3.png" alt=""/>
                                         </div>
                                         <div className="individual_contact_title flex_row">
                                             <p>Jenny Wilson</p>
@@ -168,11 +169,11 @@ const Inbox = () => {
                                     <p>Local time Dec 02, 3:03 AM EST</p>
                                 </div>
                                 <div className="client_inbox_search">
-                                    <img src="img/Search.png" alt=""/>
+                                    <Image src="Image/Search.png" alt=""/>
                                     <input type="text" placeholder="Search Conversation" />
                                 </div>
                                 <div className="client_inbox_more">
-                                    <img src="svg/more_horizontal.svg" alt=""/>
+                                    <Image src="svg/more_horizontal.svg" alt=""/>
                                 </div>
                             </div>
                             <div className="client_inbox_chat_body sm-h6">
@@ -180,7 +181,7 @@ const Inbox = () => {
                                     <div className="individual_message">
                                         <div className="individual_message_row  sm8 m8">
                                             <div className="message_avatar sm2 m2">
-                                                <img src="img/category.png" alt=""/>
+                                                <Image src="Image/category.png" alt=""/>
                                             </div>
                                             <div className="message_details sm8 m7">
                                                 <p>Esther Howard</p>
@@ -196,7 +197,7 @@ const Inbox = () => {
                                     <div className="individual_message">
                                         <div className="individual_message_row  sm8 m8">
                                             <div className="message_avatar sm2 m2">
-                                                <img src="img/category.png" alt=""/>
+                                                <Image src="Image/category.png" alt=""/>
                                             </div>
                                             <div className="message_details sm8 m7">
                                                 <p>Esther Howard</p>
@@ -212,7 +213,7 @@ const Inbox = () => {
                                     <div className="individual_message">
                                         <div className="individual_message_row  sm8 m8">
                                             <div className="message_avatar sm2 m2">
-                                                <img src="img/category.png" alt=""/>
+                                                <Image src="Image/category.png" alt=""/>
                                             </div>
                                             <div className="message_details sm8 m7">
                                                 <p>Esther Howard</p>
@@ -226,26 +227,26 @@ const Inbox = () => {
                                     <div className="individual_file flex_row">
                                         <div className="individual_file_container">
                                             <div className="individual_file_header">
-                                                <img src="svg/image_alt.svg" alt=""/>
+                                                <Image src="svg/image_alt.svg" alt=""/>
                                                 <p>Sketch file.jpg</p>
                                             </div>
                                             <div className="individual_file_wrapper">
                                                 <div className="file_download_icon">
-                                                    <img src="svg/download.svg" alt=""/>
+                                                    <Image src="svg/download.svg" alt=""/>
                                                 </div>
-                                                <img src="img/chat_file.png" alt=""/>
+                                                <Image src="Image/chat_file.png" alt=""/>
                                             </div>
                                         </div>
                                         <div className="individual_file_container">
                                             <div className="individual_file_header">
-                                                <img src="svg/image_alt.svg" alt=""/>
+                                                <Image src="svg/image_alt.svg" alt=""/>
                                                 <p>Sketch file.jpg</p>
                                             </div>
                                             <div className="individual_file_wrapper">
                                                 <div className="file_download_icon">
-                                                    <img src="svg/download.svg" alt=""/>
+                                                    <Image src="svg/download.svg" alt=""/>
                                                 </div>
-                                                <img src="img/chat_file 2.png" alt=""/>
+                                                <Image src="Image/chat_file 2.png" alt=""/>
                                             </div>
                                         </div>
                                     </div>
@@ -254,7 +255,7 @@ const Inbox = () => {
                                     <div className="individual_message">
                                         <div className="individual_message_row  sm8 m8">
                                             <div className="message_avatar sm2 m2">
-                                                <img src="img/category.png" alt=""/>
+                                                <Image src="Image/category.png" alt=""/>
                                             </div>
                                             <div className="message_details sm8 m7">
                                                 <p>Esther Howard</p>
@@ -276,13 +277,13 @@ const Inbox = () => {
                                 </div>
                                 <div className="chat_attachments xl3">
                                     <div className="chat_link">
-                                        <img src="svg/link_02.svg" alt=""/>
+                                        <Image src="svg/link_02.svg" alt=""/>
                                     </div>
                                     <div className="chat_emoji">
-                                        <img src="svg/emoji.svg" alt=""/>
+                                        <Image src="svg/emoji.svg" alt=""/>
                                     </div>
                                     <div className="chat_video">
-                                        <img src="svg/Video.svg" alt=""/>
+                                        <Image src="svg/Video.svg" alt=""/>
                                     </div>
                                 </div>
                             </div>

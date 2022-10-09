@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from 'react'
 import { MainContext } from '../context/mainContext'
+import Image from 'next/image'
 
 const Package = () => {
     const {statusState, setSideState, setStatusState, statusStateCheck, setStatusStateCheck } = useContext(MainContext);
@@ -49,7 +50,7 @@ const Package = () => {
                             <div className="shipperGallery">
                                 <p>Images</p>
                                 <div className="shipGaller_wrap flex_column">
-                                    <img src="svg/gallery.svg" alt=""/>
+                                    <Image src="svg/gallery.svg" alt=""/>
                                     <p>Drag Image Here or browse</p>
                                 </div>
                             </div>

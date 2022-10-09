@@ -2,6 +2,7 @@ import Header from '../general/header'
 import Sidebar from '../general/sidebar'
 import { useContext, useState, useEffect } from "react";
 import { MainContext } from "../context/mainContext";
+import Image from 'next/image'
 
 const Referral = () => {
     const { setSideState } = useContext(MainContext);
@@ -36,21 +37,21 @@ const Referral = () => {
                     <div className="referral_flow flex_column">
                         <div className="referral_header_wrap xl10 xlgp20 m-off xl-jsty flex_row">
                             <div className="refferal_icon_wrap flex_row">
-                                <img src="/svg/envelope.svg" alt=""/>
+                                <Image src="/svg/envelope.svg" alt=""/>
                             </div>
                             <div className="referral_line xl-off xl-mg-bt10"></div>
                             <div className="refferal_icon_wrap flex_row">
-                                <img src="/svg/contact.svg" alt=""/>
+                                <Image src="/svg/contact.svg" alt=""/>
                             </div>
                             <div className="referral_line xl-off xl-mg-tp10"></div>
                             <div className="refferal_icon_wrap flex_row">
-                                <img src="/svg/cash.svg" alt=""/>
+                                <Image src="/svg/cash.svg" alt=""/>
                             </div>
                         </div>
                         <div className="referral_row_content flex_row">
                             <div className="referral_content_col m9 m-mg-tp10 sm-mg-tp10 sm9 flex_column">
                                 <div className="refferal_icon_wrap_sm xl-off m-on-flex sm-on-flex flex_row">
-                                    <img src="/svg/envelope.svg" alt=""/>
+                                    <Image src="/svg/envelope.svg" alt=""/>
                                 </div>
                                 <p>Send Invitation</p>
                                 <p className="xl10">Send your referral link to
@@ -59,7 +60,7 @@ const Referral = () => {
                             </div>
                             <div className="referral_content_col m9 m-mg-tp10 sm-mg-tp10 sm9 flex_column">
                                 <div className="refferal_icon_wrap_sm xl-off m-on-flex sm-on-flex flex_row">
-                                    <img src="/svg/contact.svg" alt=""/>
+                                    <Image src="/svg/contact.svg" alt=""/>
                                 </div>
                                 <p>Registration</p>
                                 <p className="xl10">Let them register to our
@@ -68,7 +69,7 @@ const Referral = () => {
                             </div>
                             <div className="referral_content_col m9 m-mg-tp10 sm-mg-tp10 sm9 flex_column">
                                 <div className="refferal_icon_wrap_sm xl-off m-on-flex sm-on-flex flex_row">
-                                    <img src="/svg/cash.svg" alt=""/>
+                                    <Image src="/svg/cash.svg" alt=""/>
                                 </div>
                                 <p>Commission</p>
                                 <p className="xl10">Get instant commission
@@ -82,7 +83,7 @@ const Referral = () => {
                         <p>Input your friends email address to send them invitation to join Sendit.</p>
                         <div className="referel_form flex_row m-mg-tp10">
                             <div className="referral_form_button flex_row">
-                                <img src="/svg/w-plane.svg" alt=""/>
+                                <Image src="/svg/w-plane.svg" alt=""/>
                             </div>
                             <input type="text" onChange={handleEmail} placeholder="email address" />
                         </div>
@@ -97,13 +98,13 @@ const Referral = () => {
                             </div>
                             <div className="referal_socials m10 l10 m-mg-tp10 l-mg-tp5 flex_row">
                                 <div className="socials r-social flex_row">
-                                    <img src="/svg/facebook.svg" alt=""/>
+                                    <Image src="/svg/facebook.svg" alt=""/>
                                 </div>
                                 <div className="socials r-social flex_row">
-                                    <img src="/svg/twitter.svg" alt=""/>
+                                    <Image src="/svg/twitter.svg" alt=""/>
                                 </div>
                                 <div className="socials r-social flex_row">
-                                    <img src="/svg/linkedn.svg" alt=""/>
+                                    <Image src="/svg/linkedn.svg" alt=""/>
                                 </div>
                             </div>
                         </div>

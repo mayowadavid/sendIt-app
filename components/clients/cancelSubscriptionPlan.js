@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import { MainContext } from '../context/mainContext';
+import Image from 'next/image'
 
 const CancelSubscriptionPlan = () => {
     const {subscriptionPopState, setSubscriptionPopState} = useContext(MainContext);
@@ -16,7 +17,7 @@ const CancelSubscriptionPlan = () => {
                     <p>Cancel subscription plan</p>
                 </div>
                 <div className="cancel_subscription_col flex_row">
-                    <img onClick={closePop} src="/svg/close_small.svg" alt="" />
+                    <Image onClick={closePop} src="/svg/close_small.svg" alt="" />
                 </div>
             </div>
             <div className="subscription_content_can">

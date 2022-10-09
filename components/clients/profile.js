@@ -2,6 +2,7 @@ import { useContext, useState, useEffect } from "react";
 import Header from '../general/header'
 import Sidebar from '../general/sidebar'
 import { MainContext } from "../context/mainContext";
+import Image from 'next/image'
 
 const Profile = () => {
     const { setSideState } = useContext(MainContext);
@@ -52,7 +53,7 @@ const Profile = () => {
                 </div>
                 <div className="profile_form flex_column">
                     <div className="user_profile">
-                        <img src="svg/avatar.svg" alt=""/>
+                        <Image src="svg/avatar.svg" alt=""/>
                     </div>
                     <div className="user_profile_form">
                         <form>

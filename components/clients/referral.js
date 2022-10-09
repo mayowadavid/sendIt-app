@@ -5,12 +5,19 @@ import { MainContext } from "../context/mainContext";
 
 const Referral = () => {
     const { setSideState } = useContext(MainContext);
+    const [email, setEmail] = useState('');
 
     useEffect(()=> {
         setSideState({
-            referal: true
+            referral: true
         });
     }, []);
+
+    const handleEmail = (e) => {
+        e.preventDefault();
+        const {value} = e.target;
+        setEmail(value);
+    }
 
   return (
     <div className="body_layout flex_row">
@@ -75,9 +82,9 @@ const Referral = () => {
                         <p>Input your friends email address to send them invitation to join Sendit.</p>
                         <div className="referel_form flex_row m-mg-tp10">
                             <div className="referral_form_button flex_row">
-                                <img src="/svg/plane.svg" alt=""/>
+                                <img src="/svg/w-plane.svg" alt=""/>
                             </div>
-                            <input type="text" placeholder="email address" />
+                            <input type="text" onChange={handleEmail} placeholder="email address" />
                         </div>
                     </div>
                     <div className="referal_row_invite m-mg-tp10">
@@ -89,13 +96,13 @@ const Referral = () => {
                                 <p className="m-off">Copy link</p>
                             </div>
                             <div className="referal_socials m10 l10 m-mg-tp10 l-mg-tp5 flex_row">
-                                <div className="socials flex_row">
+                                <div className="socials r-social flex_row">
                                     <img src="/svg/facebook.svg" alt=""/>
                                 </div>
-                                <div className="socials flex_row">
+                                <div className="socials r-social flex_row">
                                     <img src="/svg/twitter.svg" alt=""/>
                                 </div>
-                                <div className="socials flex_row">
+                                <div className="socials r-social flex_row">
                                     <img src="/svg/linkedn.svg" alt=""/>
                                 </div>
                             </div>

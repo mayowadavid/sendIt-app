@@ -6,6 +6,42 @@ import { MainContext } from "../context/mainContext";
 const Settings = () => {
     const { setSideState } = useContext(MainContext);
 
+    const initialState = {
+        currentPassword: "",
+        newPassword: "",
+        confirmPassword: ""
+    }
+
+    const [settingsData, setSettingsData] = useState(initialState);
+
+    const verificationState = {
+        phoneVerification: false,
+        securityQuestion: false
+    }
+
+    const [verificationData, setVerificationData] = useState(verificationState);
+
+    const handlePhone = (e) => {
+        e.preventDefault();
+        setVerificationData({phoneVerification: !verificationData.phoneVerification});
+    }
+
+    const handleQuestion = (e) => {
+        e.preventDefault();
+        setVerificationData({ securityQuestion: !verificationData.securityQuestion });
+    }
+
+    const handleChange = (e) => {
+        e.preventDefault();
+        const {name, value} = e.target;
+        setSettingsData({...settingsData, [name]: value});
+    }
+
+    const submitPhone = (e) => {
+        e.preventDefault();
+        setVerificationData({phoneVerification: !verificationData.phoneVerification});
+    }
+
     useEffect(()=> {
         setSideState({
             settings: true
@@ -31,7 +67,7 @@ const Settings = () => {
                                 <p>Current Password</p>
                             </div>
                             <div className="settings_row_input sm10">
-                                <input type="text" name="" id=""/>
+                                <input type="text" onChange={handleChange} name="" id=""/>
                             </div>
                         </div>
                         <div className="settings_row flex_row">
@@ -39,7 +75,7 @@ const Settings = () => {
                                 <p>New Password</p>
                             </div>
                             <div className="settings_row_input sm10">
-                                <input type="text" name="" id=""/>
+                                <input type="text" onChange={handleChange} name="" id=""/>
                             </div>
                         </div>
                         <div className="settings_row flex_row">
@@ -47,7 +83,7 @@ const Settings = () => {
                                 <p>Confirm Password</p>
                             </div>
                             <div className="settings_row_input sm10">
-                                <input type="text" name="" id=""/>
+                                <input type="text" onChange={handleChange} name="" id=""/>
                             </div>
                         </div>
                         <div className="settings_row_button flex_row">
@@ -61,11 +97,15 @@ const Settings = () => {
                             </div>
                             <div className="settings_row_input sm10 flex_row">
                                 <div className="settings_content">
-                                    <p>Your phone is verified with Logistics. Click Edit to 
-                                        change your phone number</p>
+                                    {verificationData.phoneVerification == true ?
+                                    <input type="number" placeholder='phone number' />
+                                    :<p>Your phone is verified with sendit. Click Edit to 
+                                        change your phone number</p>}
                                 </div>
                                 <div className="settings_button flex_row">
-                                    <p>Edit</p>
+                                    {verificationData.phoneVerification ?
+                                    <p onClick={submitPhone}>Submit</p>
+                                    :<p onClick={handlePhone}>Edit</p>}
                                 </div>
                             </div>
                         </div>
@@ -80,7 +120,7 @@ const Settings = () => {
                                         withdrawals and for changing your password. </p>
                                 </div>
                                 <div className="settings_button flex_row">
-                                    <p>Edit</p>
+                                    <p onClick={handleQuestion}>Edit</p>
                                 </div>
                             </div>
                         </div>

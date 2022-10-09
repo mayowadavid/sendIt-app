@@ -1,6 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { MainContext } from '../context/mainContext'
 
 const Preview = () => {
+    const {statusState, setStatusState} = useContext(MainContext);
+    const handleStatus = (e)=> {
+        e.preventDefault();
+        setStatusState({...statusState, preview: true});
+    }
   return (
             <>
                 <div className="shipper_preview xl-pad5">
@@ -62,6 +68,10 @@ const Preview = () => {
                             <p>Weight</p>
                             <p>100kg</p>
                         </div>
+                        <div className="sender_prev_row xl10 flex_row">
+                            <p>Service Fee</p>
+                            <p>$1000</p>
+                        </div>
                     </div>
                     <div className="shipper_preview_description">
                         <p>Description</p>
@@ -95,7 +105,8 @@ const Preview = () => {
                     </div>
                 </div>
                 <div className="shipper_button flex_row">
-                    <p>Continue</p>
+                { statusState.preview == true && <p onClick={handleStatus}>Continue</p>}
+                { statusState.preview == false && <p onClick={handleStatus}>Back</p>}
                 </div>
             </>
   )

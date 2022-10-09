@@ -9,6 +9,7 @@ const MainContextProvider = (props) => {
     transaction: false,
     settings: false,
     track: false,
+    package: false,
     referral: false
   };
 
@@ -19,15 +20,37 @@ const MainContextProvider = (props) => {
     amount: false
   };
 
+  const statusCheck = {
+    overview: false,
+    details: false,
+    preview: false,
+    amount: false
+  };
+
+  const subscriptionPop = {
+    default: true,
+    mainPop: false,
+    cancelPop: false
+  }
+
+  const [subscriptionPopState, setSubscriptionPopState] = useState(subscriptionPop);
+  const [menu, setMenu] = useState(false);
   const [sideState, setSideState] = useState(sideControl);
   const [statusState, setStatusState] = useState(statusControl);
+  const [statusStateCheck, setStatusStateCheck] = useState(statusCheck);
 
   return (
     <MainContext.Provider value={{
       sideState, 
     setSideState,
     statusState, 
-    setStatusState
+    setStatusState,
+    statusStateCheck, 
+    setStatusStateCheck,
+    subscriptionPopState, 
+    setSubscriptionPopState,
+    menu, 
+    setMenu
     }}>
         {props.children}
     </MainContext.Provider>

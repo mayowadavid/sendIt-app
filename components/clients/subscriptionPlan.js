@@ -1,16 +1,28 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { MainContext } from '../context/mainContext'
 
 const SubscriptionPlan = () => {
+    const {subscriptionPopState, setSubscriptionPopState} = useContext(MainContext);
+
+    const closeMainPop = (e) => {
+        e.preventDefault();
+        setSubscriptionPopState({...subscriptionPopState, mainPop: !subscriptionPopState.mainPop});
+    }
+
+    const openCancelPop = (e) => {
+        e.preventDefault();
+        setSubscriptionPopState({...subscriptionPopState, cancelPop: !subscriptionPopState.cancelPop});
+    }
+
   return (
-    <>
-        <div className="subscription_pop flex_row">
+    <div className="subscription_pop flex_row">
         <div className="subscription_pop_wrap xl9 xl-h9 l-h8 m10 ">
             <div className="subscription_pop_header flex_row" >
                 <div className="subscription_col">
                     <p>Edit Subscription Plan</p>
                 </div>
                 <div className="subscription_col flex_row">
-                    <img src="/svg/close_small.svg" alt=""/>
+                    <img onClick={closeMainPop} src="/svg/close_small.svg" alt=""/>
                 </div>
             </div>
             <div className="subscription_inner_wrap">
@@ -75,109 +87,11 @@ const SubscriptionPlan = () => {
                     </div>
                 </div>
                 <div className="cancel_subscription">
-                    <p>Cancel My Subscription plan</p>
+                    <p onClick={openCancelPop}>Cancel My Subscription plan</p>
                 </div>
             </div>
         </div>
     </div>
-    <div className="body_layout flex_row">
-        <div className="side_bar_wrap flex_column">
-            <div className="logo">
-
-            </div>
-            <div className="side_middle_wrap">
-                <div className="profile_icon icon_wrap">
-                    <img src="svg/profile.svg" alt=""/>
-                </div>
-                <div className="box_icon icon_wrap">
-                    <img src="svg/box.svg" alt=""/>
-                </div>
-                <div className="transaction_icon icon_wrap">
-                    <img src="svg/transaction.svg" alt=""/>
-                </div>
-                <div className="wallet_icon icon_wrap">
-                    <img src="svg/wallet.svg" alt=""/>
-                </div>
-            </div>
-            <div className="side_footer_wrap">
-                <div className="settings_icon icon_wrap">
-                    <img src="svg/setting.svg" alt=""/>
-                </div>
-                <div className="logOut_icon icon_wrap">
-                    <img src="svg/logout.svg" alt=""/>
-                </div>
-            </div>
-        </div>
-        <div className="right_wrap">
-            <div className="header flex_row">
-                <div className="message_icon top_wrap">
-                    <img src="svg/chat.svg" alt=""/>
-                </div>
-                <div className="notifications_icon top_wrap">
-                    <img src="svg/notification.svg" alt=""/>
-                </div>
-                <div className="avatar_wrap flex_row">
-                    <div className="avatar_icon">
-                        <img src="svg/avatar.svg" alt=""/>
-                    </div>
-                    <p>David</p>
-                    <img src="svg/drop-arrow.svg" alt=""/>
-                </div>
-            </div>
-            <div className="inner_space">
-                <div className="settings_header">
-                    <p>Subscription</p>
-                </div>
-                <div className="subscription_wrap">
-                    <div className="subscription_header flex_row">
-                        <div className="subscription_header_col">
-                            <p>My subscription plan</p>
-                        </div>
-                        <div className="subscription_header_col active_sub">
-                            <p>Billing info</p>
-                        </div>
-                    </div>
-                    <div className="subscription_row flex_row">
-                        <div className="subscription_con">
-                            <p>Billing Zip Code</p>
-                        </div>
-                        <div className="subscription_con">
-                            <p>94115</p>
-                        </div>
-                    </div>
-                    <div className="subscription_row flex_row">
-                        <div className="subscription_con">
-                            <p>Card Name</p>
-                        </div>
-                        <div className="subscription_con">
-                            <p>John Doe</p>
-                        </div>
-                    </div>
-                    <div className="subscription_row flex_row">
-                        <div className="subscription_con">
-                            <p>Card Number</p>
-                        </div>
-                        <div className="subscription_con">
-                            <p>xxxxxxxxx00005</p>
-                        </div>
-                    </div>
-                    <div className="subscription_row flex_row">
-                        <div className="subscription_con">
-                            <p>Expiry Date</p>
-                        </div>
-                        <div className="subscription_con">
-                            <p>07/21</p>
-                        </div>
-                    </div>
-                    <div className="subscription_button">
-                        <p>Edit Data</p>
-                    </div>
-                </div>
-            </div>
-            
-        </div>
-    </div>
-    </>
   )
 }
 

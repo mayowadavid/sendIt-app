@@ -16,6 +16,7 @@ body{
 :root {
     --body-color: #F9FAFF;
     --primary-color: #1A39AE;
+    --secondary-color: #F0F3FF;
     --second-blue: #3651B8;
     --accent-color: #32325d;
     --dark-warning-color: #FF5555;
@@ -109,11 +110,15 @@ input, select {
     outline: none;
 }
 
-input[type=text] {
+input[type=text], input[type=number] {
     height: 45px;
     padding-left: 8px;
     border: 1px solid #D7D8DD;
     border-radius: 5px;
+}
+
+select {
+    height: 45px;
 }
 
 /* Homepage Layout */
@@ -154,6 +159,11 @@ input[type=text] {
     text-align: center;
     font-size: clamp(14px, 1vw, 16px);
     font-weight: 300;
+}
+
+.menu > img {
+    width: 24px;
+    height: 24px;
 }
 
 .header_form {
@@ -229,7 +239,7 @@ input[type=text] {
     height: 352px;
     filter: blur(28px);
     -webkit-filter: blur(28px);
-    background-image: linear-gradient(to bottom, transparent, #F2F5FF, #F0F3FF, #F0F3FF);
+    background-image: linear-gradient(to bottom, transparent, #F2F5FF, var(--secondary-color), var(--secondary-color));
 }
 
 .show_case_quote {
@@ -338,7 +348,7 @@ input[type=text] {
     position: absolute;
     filter: blur(28px);
     -webkit-filter: blur(28px);
-    background-image: linear-gradient(to bottom, transparent, #F2F5FF, #F0F3FF, #F0F3FF);
+    background-image: linear-gradient(to bottom, transparent, #F2F5FF, var(--secondary-color), var(--secondary-color));
 
 }
 
@@ -375,7 +385,7 @@ input[type=text] {
     width: 50%;
     margin: 0;
     font-weight: 500;
-    font-size: clamp(20px, 1.2vw, 40px);
+    font-size: var(--font20-size);
 }
 
 .shipper_preview_row:nth-child(2) {
@@ -411,7 +421,7 @@ input[type=text] {
 
 .shipper_display_image > img {
     width: clamp(380px, 50vw, 1175px);
-    height: clamp(250px, 50vw, 604px);
+    height: clamp(250px, 50vw, 404px);
     object-fit: cover;
     border-radius: 5px;
 }
@@ -441,7 +451,7 @@ input[type=text] {
 
 /* Subscription */
 .subscription_pop {
-    z-index: 0;
+    z-index: 10;
     background-color: rgba(217, 217, 217, 0.6);
     width: 100vw;
     height: 100vh;
@@ -487,7 +497,7 @@ input[type=text] {
     height: 95%;
     overflow-y: auto;
     padding: 20px;
-    background-color: #F0F3FF;
+    background-color: var(--secondary-color);
     border-radius: 5px;
 }
 
@@ -500,7 +510,7 @@ input[type=text] {
 }
 
 .sub_inner_title:first-child > p {
-    font-size: var(--font36-size);
+    font-size: var(--font25-size);
     margin: 0;
     font-weight: 600;
     color: #000;
@@ -525,9 +535,9 @@ input[type=text] {
 
 .cancel_subscription > p{
     margin: 0 auto;
-    padding: 10px 25px;
+    padding: 4px 20px;
     color: var(--danger-font-color);
-    font-size: var(--font16-size);
+    font-size: var(--font15-size);
     font-weight: 500;
     background-color: var(--light-warning-color);
     width: fit-content;
@@ -537,7 +547,7 @@ input[type=text] {
 
 .sub_switch > P {
     margin: 0;
-    font-size: var(--font20-size);
+    font-size: var(--font18-size);
     font-weight: 500;
     color: var(--primary-color);
 }
@@ -567,15 +577,15 @@ input[type=text] {
 }
 
 .card_content > p {
-    font-size: var(--font20-size);
-    font-weight: 400;
+    font-size: var(--font16-size);
+    font-weight: 500;
     margin: 0;
 }
 
 .card_button > p{
     color: #fff;
-    font-size: 15px;
-    padding: 8px 26px;
+    font-size: var(--font15-size);
+    padding: 4px 20px;
     border-radius: 20px;
     margin: 0;
     background-color: var(--primary-color);
@@ -584,11 +594,12 @@ input[type=text] {
 
 .active_button > p{
     background-color: #fff;
+    border: 1px solid var(--primary-color);
     color: var(--primary-color);
 }
 
 .card_content_middle > p {
-    font-size: var(--font25-size);
+    font-size: var(--font20-size);
     margin: 0;
     font-weight: 600;
     color: var(--primary-color);
@@ -597,7 +608,7 @@ input[type=text] {
 /* cancel subscription */
 .cancel_subscription_pop {
     position: absolute;
-    z-index: 1;
+    z-index: 11;
 }
 
 .cancel_subscription_pop_wrap {
@@ -623,7 +634,7 @@ input[type=text] {
 }
 
 .cancel_subscription_col > p {
-    font-size: clamp(18px, 2vw, 24px);
+    font-size: var(--font20-size);
     margin: 0;
     font-weight: 500;
 }
@@ -645,7 +656,7 @@ input[type=text] {
 .subscription_con_action > button {
     padding: 10px 35px;
     color: #000;
-    font-size: clamp(15px, 1vw, 16px);
+    font-size: var(--font16-size);
     font-weight: 500;
     background-color: #fff;
     width: fit-content;
@@ -665,7 +676,7 @@ input[type=text] {
 
 .subscription_content_can > p {
     margin: 0;
-    font-size: clamp(17px, 1vw, 18px);
+    font-size: var(--font16-size);
     color: #A1A2A6;
 }
 
@@ -693,7 +704,7 @@ input[type=text] {
     border: 0;
     border-bottom-width: 2px;
     border-style: solid;
-    border-color: #C1C2CB;
+    border-color: #e0e1e9;
 }
 
 .active_sub > p {
@@ -701,11 +712,11 @@ input[type=text] {
 }
 
 .subscription_header_col {
-    width: 25%;
+    width: 35%;
 }
 
 .subscription_header_col:last-child {
-    width: 75%;
+    width: 65%;
 }
 
 .subscription_header_col > p {
@@ -720,15 +731,20 @@ input[type=text] {
     border: 0;
     border-bottom-width: 2px;
     border-style: solid;
-    border-color: #C1C2CB;
+    border-color: #e0e1e9;
+}
+
+.subscription_row > input[type=text], input[type=number] {
+    border: none;
+    background-color: var(--secondary-color);
 }
 
 .subscription_con {
-    width: 25%;
+    width: 35%;
 }
 
 .subscription_con:last-child {
-    width: 75%;
+    width: 65%;
 }
 
 .subscription_con > p {
@@ -772,7 +788,7 @@ input[type=text] {
     height: 100vh;
     width: 8%;
     position: relative;
-    z-index: 0;
+    z-index: 40;
 }
 
 .sideBar_con:hover > .hidden_side{
@@ -784,7 +800,7 @@ input[type=text] {
     display: none;
     height: 100vh;
     z-index: 2;
-    background-color: #F0F3FF;
+    background-color: var(--secondary-color);
     padding-right: 30px;
     box-shadow: 0px 11px 10px 0px rgb(0 0 0 / 14%),
     0px 18px 18px 0px rgb(0 0 0 / 12%),
@@ -815,12 +831,21 @@ input[type=text] {
 
 .side_bar_wrap {
     height: 100%;
-    background-color: #F0F3FF;
+    background-color: var(--secondary-color);
     z-index: 1;
 }
 
-.logo {
+.logo_wrap {
     height: 18%;
+    align-items: flex-start;
+}
+
+.flow:first-child {
+    justify-content: flex-start;
+}
+
+.logo_container {
+    height: 100px;
 }
 
 .side_middle_wrap {
@@ -868,7 +893,7 @@ input[type=text] {
     width: 92%;
     height: 100vh;
     overflow-y: auto;
-    background-color: #F9FAFF;
+    background-color: var(--body-color);
 }
 
 .header {
@@ -891,7 +916,7 @@ input[type=text] {
     height: 45px;
     border-radius: 25px;
     margin: 0 8px;
-    background-color: #F0F3FF;
+    background-color: var(--secondary-color);
 }
 
 .top_wrap > img {
@@ -932,7 +957,7 @@ input[type=text] {
 .profile_greetings {
     width: 100%;
     padding: 20px;
-    background-color: #F0F3FF;
+    background-color: var(--secondary-color);
     border-radius: 8px;
     box-shadow: 0px 6px 5px -1px rgb(192 185 185 / 30%);
 -webkit-box-shadow: 0px 6px 5px -1px rgb(192 185 185 / 30%);
@@ -1413,6 +1438,21 @@ input[type=text] {
     object-fit: cover;
 }
 
+.status_circle {
+    width: clamp(32px, 8vw, 51px);
+    height: clamp(32px, 8vw, 51px);
+    border-radius: 51px;
+    background-color: var(--body-color);
+    border: 2px solid var(--primary-color);
+}
+
+.status_circle > p{
+    margin: 0 auto;
+    justify-content: center;
+    font-weight: 500;
+    border-radius: 51px;
+}
+
 .status_gap {
     width: 70px;
     display: flex;
@@ -1583,6 +1623,11 @@ input[type=text] {
 .settings_row_input {
     width: 60%;
     align-items: flex-start;
+}
+
+.settings_row_input > input[type=text] {
+    background-color: var(--secondary-color);
+    border: 0;
 }
 
 .settings_row_button {
@@ -2347,7 +2392,7 @@ input[type=text] {
 .admin_category_right {
     width: 80%;
     padding: 1%;
-    background-color: #F9FAFF;
+    background-color: var(--body-color);
     align-items: flex-start!important;
 }
 
@@ -3916,7 +3961,7 @@ input[type=text] {
     width: 54px;
     height: 54px;
     border-radius: 50px;
-    background-color: #F0F3FF;
+    background-color: var(--secondary-color);
 }
 
 .refferal_icon_wrap > img {
@@ -3928,7 +3973,7 @@ input[type=text] {
     width: 74px;
     height: 74px;
     border-radius: 50px;
-    background-color: #F0F3FF;
+    background-color: var(--secondary-color);
 }
 
 .refferal_icon_wrap_sm > img{
@@ -3942,7 +3987,7 @@ input[type=text] {
 .referral_line {
     width: 30%;
     height: 42px;
-    border: dashed 5px #A1A2A6;
+    border: dashed 3px #A1A2A6;
     border-radius: 70%/50px 50px 0 0;
     border-color: #A1A2A6 transparent transparent transparent;
 }
@@ -3951,7 +3996,7 @@ input[type=text] {
     width: 30%;
     height: 42px;
     transform: rotate(180deg);
-    border: dashed 5px #A1A2A6;
+    border: dashed 3px #A1A2A6;
     border-radius: 70%/50px 50px 0 0;
     border-color: #A1A2A6 transparent transparent transparent;
 }
@@ -3969,12 +4014,12 @@ input[type=text] {
 .referral_content_col > P {
     font-weight: 500;
     text-align: center;
-    font-size: clamp(16px, 1.8vw, 24px);
+    font-size: var(--font20-size);
 }
 
 .referral_content_col > P:last-child {
     font-weight: 500;
-    font-size: clamp(14px, 0.9vw, 20px);
+    font-size: var(--font16-size);
     color: #7C7C7C;
     width: 90%;
     margin: 0;
@@ -3992,13 +4037,13 @@ input[type=text] {
     font-weight: 500;
     margin: 0;
     margin-bottom: 3px;
-    font-size: clamp(16px, 1.8vw, 24px);
+    font-size: var(--font20-size);
 }
 
 .referal_row_invite > p:nth-child(2) {
     font-weight: 500;
     margin-bottom: 10px;
-    font-size: clamp(14px, 0.9vw, 20px);
+    font-size: var(--font16-size);
     color: var(--font-grey-font);
 }
 
@@ -4033,11 +4078,11 @@ input[type=text] {
     padding: 0 4%;
     height: 55px;
     justify-content: space-between;
-    background-color: #F0F3FF;
+    background-color: var(--secondary-color);
 }
 
 .referal_form_code > p {
-    font-size: clamp(16px, 1vw, 24px);
+    font-size: var(--font16-size);
     color: var(--primary-color);
 }
 
@@ -4055,8 +4100,13 @@ input[type=text] {
     height: 58px;
     justify-content: center;
     border-radius: 40px;
-    background-color: #F0F3FF;
+    background-color: var(--secondary-color);
     box-shadow: rgb(0 0 0 / 18%) 0px 2px 6px;
+}
+
+.r-social {
+    width: 48px;
+    height: 48px;
 }
 
 /* social pop */
@@ -4223,6 +4273,14 @@ input[type=text] {
 @media (max-width: 1000px) and (min-width: 60px) {
     .l-off {
         display: none;
+    }
+
+    .l-on {
+        display: flex !important;
+    }
+
+    .l-abs {
+        position: absolute !important;
     }
 
     .l-jsty-btw {

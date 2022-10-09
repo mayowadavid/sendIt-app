@@ -1,6 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { MainContext } from '../context/mainContext'
 
 const Sender = () => {
+    const { setStatusState, statusStateCheck, setStatusStateCheck } = useContext(MainContext);
+    const handleStatus = (e)=> {
+        e.preventDefault();
+        setStatusState({details: true});
+        setStatusStateCheck({...statusStateCheck, overview: true});
+    }
+
+
   return (
         <>
             <div className="shipper_details l10 lpad5">
@@ -58,7 +67,7 @@ const Sender = () => {
                 </div>
             </div>
             <div className="shipper_button flex_row">
-                <p>Continue</p>
+                <p onClick={handleStatus}>Continue</p>
             </div>
         </>
   )

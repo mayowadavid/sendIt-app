@@ -1,6 +1,20 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
+import { MainContext } from '../context/mainContext'
 
 const Package = () => {
+    const {statusState, setSideState, setStatusState, statusStateCheck, setStatusStateCheck } = useContext(MainContext);
+
+    useEffect(()=> {
+        setSideState({
+            track: true
+        });
+    }, []);
+
+    const handleStatus = (e)=> {
+        e.preventDefault();
+        setStatusState({preview: true});
+        setStatusStateCheck({...statusStateCheck, details: true});
+    }
   return (
             <>
                 <div className="shipper_details l10 lpad5">
@@ -10,7 +24,7 @@ const Package = () => {
                         </div>
                         <div className="shipper_body l10 sm10 flex_row">
                             <div className="shipper_input_row sm10">
-                                <p>Name</p>
+                                <p>Worth</p>
                                 <input type="text" name="" id="" placeholder="Name" />
                             </div>
                             <div className="shipper_input_row sm10">
@@ -18,12 +32,15 @@ const Package = () => {
                                 <input type="text" name="" id="" placeholder="quantity" />
                             </div>
                             <div className="shipper_input_row sm10">
-                                <p>weight</p>
-                                <input type="text" name="" id="" placeholder="weight" />
+                                <p>Choose Scale Options</p>
+                                <select>
+                                    <option>Weight</option>
+                                    <option>per square metre</option>
+                                </select>
                             </div>
                             <div className="shipper_input_row sm10">
-                                <p>Worth</p>
-                                <input type="text" name="" id="" placeholder="worth" />
+                                <p>Service fee</p>
+                                <input type="text" name="" disabled={true} placeholder="worth" />
                             </div>
                             <div className="shipper_input_description">
                                 <p>Description</p>
@@ -40,7 +57,8 @@ const Package = () => {
                     </div>
                 </div>
                 <div className="shipper_button flex_row">
-                    <p>Continue</p>
+                    { statusState.details == true && <p onClick={handleStatus}>Continue</p>}
+                    { statusState.details == false && <p onClick={handleStatus}>Back</p>}
                 </div>
             </>
   )

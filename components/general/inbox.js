@@ -10,41 +10,41 @@ const Inbox = () => {
             </div>
             <div className="side_middle_wrap">
                 <div className="profile_icon icon_wrap">
-                    <Image src="svg/profile.svg" alt=""/>
+                    <Image alt="sendit" src="svg/profile.svg" />
                 </div>
                 <div className="box_icon icon_wrap">
-                    <Image src="svg/box.svg" alt=""/>
+                    <Image alt="sendit" src="svg/box.svg" />
                 </div>
                 <div className="transaction_icon icon_wrap">
-                    <Image src="svg/transaction.svg" alt=""/>
+                    <Image alt="sendit" src="svg/transaction.svg" />
                 </div>
                 <div className="wallet_icon icon_wrap">
-                    <Image src="svg/wallet.svg" alt=""/>
+                    <Image alt="sendit" src="svg/wallet.svg" />
                 </div>
             </div>
             <div className="side_footer_wrap">
                 <div className="settings_icon icon_wrap">
-                    <Image src="svg/setting.svg" alt=""/>
+                    <Image alt="sendit" src="svg/setting.svg" />
                 </div>
                 <div className="logOut_icon icon_wrap">
-                    <Image src="svg/logout.svg" alt=""/>
+                    <Image alt="sendit" src="svg/logout.svg" />
                 </div>
             </div>
         </div>
         <div className="right_wrap xl10">
             <div className="header flex_row">
                 <div className="message_icon top_wrap">
-                    <Image src="svg/chat.svg" alt=""/>
+                    <Image alt="sendit" src="svg/chat.svg" />
                 </div>
                 <div className="notifications_icon top_wrap">
-                    <Image src="svg/notification.svg" alt=""/>
+                    <Image alt="sendit" src="svg/notification.svg" />
                 </div>
                 <div className="avatar_wrap flex_row">
                     <div className="avatar_icon">
-                        <Image src="svg/avatar.svg" alt=""/>
+                        <Image alt="sendit" src="svg/avatar.svg" />
                     </div>
                     <p>David</p>
-                    <Image src="svg/drop-arrow.svg" alt=""/>
+                    <Image alt="sendit" src="svg/drop-arrow.svg" />
                 </div>
             </div>
             <div className="inner_space xl-pad5">
@@ -57,18 +57,18 @@ const Inbox = () => {
                             <div className="client_contact_header">
                                 <div className="conversation_filter">
                                     <div className="conversation_filter_by xl9">
-                                        <p>All Conversation</p> <Image src="Image/Arrow - Down 2.png" alt=""/>
+                                        <p>All Conversation</p> <Image alt="sendit" src="Image/Arrow - Down 2.png" />
                                     </div>
                                 </div>
                                 <div className="client_search">
-                                    <Image src="svg/search.svg" alt=""/>
+                                    <Image alt="sendit" src="svg/search.svg" />
                                 </div>
                             </div>
                             <div className="client_contact_list">
                                 <div className="individual_contact">
                                     <div className="individual_contact_row">
                                         <div className="individual_avatar_holder">
-                                            <Image src="Image/featured3.png" alt=""/>
+                                            <Image alt="sendit" src="Image/featured3.png" />
                                         </div>
                                         <div className="individual_contact_title flex_row">
                                             <p>Jenny Wilson</p>
@@ -84,7 +84,7 @@ const Inbox = () => {
                                 <div className="individual_contact">
                                     <div className="individual_contact_row">
                                         <div className="individual_avatar_holder">
-                                            <Image src="Image/featured3.png" alt=""/>
+                                            <Image alt="sendit" src="Image/featured3.png" />
                                         </div>
                                         <div className="individual_contact_title flex_row">
                                             <p>Jenny Wilson</p>
@@ -100,7 +100,7 @@ const Inbox = () => {
                                 <div className="individual_contact">
                                     <div className="individual_contact_row">
                                         <div className="individual_avatar_holder">
-                                            <Image src="Image/featured3.png" alt=""/>
+                                            <Image alt="sendit" src="Image/featured3.png" />
                                         </div>
                                         <div className="individual_contact_title flex_row">
                                             <p>Jenny Wilson</p>
@@ -116,7 +116,7 @@ const Inbox = () => {
                                 <div className="individual_contact">
                                     <div className="individual_contact_row">
                                         <div className="individual_avatar_holder">
-                                            <Image src="Image/featured3.png" alt=""/>
+                                            <Image alt="sendit" src="Image/featured3.png" />
                                         </div>
                                         <div className="individual_contact_title flex_row">
                                             <p>Jenny Wilson</p>
@@ -132,7 +132,7 @@ const Inbox = () => {
                                 <div className="individual_contact">
                                     <div className="individual_contact_row">
                                         <div className="individual_avatar_holder">
-                                            <Image src="Image/featured3.png" alt=""/>
+                                            <Image alt="sendit" src="Image/featured3.png" />
                                         </div>
                                         <div className="individual_contact_title flex_row">
                                             <p>Jenny Wilson</p>
@@ -148,7 +148,7 @@ const Inbox = () => {
                                 <div className="individual_contact">
                                     <div className="individual_contact_row">
                                         <div className="individual_avatar_holder">
-                                            <Image src="Image/featured3.png" alt=""/>
+                                            <Image alt="sendit" src="Image/featured3.png" />
                                         </div>
                                         <div className="individual_contact_title flex_row">
                                             <p>Jenny Wilson</p>
@@ -169,11 +169,11 @@ const Inbox = () => {
                                     <p>Local time Dec 02, 3:03 AM EST</p>
                                 </div>
                                 <div className="client_inbox_search">
-                                    <Image src="Image/Search.png" alt=""/>
+                                    <Image alt="sendit" src="Image/Search.png" />
                                     <input type="text" placeholder="Search Conversation" />
                                 </div>
                                 <div className="client_inbox_more">
-                                    <Image src="svg/more_horizontal.svg" alt=""/>
+                                    <Image alt="sendit" src="svg/more_horizontal.svg" />
                                 </div>
                             </div>
                             <div className="client_inbox_chat_body sm-h6">
@@ -181,7 +181,7 @@ const Inbox = () => {
                                     <div className="individual_message">
                                         <div className="individual_message_row  sm8 m8">
                                             <div className="message_avatar sm2 m2">
-                                                <Image src="Image/category.png" alt=""/>
+                                                <Image alt="sendit" src="Image/category.png" />
                                             </div>
                                             <div className="message_details sm8 m7">
                                                 <p>Esther Howard</p>
@@ -197,7 +197,7 @@ const Inbox = () => {
                                     <div className="individual_message">
                                         <div className="individual_message_row  sm8 m8">
                                             <div className="message_avatar sm2 m2">
-                                                <Image src="Image/category.png" alt=""/>
+                                                <Image alt="sendit" src="Image/category.png" />
                                             </div>
                                             <div className="message_details sm8 m7">
                                                 <p>Esther Howard</p>
@@ -213,7 +213,7 @@ const Inbox = () => {
                                     <div className="individual_message">
                                         <div className="individual_message_row  sm8 m8">
                                             <div className="message_avatar sm2 m2">
-                                                <Image src="Image/category.png" alt=""/>
+                                                <Image alt="sendit" src="Image/category.png" />
                                             </div>
                                             <div className="message_details sm8 m7">
                                                 <p>Esther Howard</p>
@@ -227,26 +227,26 @@ const Inbox = () => {
                                     <div className="individual_file flex_row">
                                         <div className="individual_file_container">
                                             <div className="individual_file_header">
-                                                <Image src="svg/image_alt.svg" alt=""/>
+                                                <Image alt="sendit" src="svg/image_alt.svg" />
                                                 <p>Sketch file.jpg</p>
                                             </div>
                                             <div className="individual_file_wrapper">
                                                 <div className="file_download_icon">
-                                                    <Image src="svg/download.svg" alt=""/>
+                                                    <Image alt="sendit" src="svg/download.svg" />
                                                 </div>
-                                                <Image src="Image/chat_file.png" alt=""/>
+                                                <Image alt="sendit" src="Image/chat_file.png" />
                                             </div>
                                         </div>
                                         <div className="individual_file_container">
                                             <div className="individual_file_header">
-                                                <Image src="svg/image_alt.svg" alt=""/>
+                                                <Image alt="sendit" src="svg/image_alt.svg" />
                                                 <p>Sketch file.jpg</p>
                                             </div>
                                             <div className="individual_file_wrapper">
                                                 <div className="file_download_icon">
-                                                    <Image src="svg/download.svg" alt=""/>
+                                                    <Image alt="sendit" src="svg/download.svg" />
                                                 </div>
-                                                <Image src="Image/chat_file 2.png" alt=""/>
+                                                <Image alt="sendit" src="Image/chat_file 2.png" />
                                             </div>
                                         </div>
                                     </div>
@@ -255,7 +255,7 @@ const Inbox = () => {
                                     <div className="individual_message">
                                         <div className="individual_message_row  sm8 m8">
                                             <div className="message_avatar sm2 m2">
-                                                <Image src="Image/category.png" alt=""/>
+                                                <Image alt="sendit" src="Image/category.png" />
                                             </div>
                                             <div className="message_details sm8 m7">
                                                 <p>Esther Howard</p>
@@ -277,13 +277,13 @@ const Inbox = () => {
                                 </div>
                                 <div className="chat_attachments xl3">
                                     <div className="chat_link">
-                                        <Image src="svg/link_02.svg" alt=""/>
+                                        <Image alt="sendit" src="svg/link_02.svg" />
                                     </div>
                                     <div className="chat_emoji">
-                                        <Image src="svg/emoji.svg" alt=""/>
+                                        <Image alt="sendit" src="svg/emoji.svg" />
                                     </div>
                                     <div className="chat_video">
-                                        <Image src="svg/Video.svg" alt=""/>
+                                        <Image alt="sendit" src="svg/Video.svg" />
                                     </div>
                                 </div>
                             </div>

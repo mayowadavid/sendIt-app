@@ -81,26 +81,26 @@ const Preview = () => {
                     </div>
                     <div className="shipper_gallery">
                         <div className="shipper_display_image">
-                            <Image className="xl10" src="/Image/clip.png" alt=""/>
+                            <Image alt="sendit" className="xl10" src="/Image/clip.png" />
                         </div>
                         <div className="shipper_select_image_row xl10 flex_row">
                             <div className="shipper_select_con">
-                                <Image src="/Image/clip.png" alt=""/>
+                                <Image alt="sendit" src="/Image/clip.png" />
                             </div>
                             <div className="shipper_select_con">
-                                <Image src="/Image/category3.png" alt=""/>
+                                <Image alt="sendit" src="/Image/category3.png" />
                             </div>
                             <div className="shipper_select_con">
-                                <Image src="/Image/category5.png" alt=""/>
+                                <Image alt="sendit" src="/Image/category5.png" />
                             </div>
                             <div className="shipper_select_con">
-                                <Image src="/Image/category2.png" alt=""/>
+                                <Image alt="sendit" src="/Image/category2.png" />
                             </div>
                             <div className="shipper_select_con">
-                                <Image src="/Image/category2.png" alt=""/>
+                                <Image alt="sendit" src="/Image/category2.png" />
                             </div>
                             <div className="shipper_select_con">
-                                <Image src="/Image/category2.png" alt=""/>
+                                <Image alt="sendit" src="/Image/category2.png" />
                             </div>
                         </div>
                     </div>

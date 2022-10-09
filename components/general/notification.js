@@ -1,4 +1,5 @@
 import React from 'react'
+import Image from 'next/image'
 
 const Notification = () => {
   return (
@@ -9,41 +10,41 @@ const Notification = () => {
             </div>
             <div className="side_middle_wrap">
                 <div className="profile_icon icon_wrap">
-                    <img src="svg/profile.svg" alt=""/>
+                    <Image alt="sendit" src="svg/profile.svg" />
                 </div>
                 <div className="box_icon icon_wrap">
-                    <img src="svg/box.svg" alt=""/>
+                    <Image alt="sendit" src="svg/box.svg" />
                 </div>
                 <div className="transaction_icon icon_wrap">
-                    <img src="svg/transaction.svg" alt=""/>
+                    <Image alt="sendit" src="svg/transaction.svg" />
                 </div>
                 <div className="wallet_icon icon_wrap">
-                    <img src="svg/wallet.svg" alt=""/>
+                    <Image alt="sendit" src="svg/wallet.svg" />
                 </div>
             </div>
             <div className="side_footer_wrap">
                 <div className="settings_icon icon_wrap">
-                    <img src="svg/setting.svg" alt=""/>
+                    <Image alt="sendit" src="svg/setting.svg" />
                 </div>
                 <div className="logOut_icon icon_wrap">
-                    <img src="svg/logout.svg" alt=""/>
+                    <Image alt="sendit" src="svg/logout.svg" />
                 </div>
             </div>
         </div>
         <div className="right_wrap xl10">
             <div className="header flex_row">
                 <div className="message_icon top_wrap">
-                    <img src="svg/chat.svg" alt=""/>
+                    <Image alt="sendit" src="svg/chat.svg" />
                 </div>
                 <div className="notifications_icon top_wrap">
-                    <img src="svg/notification.svg" alt=""/>
+                    <Image alt="sendit" src="svg/notification.svg" />
                 </div>
                 <div className="avatar_wrap flex_row">
                     <div className="avatar_icon">
-                        <img src="svg/avatar.svg" alt=""/>
+                        <Image alt="sendit" src="svg/avatar.svg" />
                     </div>
                     <p>David</p>
-                    <img src="svg/drop-arrow.svg" alt=""/>
+                    <Image alt="sendit" src="svg/drop-arrow.svg" />
                 </div>
             </div>
             <div className="inner_space xl-pad5">
@@ -58,7 +59,7 @@ const Notification = () => {
                         <div class='notifcation_row border flex_row'>
                                     <div class='notification_no_action flex_row'>
                                         <div class='icon_section flex_row xl1 sm2'>
-                                            <img src='/svg/notifcationFull.svg' />
+                                            <Image alt="sendit" src='/svg/notifcationFull.svg' />
                                         </div>
                                         <div class='icon_section xl8 remove_margin sm8'>
                                             <p>[Achievement Name] You’ve earned an achievement!</p>
@@ -70,14 +71,14 @@ const Notification = () => {
                                             <p>Open</p>
                                         </div>
                                         <div class='notification_close sm-off'>
-                                            <img src="/svg/close_small.svg" />
+                                            <Image alt="sendit" src="/svg/close_small.svg" />
                                         </div>
                                     </div>
                         </div>
                         <div class='notifcation_row border flex_row'>
                             <div class='notification_no_action flex_row'>
                                 <div class='icon_section flex_row xl1 sm2'>
-                                    <img src='/svg/notifcationFull.svg' />
+                                    <Image alt="sendit" src='/svg/notifcationFull.svg' />
                                 </div>
                                 <div class='icon_section xl8 remove_margin sm8'>
                                     <p>[Achievement Name] You’ve earned an achievement!</p>
@@ -89,7 +90,7 @@ const Notification = () => {
                                     <p>Open</p>
                                 </div>
                                 <div class='notification_close sm-off'>
-                                    <img src="/svg/close_small.svg" />
+                                    <Image alt="sendit" src="/svg/close_small.svg" />
                                 </div>
                             </div>
                 </div>
@@ -101,7 +102,7 @@ const Notification = () => {
                         <div class='notifcation_row border flex_row'>
                                         <div class='notification_no_action flex_row'>
                                             <div class='icon_section flex_row xl1 sm2'>
-                                                <img src='/svg/notifcationFull.svg' />
+                                                <Image alt="sendit" src='/svg/notifcationFull.svg' />
                                             </div>
                                             <div class='icon_section xl8 remove_margin sm8'>
                                                 <p>Congratulations! You’ve received your first order today!</p>
@@ -113,14 +114,14 @@ const Notification = () => {
                                                 <p>Open</p>
                                             </div>
                                             <div class='notification_close sm-off'>
-                                                <img src="/svg/close_small.svg" />
+                                                <Image alt="sendit" src="/svg/close_small.svg" />
                                             </div>
                                         </div>
                         </div>
                         <div class='notifcation_row border flex_row'>
                             <div class='notification_no_action flex_row'>
                                 <div class='icon_section flex_row xl1 sm2'>
-                                    <img src='/svg/notifcationFull.svg' />
+                                    <Image alt="sendit" src='/svg/notifcationFull.svg' />
                                 </div>
                                 <div class='icon_section xl8 remove_margin sm8'>
                                     <p>Congratulations! You’ve received your first order today!</p>
@@ -132,7 +133,7 @@ const Notification = () => {
                                     <p>Open</p>
                                 </div>
                                 <div class='notification_close sm-off'>
-                                    <img src="/svg/close_small.svg" />
+                                    <Image alt="sendit" src="/svg/close_small.svg" />
                                 </div>
                             </div>
             </div>

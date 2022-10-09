@@ -11,19 +11,19 @@ const Header = () => {
     }
   return (
     <div className="header m-h-fit flex_row">
-        <div className="menu l5 mpad5"><Image onClick={handleMenu} src='/Image/menu_bar.png'/></div>
+        <div className="menu l5 mpad5"><Image alt="sendit" onClick={handleMenu} src='/Image/menu_bar.png'/></div>
         <div className="message_icon top_wrap m-off">
-            <Image onClick={()=> setMenu(!menu)} src="svg/chat.svg" alt=""/>
+            <Image alt="sendit" onClick={()=> setMenu(!menu)} src="svg/chat.svg" />
         </div>
         <div className="notifications_icon m-off top_wrap">
-            <Image src="svg/notification.svg" alt=""/>
+            <Image alt="sendit" src="svg/notification.svg" />
         </div>
         <div className="avatar_wrap m5 flex_row">
             <div className="avatar_icon m-h-fit">
-                <Image className="m5" src="svg/avatar.svg" alt=""/>
+                <Image alt="sendit" className="m5" src="svg/avatar.svg" />
             </div>
             <p>David</p>
-            <Image src="svg/drop-arrow.svg" alt=""/>
+            <Image alt="sendit" src="svg/drop-arrow.svg" />
         </div>
     </div>
   )

@@ -17,7 +17,7 @@ const CancelSubscriptionPlan = () => {
                     <p>Cancel subscription plan</p>
                 </div>
                 <div className="cancel_subscription_col flex_row">
-                    <Image onClick={closePop} src="/svg/close_small.svg" alt="" />
+                    <Image alt="sendit" onClick={closePop} src="/svg/close_small.svg" />
                 </div>
             </div>
             <div className="subscription_content_can">

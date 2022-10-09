@@ -1,4 +1,5 @@
 import React from 'react'
+import Image from 'next/image'
 
 const HomePage = () => {
   return (
@@ -20,11 +21,11 @@ const HomePage = () => {
     </div>
 </div>
 <div className="homePage_showcase flex_column">
-    <img src="/img/showcase.png" alt=""/>
+    <Image alt="sendit" src="/Image/showcase.png" />
 </div>
 <div className="show_case_column smcol mcol lrow flex_row">
     <div className="show_case_slot sm10 m10 sm-mp-tp10 m-mg-tp10 l45 flex_column">
-        <img src="/svg/track_board.svg" alt=""/>
+        <Image alt="sendit" src="/svg/track_board.svg" />
         <div className="show_front_content xl8 p-center">
             <p>Trackable Items</p>
             <p>Free website to track and send
@@ -32,7 +33,7 @@ const HomePage = () => {
         </div>
     </div>
     <div className="show_case_slot sm10 m10 sm-mp-tp10 m-mg-tp10 l45 flex_column">
-        <img src="/svg/wallet_front.svg" alt=""/>
+        <Image alt="sendit" src="/svg/wallet_front.svg" />
         <div className="show_front_content xl8 p-center">
             <p>Secure Funds</p>
             <p>Receive funds from foreign 
@@ -40,7 +41,7 @@ const HomePage = () => {
         </div>
     </div>
     <div className="show_case_slot sm10 m10 sm-mp-tp10 m-mg-tp10 l45 l-mg-tp10 flex_column">
-        <img src="/svg/member_front.svg" alt=""/>
+        <Image alt="sendit" src="/svg/member_front.svg" />
         <div className="show_front_content xl8 p-center">
             <p>Chat Systyem</p>
             <p>Easy and reliable chats system

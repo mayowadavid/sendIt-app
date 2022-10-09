@@ -1,10 +1,10 @@
 import React from 'react'
 import Inbox from '../components/general/inbox'
 
-const inbox = () => {
+const Inboxs = () => {
   return (
     <Inbox />
   )
 }
 
-export default inbox
+export default Inboxs;

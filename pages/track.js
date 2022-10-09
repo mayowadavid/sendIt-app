@@ -1,10 +1,10 @@
 import React from 'react'
 import PreviewTrack from '../components/clients/previewTrack'
 
-const track = () => {
+const Track = () => {
   return (
     <PreviewTrack />
   )
 }
 
-export default track
+export default Track;

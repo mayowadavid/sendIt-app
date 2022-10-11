@@ -13,6 +13,7 @@ const Sidebar = () => {
         setSideState({
             profile: true
         });
+        setMenu(!menu);
         // router.push('/index');
     }
 
@@ -21,6 +22,7 @@ const Sidebar = () => {
         setSideState({
             wallet: true
         });
+        setMenu(!menu);
         router.push('/billing');
     }
 
@@ -29,6 +31,7 @@ const Sidebar = () => {
         setSideState({
             transaction: true
         });
+        setMenu(!menu);
         router.push('/transactions');
     }
 
@@ -37,6 +40,7 @@ const Sidebar = () => {
         setSideState({
             settings: true
         });
+        setMenu(!menu);
         router.push('/settings');
     }
 
@@ -45,6 +49,7 @@ const Sidebar = () => {
         setSideState({
             track: true
         });
+        setMenu(!menu);
         router.push('/track');
     }
 
@@ -53,6 +58,7 @@ const Sidebar = () => {
         setSideState({
             package: true
         });
+        setMenu(!menu);
         router.push('/packages');
     }
 
@@ -61,6 +67,7 @@ const Sidebar = () => {
         setSideState({
             referral: true
         });
+        setMenu(!menu);
         router.push('/referral');
     }
 
@@ -74,20 +81,20 @@ const Sidebar = () => {
     }
 
   return (
-    <div className={`sideBar_con l10 ${menu == false ? 'xl-off': 'xl-abs xl-flex'}`}>
-        <div className={`hidden_side mobile_side ${menu == false ? '' : 'l-on l6'} flex_column`}>
-                <div className="logo_wrap l10 flex_row">
-                <div className='logo_container l10 '>
-                    <div className='flow flex_row l5 l-mg-tp5 lpad5'>
+    <div className={`sideBar_con xl10 ${menu == false ? 'xl-off': 'xl-abs xl-flex'}`}>
+        <div className={`hidden_side mobile_side ${menu == false ? '' : 'xl-on xl3 l6'} flex_column`}>
+                <div className="logo_wrap xl10 flex_row">
+                <div className='logo_container xl10 '>
+                    <div className='flow close flex_row xl5 xl-mg-tp5 xl-pad5'>
                         <img  alt="sendit" onClick={closeMenu} src="/svg/close_small.svg" />
                     </div>
-                    <div className='flow l5 l-mg-tp5'>
+                    <div className='flow xl5 xl-mg-tp5'>
                         
                     </div>
                 </div>
                     
                 </div>
-                <div className="side_middle_wrap l10">
+                <div className="side_middle_wrap xl10">
                     <div onClick={handleProfile} className="icon_wrap xl-b-off l10 hide_wrap flex_row">
                         <div className="side_row l3 flex_column">
                             <img  alt="sendit" className={sideState.profile == true ? 'pulse' : ''} src="svg/profile.svg" />
@@ -125,7 +132,7 @@ const Sidebar = () => {
                         <p>referral</p>
                     </div>
                 </div>
-                <div className="side_footer_wrap l10">
+                <div className="side_footer_wrap xl10">
                     <div onClick={handleSettings} className="icon_wrap xl-b-off l10 hide_wrap flex_row">
                         <div className="side_row l3 flex_column">
                             <img  alt="sendit" className={sideState.settings == true ? 'pulse': ''} src="svg/setting.svg" />
@@ -140,7 +147,7 @@ const Sidebar = () => {
                     </div>
                 </div>
         </div>
-        <div onClick={closeMenu} className={`menu_shadow hidden_side ${menu == false ? '' : 'l-on l4'}`}></div>
+        <div onClick={closeMenu} className={`menu_shadow hidden_side ${menu == false ? '' : 'xl-on xl7 l4'}`}></div>
         <div className="side_bar_wrap xl-off flex_column">
                 <div className="logo_wrap">
 

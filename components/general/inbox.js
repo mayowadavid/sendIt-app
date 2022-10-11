@@ -1,52 +1,14 @@
 import React from 'react'
 import Image from 'next/image'
+import Sidebar from './sidebar'
+import Header from './header'
 
 const Inbox = () => {
   return (
     <div className="body_layout flex_row">
-        <div className="side_bar_wrap xl-off flex_column">
-            <div className="logo">
-
-            </div>
-            <div className="side_middle_wrap">
-                <div className="profile_icon icon_wrap">
-                    <img  alt="sendit" src="svg/profile.svg" />
-                </div>
-                <div className="box_icon icon_wrap">
-                    <img  alt="sendit" src="svg/box.svg" />
-                </div>
-                <div className="transaction_icon icon_wrap">
-                    <img  alt="sendit" src="svg/transaction.svg" />
-                </div>
-                <div className="wallet_icon icon_wrap">
-                    <img  alt="sendit" src="svg/wallet.svg" />
-                </div>
-            </div>
-            <div className="side_footer_wrap">
-                <div className="settings_icon icon_wrap">
-                    <img  alt="sendit" src="svg/setting.svg" />
-                </div>
-                <div className="logOut_icon icon_wrap">
-                    <img  alt="sendit" src="svg/logout.svg" />
-                </div>
-            </div>
-        </div>
+        <Sidebar />
         <div className="right_wrap xl10">
-            <div className="header flex_row">
-                <div className="message_icon top_wrap">
-                    <img  alt="sendit" src="svg/chat.svg" />
-                </div>
-                <div className="notifications_icon top_wrap">
-                    <img  alt="sendit" src="svg/notification.svg" />
-                </div>
-                <div className="avatar_wrap flex_row">
-                    <div className="avatar_icon">
-                        <img  alt="sendit" src="svg/avatar.svg" />
-                    </div>
-                    <p>David</p>
-                    <img  alt="sendit" src="svg/drop-arrow.svg" />
-                </div>
-            </div>
+            <Header />
             <div className="inner_space xl-pad5">
                 <div className="message_header">
                     <p>Message</p>
@@ -57,7 +19,7 @@ const Inbox = () => {
                             <div className="client_contact_header">
                                 <div className="conversation_filter">
                                     <div className="conversation_filter_by xl9">
-                                        <p>All Conversation</p> <img  alt="sendit" src="Image/Arrow - Down 2.png" />
+                                        <p>All Conversation</p> <img  alt="sendit" src="img/Arrow - Down 2.png" />
                                     </div>
                                 </div>
                                 <div className="client_search">
@@ -68,7 +30,7 @@ const Inbox = () => {
                                 <div className="individual_contact">
                                     <div className="individual_contact_row">
                                         <div className="individual_avatar_holder">
-                                            <img  alt="sendit" src="Image/featured3.png" />
+                                            <img  alt="sendit" src="img/featured3.png" />
                                         </div>
                                         <div className="individual_contact_title flex_row">
                                             <p>Jenny Wilson</p>
@@ -84,7 +46,7 @@ const Inbox = () => {
                                 <div className="individual_contact">
                                     <div className="individual_contact_row">
                                         <div className="individual_avatar_holder">
-                                            <img  alt="sendit" src="Image/featured3.png" />
+                                            <img  alt="sendit" src="img/featured3.png" />
                                         </div>
                                         <div className="individual_contact_title flex_row">
                                             <p>Jenny Wilson</p>
@@ -100,7 +62,7 @@ const Inbox = () => {
                                 <div className="individual_contact">
                                     <div className="individual_contact_row">
                                         <div className="individual_avatar_holder">
-                                            <img  alt="sendit" src="Image/featured3.png" />
+                                            <img  alt="sendit" src="img/featured3.png" />
                                         </div>
                                         <div className="individual_contact_title flex_row">
                                             <p>Jenny Wilson</p>
@@ -116,7 +78,7 @@ const Inbox = () => {
                                 <div className="individual_contact">
                                     <div className="individual_contact_row">
                                         <div className="individual_avatar_holder">
-                                            <img  alt="sendit" src="Image/featured3.png" />
+                                            <img  alt="sendit" src="img/featured3.png" />
                                         </div>
                                         <div className="individual_contact_title flex_row">
                                             <p>Jenny Wilson</p>
@@ -132,7 +94,7 @@ const Inbox = () => {
                                 <div className="individual_contact">
                                     <div className="individual_contact_row">
                                         <div className="individual_avatar_holder">
-                                            <img  alt="sendit" src="Image/featured3.png" />
+                                            <img  alt="sendit" src="img/featured3.png" />
                                         </div>
                                         <div className="individual_contact_title flex_row">
                                             <p>Jenny Wilson</p>
@@ -148,7 +110,7 @@ const Inbox = () => {
                                 <div className="individual_contact">
                                     <div className="individual_contact_row">
                                         <div className="individual_avatar_holder">
-                                            <img  alt="sendit" src="Image/featured3.png" />
+                                            <img  alt="sendit" src="img/featured3.png" />
                                         </div>
                                         <div className="individual_contact_title flex_row">
                                             <p>Jenny Wilson</p>
@@ -169,7 +131,7 @@ const Inbox = () => {
                                     <p>Local time Dec 02, 3:03 AM EST</p>
                                 </div>
                                 <div className="client_inbox_search">
-                                    <img  alt="sendit" src="Image/Search.png" />
+                                    <img  alt="sendit" src="img/Search.png" />
                                     <input type="text" placeholder="Search Conversation" />
                                 </div>
                                 <div className="client_inbox_more">
@@ -181,7 +143,7 @@ const Inbox = () => {
                                     <div className="individual_message">
                                         <div className="individual_message_row  sm8 m8">
                                             <div className="message_avatar sm2 m2">
-                                                <img  alt="sendit" src="Image/category.png" />
+                                                <img  alt="sendit" src="img/category.png" />
                                             </div>
                                             <div className="message_details sm8 m7">
                                                 <p>Esther Howard</p>
@@ -197,7 +159,7 @@ const Inbox = () => {
                                     <div className="individual_message">
                                         <div className="individual_message_row  sm8 m8">
                                             <div className="message_avatar sm2 m2">
-                                                <img  alt="sendit" src="Image/category.png" />
+                                                <img  alt="sendit" src="img/category.png" />
                                             </div>
                                             <div className="message_details sm8 m7">
                                                 <p>Esther Howard</p>
@@ -213,7 +175,7 @@ const Inbox = () => {
                                     <div className="individual_message">
                                         <div className="individual_message_row  sm8 m8">
                                             <div className="message_avatar sm2 m2">
-                                                <img  alt="sendit" src="Image/category.png" />
+                                                <img  alt="sendit" src="img/category.png" />
                                             </div>
                                             <div className="message_details sm8 m7">
                                                 <p>Esther Howard</p>
@@ -234,7 +196,7 @@ const Inbox = () => {
                                                 <div className="file_download_icon">
                                                     <img  alt="sendit" src="svg/download.svg" />
                                                 </div>
-                                                <img  alt="sendit" src="Image/chat_file.png" />
+                                                <img  alt="sendit" src="img/chat_file.png" />
                                             </div>
                                         </div>
                                         <div className="individual_file_container">
@@ -246,7 +208,7 @@ const Inbox = () => {
                                                 <div className="file_download_icon">
                                                     <img  alt="sendit" src="svg/download.svg" />
                                                 </div>
-                                                <img  alt="sendit" src="Image/chat_file 2.png" />
+                                                <img  alt="sendit" src="img/chat_file 2.png" />
                                             </div>
                                         </div>
                                     </div>
@@ -255,7 +217,7 @@ const Inbox = () => {
                                     <div className="individual_message">
                                         <div className="individual_message_row  sm8 m8">
                                             <div className="message_avatar sm2 m2">
-                                                <img  alt="sendit" src="Image/category.png" />
+                                                <img  alt="sendit" src="img/category.png" />
                                             </div>
                                             <div className="message_details sm8 m7">
                                                 <p>Esther Howard</p>

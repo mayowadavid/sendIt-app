@@ -725,7 +725,7 @@ select {
 }
 
 .subscription_header_col > p {
-    font-size: 18px;
+    font-size: var(--font18-size);
     margin: 0;
     font-weight: 600;
 }
@@ -753,7 +753,7 @@ select {
 }
 
 .subscription_con > p {
-    font-size: 16px;
+    font-size: var(--font16-size);
     margin: 0;
     font-weight: 500;
 }
@@ -772,11 +772,13 @@ select {
 
 .subscription_button > P {
  border: 3px solid #BAC7F9;
+ width: fit-content;
  color: var(--primary-color);
- font-size: 16px;
+ font-size: var(--font16-size);
  font-weight: 500;
+ width: fit-content;
  border-radius: 40px;
- padding: 10px 10px;
+ padding: 6px 16px;
  text-align: center;
 }
 
@@ -798,7 +800,7 @@ select {
 
 .menu_shadow {
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: #f2f5ff05;
 }
 
 .sideBar_con:hover > .hidden_side{
@@ -854,6 +856,11 @@ select {
 
 .flow:first-child {
     justify-content: flex-start;
+}
+
+.close > img {
+    width: 34px;
+    height: 34px;
 }
 
 .logo_container {
@@ -961,6 +968,7 @@ select {
 
 .inner_space {
     width: 100%;
+    margin-top: 30px;
     padding: 30px 25px 0 62px;
     background-color: #F7F8FB;
     padding-bottom: 60px;
@@ -2015,11 +2023,20 @@ select {
 
 .file_download_icon {
     position: absolute;
+    display: flex;
+    align-items: center;
     bottom: 10px;
+    width: 25px;
+    height: 25px;
     left: 10px;
     border-radius: 50px;
     padding: 4px;
     background-color: #F7F8FB;
+}
+
+.file_download_icon > img {
+    width: fit-content;
+    height: fit-content;
 }
 
 .client_inbox_chat_footer {
@@ -4173,8 +4190,20 @@ select {
         display: none !important;
     }
 
+    .xl-on {
+        display: flex !important;
+    }
+
     .xl-b-off {
         border: 0 !important;
+    }
+
+    .xl-mg-bt10 {
+        margin-bottom: 10% !important;
+    }
+
+    .xl-mg-tp5 {
+        margin-top: 5% !important;
     }
 
     .xl-abs {

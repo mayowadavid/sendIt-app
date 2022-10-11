@@ -228,11 +228,53 @@ const Inbox = () => {
                                             <p>7:35 AM</p>
                                         </div>
                                     </div>
+                                    <div className="individual_file flex_row">
+                                        <div className="individual_file_container">
+                                            <div className="individual_file_header">
+                                                <img  alt="sendit" src="svg/image_alt.svg" />
+                                                <p>Sketch file.jpg</p>
+                                            </div>
+                                            <div className="individual_file_wrapper">
+                                                <div className="file_download_icon">
+                                                    <img  alt="sendit" src="svg/download.svg" />
+                                                </div>
+                                                <img  alt="sendit" src="img/chat_file.png" />
+                                            </div>
+                                        </div>
+                                        <div className="individual_file_container">
+                                            <div className="individual_file_header">
+                                                <img  alt="sendit" src="svg/image_alt.svg" />
+                                                <p>Sketch file.jpg</p>
+                                            </div>
+                                            <div className="individual_file_wrapper">
+                                                <div className="file_download_icon">
+                                                    <img  alt="sendit" src="svg/download.svg" />
+                                                </div>
+                                                <img  alt="sendit" src="img/chat_file 2.png" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="individual_messsage_container">
+                                    <div className="individual_message">
+                                        <div className="individual_message_row  sm8 m8">
+                                            <div className="message_avatar sm2 m2">
+                                                <img  alt="sendit" src="img/category.png" />
+                                            </div>
+                                            <div className="message_details sm8 m7">
+                                                <p>Esther Howard</p>
+                                                <p className="sm9">This is long text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ac sagittis, nibh leo. Nulla ullamcorper.</p>
+                                            </div>
+                                        </div>
+                                        <div className="message_time sm2 m2">
+                                            <p>7:35 AM</p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div className="client_inbox_chat_footer">
                                 <div className="chat_inbox_input">
-                                    <input type="text" name="message" placeholder="write your message here" />
+                                    <textarea type="text" name="message" placeholder="write your message here" />
                                     <div className="chat_submit">
                                         <p>Send</p>
                                     </div>

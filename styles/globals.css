@@ -110,7 +110,7 @@ button {
     flex-direction: column;
 }
 
-input, select {
+input, select, textarea {
     outline: none;
 }
 
@@ -1723,6 +1723,7 @@ select {
 .client_inbox {
     width: 68%;
     box-shadow: rgb(0 0 0 / 7%) 0px 8px 10px;
+    position: relative;
 }
 
 .client_contact_header {
@@ -2041,9 +2042,10 @@ select {
 
 .client_inbox_chat_footer {
     width: 100%;
-    padding: 1%;
     background-color: #fff;
     border-radius: 0 0 4px 4px;
+    position: absolute;
+    bottom: 0;
 }
 
 .chat_inbox_input {
@@ -2054,9 +2056,9 @@ select {
     padding: 1%;
 }
 
-.chat_inbox_input > input[type=text] {
+.chat_inbox_input > textarea {
     width: 83%;
-    height: 48px;
+    height: 10vmin;
     margin-right: 2%;
     border-width: 1px;
     padding-left: 2%;
@@ -2067,6 +2069,7 @@ select {
 
 .chat_submit {
     width: 15%;
+    height: 40px;
     background-color: #555BFF;
     border-radius: 4px;
     display: flex;
@@ -2084,7 +2087,8 @@ select {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    width: 13%;
+    width: fit-content;
+    gap: 10px;
     margin-left: 1%;
     justify-content: space-between;
     padding: 2%;

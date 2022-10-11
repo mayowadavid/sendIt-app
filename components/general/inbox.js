@@ -15,7 +15,7 @@ const Inbox = () => {
                 </div>
                 <div className="client_inbox_wrapper">
                     <div className="client_inbox_body">
-                        <div className="client_contacts sm10 sm-pad5">
+                        <div className="client_contacts l10 sm10 sm-pad5">
                             <div className="client_contact_header">
                                 <div className="conversation_filter">
                                     <div className="conversation_filter_by xl9">
@@ -124,7 +124,7 @@ const Inbox = () => {
                             </div>
                             
                         </div>
-                        <div className="client_inbox sm-off sm10">
+                        <div className="client_inbox l10 l-off sm-off sm10">
                             <div className="client_inbox_header">
                                 <div className="client_inbox_header_details">
                                     <p>Jenny Wilson</p>

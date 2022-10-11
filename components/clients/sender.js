@@ -66,7 +66,7 @@ const Sender = () => {
                     </div>
                 </div>
             </div>
-            <div className="shipper_button flex_row">
+            <div className="shipper_button l9 flex_row">
                 <p onClick={handleStatus}>Continue</p>
             </div>
         </>

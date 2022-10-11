@@ -11,9 +11,9 @@ const Header = () => {
     }
   return (
     <div className="header m-h-fit flex_row">
-        <div className="menu l5 mpad5"><img  alt="sendit" onClick={handleMenu} src='/Image/menu_bar.png'/></div>
-        <div className="message_icon top_wrap l-flex m-off">
-            <img  alt="sendit" onClick={()=> setMenu(!menu)} src="svg/chat.svg" />
+        <div className="menu off l-on l5 mpad5"><img  alt="sendit" onClick={()=> setMenu(!menu)} src='img/menu_bar.png'/></div>
+        <div className="message_icon top_wrap l-off">
+            <img  alt="sendit" src="svg/chat.svg" />
         </div>
         <div className="notifications_icon m-off top_wrap">
             <img  alt="sendit" src="svg/notification.svg" />

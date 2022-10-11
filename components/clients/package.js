@@ -57,7 +57,7 @@ const Package = () => {
                         </div>
                     </div>
                 </div>
-                <div className="shipper_button flex_row">
+                <div className="shipper_button l9 flex_row">
                     { statusState.details == true && <p onClick={handleStatus}>Continue</p>}
                     { statusState.details == false && <p onClick={handleStatus}>Back</p>}
                 </div>

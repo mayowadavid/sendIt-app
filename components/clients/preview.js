@@ -1,6 +1,5 @@
 import React, { useContext } from 'react'
 import { MainContext } from '../context/mainContext'
-import Image from 'next/image'
 
 const Preview = () => {
     const {statusState, setStatusState} = useContext(MainContext);
@@ -76,36 +75,36 @@ const Preview = () => {
                     </div>
                     <div className="shipper_preview_description">
                         <p>Description</p>
-                        <p className="xl8">4 brown carton, 2 smart Television,  One Home 
+                        <p className="xl9">4 brown carton, 2 smart Television,  One Home 
                             Theatre, one electric iron.</p>
                     </div>
                     <div className="shipper_gallery">
-                        <div className="shipper_display_image">
-                            <img  alt="sendit" className="xl10" src="/Image/clip.png" />
+                        <div className="shipper_display_img">
+                            <img  alt="sendit" className="xl10" src="img/clip.png" />
                         </div>
                         <div className="shipper_select_image_row xl10 flex_row">
                             <div className="shipper_select_con">
-                                <img  alt="sendit" src="/Image/clip.png" />
+                                <img  alt="sendit" src="img/clip.png" />
                             </div>
                             <div className="shipper_select_con">
-                                <img  alt="sendit" src="/Image/category3.png" />
+                                <img  alt="sendit" src="img/category3.png" />
                             </div>
                             <div className="shipper_select_con">
-                                <img  alt="sendit" src="/Image/category5.png" />
+                                <img  alt="sendit" src="img/category5.png" />
                             </div>
                             <div className="shipper_select_con">
-                                <img  alt="sendit" src="/Image/category2.png" />
+                                <img  alt="sendit" src="img/category2.png" />
                             </div>
                             <div className="shipper_select_con">
-                                <img  alt="sendit" src="/Image/category2.png" />
+                                <img  alt="sendit" src="img/category2.png" />
                             </div>
                             <div className="shipper_select_con">
-                                <img  alt="sendit" src="/Image/category2.png" />
+                                <img  alt="sendit" src="img/category2.png" />
                             </div>
                         </div>
                     </div>
                 </div>
-                <div className="shipper_button flex_row">
+                <div className="shipper_button l9 flex_row">
                 { statusState.preview == true && <p onClick={handleStatus}>Continue</p>}
                 { statusState.preview == false && <p onClick={handleStatus}>Back</p>}
                 </div>

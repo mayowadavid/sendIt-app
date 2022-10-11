@@ -55,6 +55,10 @@ p {
   box-sizing: border-box;
 }
 
+.off {
+    display: none;
+}
+
 .pop_background {
     background-color: rgba(217, 217, 217, 0.6);
     width: 100vw;
@@ -164,8 +168,8 @@ select {
 .menu > img {
     width: 24px;
     height: 24px;
-    display: none;
 }
+
 
 .header_form {
     width: 45%;
@@ -402,7 +406,7 @@ select {
 }
 
 .shipper_preview_description > p {
-    font-size: clamp(20px, 1.2vw, 40px);
+    font-size: var(--font20-size);
     margin: 0;
     width: 60%;
 }
@@ -792,16 +796,23 @@ select {
     z-index: 40;
 }
 
+.menu_shadow {
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
 .sideBar_con:hover > .hidden_side{
     display: flex;
 }
 
+.mobile_side {
+    background-color: var(--secondary-color);
+}
+
 .hidden_side {
-    position: absolute;
     display: none;
     height: 100vh;
     z-index: 2;
-    background-color: var(--secondary-color);
     padding-right: 30px;
     box-shadow: 0px 11px 10px 0px rgb(0 0 0 / 14%),
     0px 18px 18px 0px rgb(0 0 0 / 12%),
@@ -1511,12 +1522,12 @@ select {
 
 .shipper_button > p {
     margin: 0;
-    width: 150px;
-    font-size: 18px;
+    font-size: var(--font15-size);
+    padding: 10px 12px;
     font-weight: 500;
-    text-align: center;
-    padding: 15px 10px;
-    border-radius: 5px;
+    border-radius: 6px;
+    align-items: center;
+    justify-content: center;
     background-color: #BAC7F9;
 }
 
@@ -1565,7 +1576,7 @@ select {
 
 .shipGaller_wrap > p {
     font-weight: 600;
-    font-size: 23px;
+    font-size: var(--font24-size);
     color: #C1C2CB;
 }
 
@@ -4159,10 +4170,18 @@ select {
 /* Mobile-Layout */
 @media (max-width: 1280px) and (min-width: 60px) {
     .xl-off {
-        display: none;
+        display: none !important;
     }
 
-    .l-flex {
+    .xl-b-off {
+        border: 0 !important;
+    }
+
+    .xl-abs {
+        position: absolute;
+    }
+
+    .xl-flex {
         display: flex !important;
     }
 
@@ -4277,7 +4296,7 @@ select {
 
 @media (max-width: 1000px) and (min-width: 60px) {
     .l-off {
-        display: none;
+        display: none !important;
     }
 
     .l-on {
@@ -4286,6 +4305,10 @@ select {
 
     .l-abs {
         position: absolute !important;
+    }
+
+    .l-flex {
+        display: flex !important;
     }
 
     .l-jsty-btw {

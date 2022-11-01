@@ -7,6 +7,8 @@ import Image from 'next/image'
 const Referral = () => {
     const { setSideState } = useContext(MainContext);
     const [email, setEmail] = useState('');
+    const [url, setUrl] = useState('#ffvvv64f433e');
+    const [copySuccess, setCopySuccess] = useState('');
 
     useEffect(()=> {
         setSideState({
@@ -18,6 +20,15 @@ const Referral = () => {
         e.preventDefault();
         const {value} = e.target;
         setEmail(value);
+    }
+
+    const copyReferalLink = () => {
+        try {
+            navigator.clipboard.writeText(url);
+            setCopySuccess('Copied!');
+        } catch (err) {
+            setCopySuccess('failed');
+        }
     }
 
   return (
@@ -85,7 +96,7 @@ const Referral = () => {
                             <div className="referral_form_button flex_row">
                                 <img  alt="sendit" src="/svg/w-plane.svg" />
                             </div>
-                            <input type="text" onChange={handleEmail} placeholder="email address" />
+                            <input type="text" onChange={handleEmail} placeholder="Email address" />
                         </div>
                     </div>
                     <div className="referal_row_invite m-mg-tp10">
@@ -94,7 +105,7 @@ const Referral = () => {
                         <div className="referel_form flex_row">
                             <div className="referal_form_code m10 l10 m-mg-tp10 flex_row">
                                 <p>#ffvvv64f433e</p>
-                                <p className="m-off">Copy link</p>
+                                { copySuccess !== 'Copied!' ? <p className="m-off" onClick={copyReferalLink}>Copy link</p> : <p className={`m-off ${copySuccess == 'Copied!' ? 'green': 'red'}`}>{copySuccess}</p>}
                             </div>
                             <div className="referal_socials m10 l10 m-mg-tp10 l-mg-tp5 flex_row">
                                 <div className="socials r-social flex_row">

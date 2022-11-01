@@ -21,7 +21,7 @@ const HomePage = () => {
     </div>
 </div>
 <div className="homePage_showcase flex_column">
-    <img  alt="sendit" src="/Image/showcase.png" />
+    <img  alt="sendit" src="/img/showcase.png" />
 </div>
 <div className="show_case_column smcol mcol lrow flex_row">
     <div className="show_case_slot sm10 m10 sm-mp-tp10 m-mg-tp10 l45 flex_column">

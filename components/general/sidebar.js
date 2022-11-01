@@ -82,11 +82,11 @@ const Sidebar = () => {
 
   return (
     <div className={`sideBar_con xl10 ${menu == false ? 'xl-off': 'xl-abs xl-flex'}`}>
-        <div className={`hidden_side mobile_side ${menu == false ? '' : 'xl-on xl3 l6'} flex_column`}>
+        <div className={`hidden_side mobile_side ${menu == false ? '' : 'xl-on xl3 l6'} xl-position-off flex_column`}>
                 <div className="logo_wrap xl10 flex_row">
                 <div className='logo_container xl10 '>
                     <div className='flow close flex_row xl5 xl-mg-tp5 xl-pad5'>
-                        <img  alt="sendit" onClick={closeMenu} src="/svg/close_small.svg" />
+                        <img className="off xl-on" alt="sendit" onClick={closeMenu} src="/svg/close_small.svg" />
                     </div>
                     <div className='flow xl5 xl-mg-tp5'>
                         
@@ -147,7 +147,7 @@ const Sidebar = () => {
                     </div>
                 </div>
         </div>
-        <div onClick={closeMenu} className={`menu_shadow hidden_side ${menu == false ? '' : 'xl-on xl7 l4'}`}></div>
+        <div onClick={closeMenu} className={`menu_shadow off ${menu == false ? '' : 'xl-on xl7 l4'}`}></div>
         <div className="side_bar_wrap xl-off flex_column">
                 <div className="logo_wrap">
 

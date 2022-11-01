@@ -32,12 +32,15 @@ const MainContextProvider = (props) => {
     mainPop: false,
     cancelPop: false
   }
+  
 
   const [subscriptionPopState, setSubscriptionPopState] = useState(subscriptionPop);
   const [menu, setMenu] = useState(false);
   const [sideState, setSideState] = useState(sideControl);
   const [statusState, setStatusState] = useState(statusControl);
   const [statusStateCheck, setStatusStateCheck] = useState(statusCheck);
+  const [modalIndex, setModalIndex] = useState(1);
+  const [modalControl, setModalControl] = useState(false);
 
   return (
     <MainContext.Provider value={{
@@ -50,7 +53,11 @@ const MainContextProvider = (props) => {
     subscriptionPopState, 
     setSubscriptionPopState,
     menu, 
-    setMenu
+    setMenu,
+    modalIndex, 
+    setModalIndex,
+    modalControl, 
+    setModalControl
     }}>
         {props.children}
     </MainContext.Provider>

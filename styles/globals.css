@@ -800,28 +800,30 @@ select {
 
 .menu_shadow {
     height: 100vh;
-    background-color: #f2f5ff05;
+    background-color: #00000036;
 }
 
 .sideBar_con:hover > .hidden_side{
     display: flex;
+    background: var(--secondary-color);
 }
 
 .mobile_side {
-    background-color: var(--secondary-color);
-}
-
-.hidden_side {
-    display: none;
-    height: 100vh;
-    z-index: 2;
-    padding-right: 30px;
+    background-color: #F0F3FF;
     box-shadow: 0px 11px 10px 0px rgb(0 0 0 / 14%),
     0px 18px 18px 0px rgb(0 0 0 / 12%),
     0px 5px 5px 1px rgb(0 0 0 / 20%);
     -webkit-box-shadow: 0px 11px 10px 0px rgb(0 0 0 / 14%),
     0px 18px 18px 0px rgb(0 0 0 / 12%),
     0px 5px 5px 1px rgb(0 0 0 / 20%);
+}
+
+.hidden_side {
+    display: none;
+    position: absolute;
+    height: 100vh;
+    z-index: 2;
+    padding-right: 30px;
 }
 
 .hide_wrap {
@@ -846,7 +848,7 @@ select {
 .side_bar_wrap {
     height: 100%;
     background-color: var(--secondary-color);
-    z-index: 1;
+    z-index: 40;
 }
 
 .logo_wrap {
@@ -969,6 +971,7 @@ select {
 .inner_space {
     width: 100%;
     margin-top: 30px;
+    margin-bottom: 30px;
     padding: 30px 25px 0 62px;
     background-color: #F7F8FB;
     padding-bottom: 60px;
@@ -1115,22 +1118,72 @@ select {
 .track_button > p{
     margin: 0;
     text-align: center;
-    font-size: var(--font24-size);
+    font-size: var(--font20-size);
 }
 
 .main_transaction_row {
-    width: 65%;
+    width: 50%;
 }
 
 .main_row {
     width: 25%;
     padding: 0 20px;
+    justify-content: center;
+    position: relative;
+}
+
+.button_pop_content {
+    position: absolute;
+    top: -4.5vmin;
+    display: none;
+}
+
+.button_pop_content > p {
+    font-size: 10px;
+    color: #fff;
+    padding: 0.5vmin 0.9vmin;
+    font-weight: 300;
+    border-radius: 4px;
+    background-color: rgb(58 58 58);
+}
+
+.main_row > img {
+    width: 18px;
+    height: 18px;
+}
+
+.update_row > img {
+    width: 24px;
+    height: 24px;
+}
+
+.second_row:hover > .button_pop_content {
+    display: block;
+}
+
+.second_row {
+    width: 12% !important;
+}
+
+.update {
+    width: 40% !important;
+}
+
+.main_row > .button {
+    margin: 0;
+    color: var(--second-blue);
+    padding: 10px 25px;
+    background-color: var(--secondary-color);
+    border: 1px solid var(--secondary-color);
+    border-radius: 5px;
+    font-weight: 600;
 }
 
 .main_row > p {
     font-size: 14px;
     font-weight: 400;
     color: #13131C;
+    text-align: center;
 }
 
 .main_row > p:nth-child(3) {
@@ -1146,7 +1199,7 @@ select {
 }
 
 .second_transaction_row {
-    width: 35%;
+    width: 50%;
     justify-content: flex-end;
     gap: 15px;
 }
@@ -1182,6 +1235,16 @@ select {
 
 .green_font > p {
     color: #2C985E;
+}
+
+.green {
+    color: green !important;
+    font-weight: 500;
+}
+
+.red {
+    color: var(--dark-warning-color) !important;
+    font-weight: 500;
 }
 
 .red_font > p {
@@ -1295,6 +1358,7 @@ select {
 
 .wallet_body_pop_col {
     position: absolute;
+    justify-content: center;
     width: 100vw;
     overflow: auto;
     height: 100vh;
@@ -4091,8 +4155,8 @@ select {
 .referral_form_button {
     margin-right: 4px;
     position: absolute;
-    width: 45px;
-    height: 45px;
+    width: 40px;
+    height: 40px;
     border-radius: 40px;
     background-color: #1A39AE;
 }
@@ -4147,6 +4211,7 @@ select {
 /* social pop */
 .social_pop {
     width: clamp(340px, 40vw, 600px);
+    margin: 0 auto;
     height: fit-content;
     background-color: #fff;
     border-radius: 5px;
@@ -4178,15 +4243,14 @@ select {
 
 .delivery_pop_row > input {
     width: 70%;
-    height: 56px;
+    height: 45px;
 }
 
 .delivery_pop_row > button {
     width: 25%;
-    height: 56px;
+    height: 45px;
     font-size: clamp(14px, 0.9vw, 20px);
     font-weight: 600;
-    padding: 4%;
     border-radius: 5%;
     background-color: #BAC7F9;
 }
@@ -4194,6 +4258,10 @@ select {
 @media (max-width: 1280px) and (min-width: 60px) {
     .xl-off {
         display: none !important;
+    }
+
+    .xl-position-off {
+        position: unset !important;
     }
 
     .xl-on {

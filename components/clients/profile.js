@@ -59,23 +59,23 @@ const Profile = () => {
                         <form>
                             <div className="form_input_col sm10">
                                 <p>User name</p>
-                                <input type="text" onChange={handleChange} placeholder="user name" name="userName" value={userProfile.userName} />
+                                <input type="text" className="sm10" onChange={handleChange} placeholder="user name" name="userName" value={userProfile.userName} />
                             </div>
                             <div className="form_input_col sm10">
                                 <p>First Name</p>
-                                <input type="text" onChange={handleChange} placeholder="first name" value={userProfile.firstName} name="firstName" /> 
+                                <input type="text" className="sm10" onChange={handleChange} placeholder="first name" value={userProfile.firstName} name="firstName" /> 
                             </div>
                             <div className="form_input_col sm10">
                                 <p>Last Name</p>
-                                <input type="text" onChange={handleChange} placeholder="last name" value={userProfile.lastName} name="lastName" />
+                                <input type="text" className="sm10" onChange={handleChange} placeholder="last name" value={userProfile.lastName} name="lastName" />
                             </div>
                             <div className="form_input_col sm10">
                                 <p>Email Address</p>
-                                <input type="text" onChange={handleChange} placeholder="email" value={userProfile.email} name="email" />
+                                <input type="text" className="sm10" onChange={handleChange} placeholder="email" value={userProfile.email} name="email" />
                             </div>
                             <div className="form_input_col sm10">
                                 <p>Gender</p>
-                                <select name="gender" defaultValue="Select Gender">
+                                <select className="sm10" name="gender" defaultValue="Select Gender">
                                     <option defaultValue hidden>Select Gender</option>
                                     <option>Male</option>
                                     <option>Female</option>

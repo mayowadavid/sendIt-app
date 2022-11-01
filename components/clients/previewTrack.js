@@ -27,7 +27,7 @@ const PreviewTrack = () => {
             <div className="inner_space xl-pad5">
                 <div className="transaction_track m-mg-tp10 xl-mg-tp10 flex_row">
                     <div className="track_input">
-                        <input type="text" placeholder="tracking number" value={trackNumber}/>
+                        <input type="text" placeholder="Tracking number" value={trackNumber}/>
                     </div>
                     <div onClick={submitTracking} className="track_button sm3 flex_row">
                         <p>Track</p>

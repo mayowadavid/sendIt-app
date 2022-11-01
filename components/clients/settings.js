@@ -67,7 +67,7 @@ const Settings = () => {
                                 <p>Current Password</p>
                             </div>
                             <div className="settings_row_input sm10">
-                                <input type="text" onChange={handleChange} name="" id=""/>
+                                <input type="text" onChange={handleChange} name="" placeholder='Current Password' id=""/>
                             </div>
                         </div>
                         <div className="settings_row flex_row">
@@ -75,7 +75,7 @@ const Settings = () => {
                                 <p>New Password</p>
                             </div>
                             <div className="settings_row_input sm10">
-                                <input type="text" onChange={handleChange} name="" id=""/>
+                                <input type="text" onChange={handleChange} name="" placeholder='New password' id=""/>
                             </div>
                         </div>
                         <div className="settings_row flex_row">
@@ -83,7 +83,7 @@ const Settings = () => {
                                 <p>Confirm Password</p>
                             </div>
                             <div className="settings_row_input sm10">
-                                <input type="text" onChange={handleChange} name="" id=""/>
+                                <input type="text" onChange={handleChange} name="" placeholder='Confirm password' id=""/>
                             </div>
                         </div>
                         <div className="settings_row_button flex_row">
@@ -96,16 +96,16 @@ const Settings = () => {
                                 <p>PHONE VERIFICATION</p>
                             </div>
                             <div className="settings_row_input sm10 flex_row">
-                                <div className="settings_content">
+                                <div className="settings_content m10">
                                     {verificationData.phoneVerification == true ?
-                                    <input type="number" placeholder='phone number' />
+                                    <input className="m10" type="number" placeholder='phone number' />
                                     :<p>Your phone is verified with sendit. Click Edit to 
                                         change your phone number</p>}
                                 </div>
-                                <div className="settings_button flex_row">
+                                <div className="settings_button m-mg-tp5 m4 flex_row">
                                     {verificationData.phoneVerification ?
-                                    <p onClick={submitPhone}>Submit</p>
-                                    :<p onClick={handlePhone}>Edit</p>}
+                                    <p className='m10' onClick={submitPhone}>Submit</p>
+                                    :<p className='m10' onClick={handlePhone}>Edit</p>}
                                 </div>
                             </div>
                         </div>
@@ -114,13 +114,13 @@ const Settings = () => {
                                 <p>SECURITY QUESTION</p>
                             </div>
                             <div className="settings_row_input sm10 flex_row">
-                                <div className="settings_content">
+                                <div className="settings_content m10">
                                     <p>By creating a security question, you will add an 
                                         additional layer of protection for your revenue 
                                         withdrawals and for changing your password. </p>
                                 </div>
-                                <div className="settings_button flex_row">
-                                    <p onClick={handleQuestion}>Edit</p>
+                                <div className="settings_button m-mg-tp5 m4 flex_row">
+                                    <p className='m10' onClick={handleQuestion}>Edit</p>
                                 </div>
                             </div>
                         </div>

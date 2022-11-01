@@ -1,17 +1,69 @@
-import { useContext, useEffect } from "react"
+import { useContext, useEffect, useState } from "react"
 import Header from '../general/header'
 import Sidebar from '../general/sidebar'
 import { MainContext } from "../context/mainContext";
 
 const Transaction = () => {
 
-    const { setSideState } = useContext(MainContext);
+    const { 
+        setSideState, 
+        modalControl, 
+        setModalControl,
+        modalIndex, 
+        setModalIndex
+     } = useContext(MainContext);
+    const [ openAction, setOpenAction ]  = useState({
+            share: false,
+            update: false,
+            view: false
+        });
 
+    const [transactionData, setTransactionData] = useState([
+        {id: "#bfhhhh15244", date: "Oct 28, 21", status: "pending", location: "Lagos",
+        fees: "$400", amount: "$18.00" },
+        {id: "#bfhhhh15244", date: "Oct 28, 21", status: "pending", location: "Lagos",
+        fees: "$400", amount: "$18.00" },
+        {id: "#bfhhhh15244", date: "Oct 28, 21", status: "pending", location: "Lagos",
+        fees: "$400", amount: "$18.00" },
+        {id: "#bfhhhh15244", date: "Oct 28, 21", status: "approved", location: "Lagos",
+        fees: "$400", amount: "$18.00" },
+        {id: "#bfhhhh15244", date: "Oct 28, 21", status: "cancelled", location: "Lagos",
+        fees: "$400", amount: "$18.00" },
+        {id: "#bfhhhh15244", date: "Oct 28, 21", status: "delivered", location: "Lagos",
+        fees: "$400", amount: "$18.00" },
+        {id: "#bfhhhh15244", date: "Oct 28, 21", status: "delivered", location: "Lagos",
+        fees: "$600", amount: "$28.00" }
+    ]);
     useEffect(()=> {
         setSideState({
             wallet: true
         });
     }, []);
+
+    const shareTransaction = (e) => {
+        e.preventDefault();
+        setOpenAction({
+            share: true
+        });
+        setModalIndex(1);
+        setModalControl(!modalControl);
+    }
+
+    const updateTransaction = (e) => {
+        e.preventDefault();
+        setOpenAction({
+            update: true
+        });
+        setModalIndex(0);
+        setModalControl(!modalControl);
+    }
+
+    const previewTransaction = (e) => {
+        e.preventDefault();
+        setOpenAction({
+            preview: true
+        });
+    }
 
   return (
     <div className="body_layout flex_row">
@@ -34,197 +86,79 @@ const Transaction = () => {
                     <div className="transaction_table">
                         <div className="transaction_table_header flex_row">
                             <div className="main_transaction_row flex_row">
-                                <div className="main_row">
+                                <div className="main_row flex_row">
                                     <p>Date</p>
                                 </div>
-                                <div className="main_row">
+                                <div className="main_row flex_row">
                                     <p>Status</p>
                                 </div>
-                                <div className="main_row">
+                                <div className="main_row flex_row">
                                     <p>Transaction id</p>
                                 </div>
-                                <div className="main_row">
+                                <div className="main_row flex_row">
                                     <p>Location</p>
                                 </div>
                             </div>
                             <div className="second_transaction_row flex_row">
-                                <div className="main_row">
+                                <div className="main_row flex_row">
                                     <p>Fees</p>
                                 </div>
-                                <div className="main_row">
+                                <div className="main_row flex_row">
                                     <p>Amount</p>
+                                </div>
+                                <div className="main_row update flex_row">
+                                    <p>Details</p>
                                 </div>
                             </div>
                         </div>
                         <div className="transaction_table_body flex_column">
-                            <div className="table_body_row flex_row">
-                                <div className="main_transaction_row flex_row">
-                                    <div className="main_row">
-                                        <p>Oct 28, 21</p>
-                                    </div>
-                                    <div className="main_row">
-                                        <p>pending</p>
-                                    </div>
-                                    <div className="main_row">
-                                        <p>#bfjf9934nfni4</p>
-                                    </div>
-                                    <div className="main_row">
-                                        <p>Logos</p>
-                                    </div>
-                                </div>
-                                <div className="second_transaction_row flex_row">
-                                    <div className="main_row red_font">
-                                        <p>$400</p>
-                                    </div>
-                                    <div className="main_row red_font">
-                                        <p>$18.00</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="table_body_row flex_row">
-                                <div className="main_transaction_row flex_row">
-                                    <div className="main_row">
-                                        <p>Oct 28, 21</p>
-                                    </div>
-                                    <div className="main_row">
-                                        <p>pending</p>
-                                    </div>
-                                    <div className="main_row">
-                                        <p>#bfjf9934nfni4</p>
-                                    </div>
-                                    <div className="main_row">
-                                        <p>Logos</p>
-                                    </div>
-                                </div>
-                                <div className="second_transaction_row flex_row">
-                                    <div className="main_row red_font">
-                                        <p>$400</p>
-                                    </div>
-                                    <div className="main_row red_font">
-                                        <p>$18.00</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="table_body_row flex_row">
-                                <div className="main_transaction_row flex_row">
-                                    <div className="main_row">
-                                        <p>Oct 28, 21</p>
-                                    </div>
-                                    <div className="main_row">
-                                        <p>pending</p>
-                                    </div>
-                                    <div className="main_row">
-                                        <p>#bfjf9934nfni4</p>
-                                    </div>
-                                    <div className="main_row">
-                                        <p>Logos</p>
-                                    </div>
-                                </div>
-                                <div className="second_transaction_row flex_row">
-                                    <div className="main_row green_font">
-                                        <p>$400</p>
-                                    </div>
-                                    <div className="main_row green_font">
-                                        <p>$18.00</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="table_body_row flex_row">
-                                <div className="main_transaction_row flex_row">
-                                    <div className="main_row">
-                                        <p>Oct 28, 21</p>
-                                    </div>
-                                    <div className="main_row">
-                                        <p>pending</p>
-                                    </div>
-                                    <div className="main_row">
-                                        <p>#bfjf9934nfni4</p>
-                                    </div>
-                                    <div className="main_row">
-                                        <p>Logos</p>
-                                    </div>
-                                </div>
-                                <div className="second_transaction_row flex_row">
-                                    <div className="main_row green_font">
-                                        <p>$400</p>
-                                    </div>
-                                    <div className="main_row green_font">
-                                        <p>$18.00</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="table_body_row flex_row">
-                                <div className="main_transaction_row flex_row">
-                                    <div className="main_row">
-                                        <p>Oct 28, 21</p>
-                                    </div>
-                                    <div className="main_row">
-                                        <p>pending</p>
-                                    </div>
-                                    <div className="main_row">
-                                        <p>#bfjf9934nfni4</p>
-                                    </div>
-                                    <div className="main_row">
-                                        <p>Logos</p>
-                                    </div>
-                                </div>
-                                <div className="second_transaction_row flex_row">
-                                    <div className="main_row green_font">
-                                        <p>$400</p>
-                                    </div>
-                                    <div className="main_row green_font">
-                                        <p>$18.00</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="table_body_row flex_row">
-                                <div className="main_transaction_row flex_row">
-                                    <div className="main_row">
-                                        <p>Oct 28, 21</p>
-                                    </div>
-                                    <div className="main_row">
-                                        <p>pending</p>
-                                    </div>
-                                    <div className="main_row">
-                                        <p>#bfjf9934nfni4</p>
-                                    </div>
-                                    <div className="main_row">
-                                        <p>Logos</p>
-                                    </div>
-                                </div>
-                                <div className="second_transaction_row flex_row">
-                                    <div className="main_row green_font">
-                                        <p>$400</p>
-                                    </div>
-                                    <div className="main_row green_font">
-                                        <p>$18.00</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="table_body_row flex_row">
-                                <div className="main_transaction_row flex_row">
-                                    <div className="main_row">
-                                        <p>Oct 28, 21</p>
-                                    </div>
-                                    <div className="main_row">
-                                        <p>pending</p>
-                                    </div>
-                                    <div className="main_row">
-                                        <p>#bfjf9934nfni4</p>
-                                    </div>
-                                    <div className="main_row">
-                                        <p>Logos</p>
-                                    </div>
-                                </div>
-                                <div className="second_transaction_row flex_row">
-                                    <div className="main_row green_font">
-                                        <p>$400</p>
-                                    </div>
-                                    <div className="main_row green_font">
-                                        <p>$18.00</p>
-                                    </div>
-                                </div>
-                            </div>
+                        {transactionData.map((t, i)=> {
+                            const { id, date, status, location, amount, fees } = t;
+                            return (
+                                        <div key={i} className="table_body_row flex_row">
+                                            <div className="main_transaction_row flex_row">
+                                                <div className="main_row flex_row">
+                                                    <p>{date}</p>
+                                                </div>
+                                                <div className="main_row flex_row">
+                                                    <p>{status}</p>
+                                                </div>
+                                                <div className="main_row flex_row">
+                                                    <p>{id}</p>
+                                                </div>
+                                                <div className="main_row flex_row">
+                                                    <p>{location}</p>
+                                                </div>
+                                            </div>
+                                            <div className="second_transaction_row flex_row">
+                                                <div className="main_row flex_row green_font">
+                                                    <p>{amount}</p>
+                                                </div>
+                                                <div className="main_row flex_row green_font">
+                                                    <p>{fees}</p>
+                                                </div>
+                                                <div onClick={updateTransaction} className="main_row update_row second_row flex_row">
+                                                    <div className="button_pop_content">
+                                                        <p>Update</p>
+                                                    </div>
+                                                    <img src="/svg/update.svg" alt="sendit" />
+                                                </div>
+                                                <div onClick={shareTransaction} className="main_row second_row flex_row">
+                                                    <div className="button_pop_content">
+                                                        <p>Share</p>
+                                                    </div>
+                                                    <img src="/svg/share.svg" alt="sendit" />
+                                                </div>
+                                                <div onClick={previewTransaction} className="main_row second_row flex_row">
+                                                    <div className="button_pop_content">
+                                                        <p>preview</p>
+                                                    </div>
+                                                    <img src="/svg/eye.svg" alt="sendit" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                );
+                             })}
                         </div>
                     </div>
                     <div className="transaction_button flex_row">

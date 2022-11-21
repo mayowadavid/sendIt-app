@@ -1,15 +1,24 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import Package from '../components/clients/package'
 import Preview from '../components/clients/preview'
 import Sender from '../components/clients/sender'
 import { MainContext } from '../components/context/mainContext'
+import { authentication } from '../components/functions/function'
 import Header from '../components/general/header'
 import PackageStatus from '../components/general/packageStatus'
 import Sidebar from '../components/general/sidebar'
 
 const Packages = () => {
 
-  const {statusState, setStatusState} = useContext(MainContext);
+  const {statusState, 
+    setStatusState, 
+    router,
+    createPackage} = useContext(MainContext);
+
+  useEffect(()=>{
+    // user authentication
+    authentication(router);
+  }, []);
 
   return (
     <div className="body_layout flex_row">

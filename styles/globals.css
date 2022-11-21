@@ -20,6 +20,7 @@ body{
     --second-blue: #3651B8;
     --accent-color: #32325d;
     --dark-warning-color: #FF5555;
+    --dark-input-color: #ff555596;
     --light-warning-color: rgba(255, 85, 85, 0.2);
     --dark-font-color: #000;
     --light-font-color: #fff;
@@ -71,6 +72,14 @@ p {
   font-size: 10px;
 }
 
+.error > input  {
+    border: 2px solid var(--dark-input-color) !important;
+}
+
+.error > input:focus  {
+    box-shadow: 0 0 0 1px solid var(--dark-input-color) !important;
+}
+
 .remove_margin > p {
     margin: 0;
 }
@@ -110,15 +119,24 @@ button {
     flex-direction: column;
 }
 
+select {
+    padding: unset !important;
+}
+
 input, select, textarea {
     outline: none;
 }
 
-input[type=text], input[type=number] {
+input, select {
     height: 45px;
-    padding-left: 8px;
-    border: 1px solid #D7D8DD;
+    padding-left: 20px;
+    border: 2px solid #D7D8DD;
     border-radius: 5px;
+}
+
+input:focus {
+    box-shadow: 0 0 0 1px rgba(50, 151, 211, 0.3), 0 1px 1px 0 rgba(0, 0, 0, 0.07),
+    0 0 0 4px rgba(50, 151, 211, 0.3);
 }
 
 select {
@@ -333,7 +351,7 @@ select {
 }
 
 .home_faq_row > p {
-    font-size: clamp(24px, 2vw, 24px);
+    font-size: var(--font24-size);
 }
 
 .home_faq_row {
@@ -966,6 +984,9 @@ select {
 
 .avatar_icon > img {
     width: 100%;
+    height: 55px;
+    object-fit: cover;
+    border-radius: 40px;
 }
 
 .inner_space {
@@ -1004,15 +1025,54 @@ select {
     display: flex;
 }
 
+.client_details > input {
+    display: none;
+}
+
 .user_profile {
     width: 100%;
     display: flex;
+    position: relative;
 }
 
-.user_profile > img { 
-    margin: 0 auto;
+.user_profile > label {
     width: clamp(70px, 6vw, 105px);
     height: clamp(70px, 6vw, 105px);
+}
+
+.user_profile > label:first-child {
+    position: absolute;
+    background-color: #00000036;
+    display: none;
+    border-radius: 105px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+}
+
+.client_details:hover > .user_profile > label:first-child {
+    display: flex;
+}
+
+.user_profile > label:first-child > img {
+    width: clamp(30px, 2vw, 35px);
+    height: clamp(30px, 2vw, 35px);
+}
+
+.user_profile > label:first-child > p {
+    font-size: 9px;
+    margin: 0;
+    color: #fff;
+    text-align: center;
+    width: fit-content;
+}
+
+.user_profile > label > img { 
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
     border-radius: 105px;
     object-fit: cover;
 }
@@ -1056,8 +1116,8 @@ select {
 .user_submit_action > p {
     background-color: #BAC7F9;
     color: #000;
-    font-size: 22px;
-    padding: 10px 25px;
+    font-size: var(--font18-size);
+    padding: 6px 12px;
     font-weight: 500;
     border-radius: 5px;
     margin: 0;
@@ -4254,6 +4314,334 @@ select {
     border-radius: 5%;
     background-color: #BAC7F9;
 }
+
+/*Registration */
+.registration_page {
+    width: 100%;
+    height: 100vh;
+    background-color: #F7F8FB;
+    position: relative;
+    align-items: unset!important;
+}
+
+.registration_left {
+    width: 25%;
+    height: 100%;
+    position: relative;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.side_main {
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+}
+
+.side_main > p {
+    font-weight: normal;
+    font-size: 14px;
+}
+
+.side_main > p:first-child {
+    font-weight: 600;
+    font-size: 24px;
+}
+
+.side_main > img{
+    width: 65%;
+}
+
+
+.side_background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    filter: blur(145px);
+}
+
+.regvec {
+    position: absolute;
+    width: 100%;
+    height: 100px;
+}
+
+.reg-vec1 {
+    width: 100%;
+    height: 35%;
+    left: 0;
+    top: -10%;
+    background-image: radial-gradient(#555BFF, transparent);
+}
+
+.reg-vec2 {
+    width: 100%;
+    height: 40%;
+    top: 50%;
+    background-image: radial-gradient(#557CFF, transparent);
+    right: -70%;
+}
+
+.reg-vec3 {
+    width: 30%;
+    height: 30%;
+    bottom: 0%;
+    left: 0%;
+    background-image: radial-gradient(#C67EFF, transparent);
+}
+
+.registration_right {
+    width: 65%;
+    height: 100%;
+    padding: 5%;
+    background-color: #F7F8FB;
+}
+
+.registration_right > p {
+    font-weight: 700;
+    font-size: 16px;
+    color: #090A2E;
+}
+
+.registration_right > p:first-child {
+    font-weight: 600;
+    font-size: 24px;
+    color: #090A2E;
+}
+
+.registration_right > p:nth-child(3) {
+    font-weight: 100;
+    font-size: 14px;
+}
+
+.registration_right > form {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 2%;
+    padding-left: 0;
+}
+
+.form_row {
+    width: 40%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    margin-bottom: 14px;
+}
+
+.username_wrapper > label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #090A2E;
+    padding-right: 9px;
+}
+
+.username_wrapper > span {
+    font-size: 10px;
+    font-weight: 500;
+    color: #090A2E;
+}
+
+.form_row > input[type="text"] {
+    width: 90%;
+    height: 35px;
+    margin-top: 10px;
+    border: 2px solid #fff;
+    padding-left: 10px;
+}
+
+.form_row > input[type="checkbox"] {
+    margin-bottom: 19px;
+    border: 2px solid #fff;
+}
+
+.form_row > p {
+    text-align: center;
+    color: #fff;
+    font-size: small;
+    font-weight: normal;
+    padding: 9px 20px;
+    margin: 0;
+    background-color: #555BFF;
+    border-radius: 5px;
+}
+
+.checkbox_holder {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.Remember {
+    width: 50%;
+}
+
+.Remember > input[type=checkbox]{
+    height: unset;
+}
+
+.reset_password {
+    width: 50%;
+    color: #555BFF;
+    text-align: right;
+}
+
+/* Login */
+.login_left {
+    width: 52%;
+    position: relative;
+    z-index: 0;
+    overflow: hidden;
+    height: 100%;
+}
+
+.login_main {
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.login_header {
+    width: 39%;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.login_header > p:first-child{
+    font-weight: 500;
+    font-size: 24px;
+}
+
+.login_image {
+    width: 40%;
+    margin: 0 auto;
+}
+
+.login_image > img{
+    width: 100%;
+}
+
+.login_right {
+    width: 40%;
+    padding: 0 2.5%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #F7F8FB;
+}
+
+.login_right > form {
+    width: 100%;
+}
+
+.login_right_header {
+    margin-bottom: 25px;
+}
+
+.login_right_header > p:first-child {
+    font-weight: 500;
+    font-size: 24px;
+}
+
+.login_right_header > p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.login_form_row {
+    margin-bottom: 25px;
+}
+
+.login_form_row > label {
+    width: 100%;
+}
+
+.login_form_row > input[type="text"] {
+    width: 80%;
+    height: 35px;
+    margin-top: 10px;
+    border: 2px solid #D7D8DD;
+    padding-left: 10px;
+}
+
+.login_form_row > input[type="password"] {
+    width: 80%;
+    height: 35px;
+    margin-top: 10px;
+    border: 2px solid #D7D8DD;
+    padding-left: 10px;
+}
+
+.login_form_row > input[type="checkbox"] {
+    margin-bottom: 19px;
+    border: 2px solid #fff;
+}
+
+.login_submit > p {
+    width: 75%;
+    text-align: center;
+    color: #fff;
+    font-size: 16px;
+    font-weight: normal;
+    padding: 9px 20px;
+    margin: 0;
+    background-color: #555BFF;
+    border-radius: 5px;
+}
+
+.login_sign_up {
+    text-align: center;
+    width: 80%;
+    align-items: center;
+    justify-content: center;
+}
+
+.login_sign_up > p:last-child{
+    color: #555BFF;
+    padding-left: 1%;
+    font-weight: 500;
+}
+
+.log_regvec {
+    position: absolute;
+    width: 100%;
+    height: 100px;
+}
+
+.log_reg-vec1 {
+    width: 50%;
+    height: 35%;
+    left: -25%;
+    top: -10%;
+    background-image: radial-gradient(#555BFF, transparent);
+}
+
+.log_reg-vec2 {
+    width: 40%;
+    height: 40%;
+    top: 50%;
+    background-image: radial-gradient(#557CFF, transparent);
+    left: 50%;
+}
+
+.log_reg-vec3 {
+    width: 30%;
+    height: 30%;
+    bottom: 0%;
+    left: 0%;
+    background-image: radial-gradient(#C67EFF, transparent);
+}
+
 /* Mobile-Layout */
 @media (max-width: 1280px) and (min-width: 60px) {
     .xl-off {

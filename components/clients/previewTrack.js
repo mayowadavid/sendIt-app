@@ -3,15 +3,17 @@ import Header from '../general/header'
 import Sidebar from '../general/sidebar'
 import { useContext, useEffect } from "react"
 import { MainContext } from "../context/mainContext";
+import { authentication } from '../functions/function';
 
 const PreviewTrack = () => {
-    const { setSideState } = useContext(MainContext);
+    const { setSideState, router } = useContext(MainContext);
     const {trackNumber, setTrackNumber} = useState("");
 
     useEffect(()=> {
         setSideState({
             track: true
         });
+        authentication(router);
     }, []);
 
     const submitTracking = (e) =>{

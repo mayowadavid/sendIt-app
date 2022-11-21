@@ -1,8 +1,20 @@
 import React, { createContext, useState, useEffect } from 'react';
+import { useLazyQuery, useMutation } from '@apollo/client';
+import { CURRENT_USER, FETCH_USER_BY_NAME, LOGIN } from '../queries/user/user';
+import {Router, useRouter} from 'next/router';
+import { UPDATE_PROFILE } from '../mutation/profile/profile';
+import { clean } from '../functions/function';
+import { CREATE_PACKAGE } from '../mutation/package/package';
+import { CURRENT_PACKAGE } from '../queries/package/package';
+
 
 export const MainContext = createContext();
 const MainContextProvider = (props) => {
 
+  // router
+  const router = useRouter();
+
+  //control dashboard sidebar
   const sideControl = {
     profile: true,
     wallet: false,
@@ -13,6 +25,29 @@ const MainContextProvider = (props) => {
     referral: false
   };
 
+  // control login/signup
+  let authControl = {
+    loginTab: true,
+    signUpTab: false
+  }
+
+  //USER DATA
+  const initialUser = {
+    id: '',
+    userName: '',
+    email: '',
+    refreshToken: '',
+    refreshTokenExp: '',
+    profile: {
+        id: '',
+        file: {
+          image: '',
+        },
+        role: '',
+       }
+  }
+
+  // to control active dashboard option
   const statusControl = {
     overview: true,
     details: false,
@@ -20,6 +55,7 @@ const MainContextProvider = (props) => {
     amount: false
   };
 
+  // to control active dashboard animation
   const statusCheck = {
     overview: false,
     details: false,
@@ -27,13 +63,14 @@ const MainContextProvider = (props) => {
     amount: false
   };
 
+  // to control subscription pop up
   const subscriptionPop = {
     default: true,
     mainPop: false,
     cancelPop: false
   }
   
-
+  const [userData, setUserData] = useState(initialUser);
   const [subscriptionPopState, setSubscriptionPopState] = useState(subscriptionPop);
   const [menu, setMenu] = useState(false);
   const [sideState, setSideState] = useState(sideControl);
@@ -41,6 +78,122 @@ const MainContextProvider = (props) => {
   const [statusStateCheck, setStatusStateCheck] = useState(statusCheck);
   const [modalIndex, setModalIndex] = useState(1);
   const [modalControl, setModalControl] = useState(false);
+  const [authState, setAuthState] = useState(authControl);
+  const [err, setErr] = useState();
+  const [profileUrl, setProfileUrl] = useState();
+
+
+
+// QUERIES
+// user by name
+const [userFetch] = useLazyQuery(FETCH_USER_BY_NAME, {
+  onCompleted: (data) => {
+      if(data){
+      const { findUserByName } = data;
+      setUserData(findUserByName);
+      console.log(data);
+      }
+  },
+  onError: (error) => {
+    setErr(error);
+    console.log(error)
+  }
+});
+
+// signed in user
+const [fetchUsers] = useLazyQuery(CURRENT_USER, {
+  onCompleted: (data) => {
+      if(data){
+      const { currentUser } = data;
+      console.log(currentUser);
+      let {profile} = currentUser;
+      const res = clean({...currentUser});
+      profile = clean({...profile});
+      profile?.file?.image !== undefined && setProfileUrl(profile?.file?.image);
+      setUserData({...userData, ...res, profile});
+      }
+  },
+  onError: (error) => {
+    // setErr(error.message);
+    console.log(error.message)
+  }
+});
+
+// login user
+const [usersLogin] = useLazyQuery(LOGIN, {
+  fetchPolicy: "network-only",
+  onCompleted: (data) => {
+      if(data){
+      const { loginUser } = data;
+      setUserData(loginUser);
+      setErr();
+      if(data !== undefined){
+        const {userName, refreshTokenExp, refreshToken} = loginUser;
+          router.push(`/${userName}`);
+          const token = refreshToken;
+          window.localStorage.setItem("token", JSON.stringify(token));
+          window.localStorage.setItem("session", JSON.stringify(refreshTokenExp));
+      }
+      
+      //console.log(data);
+      }
+  },
+  onError: (error) => {
+    //setErr(error);
+    const message = error.message;
+    setErr(message);
+  }
+});
+
+// current package to sent
+const [currentPackage] = useLazyQuery(CURRENT_PACKAGE, {
+  onCompleted: (data) => {
+      if(data){
+      console.log(data);
+      }
+  },
+  onError: (error) => {
+    //setErr(error);
+    const message = error.message;
+    setErr(message);
+  }
+});
+
+//MUTATIONS
+const [updateProfile] = useMutation(UPDATE_PROFILE, {
+  onCompleted: (data) => {
+      if(data){
+      console.log(data);
+      }
+  },
+  onError: (error) => {
+    //setErr(error);
+    const message = error.message;
+    setErr(message);
+  }
+});
+
+const [createPackage] = useMutation(CREATE_PACKAGE, {
+  onCompleted: (data) => {
+      if(data){
+      console.log(data);
+      }
+  },
+  onError: (error) => {
+    //setErr(error);
+    const message = error.message;
+    setErr(message);
+  }
+});
+
+//get login user details if token is not empty
+useEffect(()=>{
+  const token = localStorage.getItem('token');
+  token !== undefined && fetchUsers();
+}, []);
+
+
+
 
   return (
     <MainContext.Provider value={{
@@ -57,7 +210,18 @@ const MainContextProvider = (props) => {
     modalIndex, 
     setModalIndex,
     modalControl, 
-    setModalControl
+    setModalControl,
+    authState, 
+    setAuthState,
+    userFetch,
+    usersLogin,
+    err,
+    router,
+    userData,
+    updateProfile,
+    profileUrl,
+    createPackage,
+    currentPackage
     }}>
         {props.children}
     </MainContext.Provider>

@@ -1,12 +1,9 @@
-import {useRouter} from 'next/router';
 import { useContext, useState } from "react";
 import { MainContext } from "../context/mainContext";
-import Image from 'next/image'
 
 const Sidebar = () => {
-    const router = useRouter();
 
-    const { sideState, setSideState, menu, setMenu } = useContext(MainContext);
+    const { sideState, setSideState, menu, setMenu, userData, router } = useContext(MainContext);
 
     const handleProfile = (e) => {
         e.preventDefault();
@@ -14,7 +11,8 @@ const Sidebar = () => {
             profile: true
         });
         setMenu(!menu);
-        // router.push('/index');
+        console.log(userData);
+        router.push(`/${userData.userName}`);
     }
 
     const handleWallet = (e) => {

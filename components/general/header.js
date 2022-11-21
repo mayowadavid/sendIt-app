@@ -1,9 +1,8 @@
 import { useContext } from "react"
 import { MainContext } from "../context/mainContext"
-import Image from 'next/image'
 
 const Header = () => {
-    const {menu, setMenu} = useContext(MainContext);
+    const {menu, setMenu, profileUrl, userData} = useContext(MainContext);
 
   return (
     <div className="header m-h-fit flex_row">
@@ -16,9 +15,9 @@ const Header = () => {
         </div>
         <div className="avatar_wrap xl2 l3 m5 flex_row">
             <div className="avatar_icon m-h-fit">
-                <img  alt="sendit" className="m5" src="svg/avatar.svg" />
+                <img  alt="sendit" className="m5" src={ profileUrl !== undefined ? profileUrl : "svg/avatar.svg" } />
             </div>
-            <p>David</p>
+            <p>{userData.userName}</p>
             <img  alt="sendit" src="svg/drop-arrow.svg" />
         </div>
     </div>

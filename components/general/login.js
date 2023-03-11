@@ -1,8 +1,12 @@
 import React, { useContext, useState } from 'react'
 import { MainContext } from '../context/mainContext';
-
 const Login = () => {
-    let { setAuthState, usersLogin, err } = useContext(MainContext);
+    let { setAuthState, 
+        usersLogin, 
+        err,
+        loading, 
+        setLoading
+     } = useContext(MainContext);
 
     let initialState = {
         email: '',
@@ -10,7 +14,7 @@ const Login = () => {
         password: ''
     }
     const [userDetail, setUserDetail] = useState(initialState);
-    console.log(err, "13");
+    
     //transition user
     const switchUser = (e) => {
         e.preventDefault();
@@ -50,14 +54,16 @@ const Login = () => {
                 email,
                 password
             };
-            
+            setLoading(!loading);
             //login query
                 const {data, error} = await usersLogin({
                     variables: {
                         userInput,
                     }
                 });
-                
+                console.log(loading, '65');
+             (await data || await error) && setLoading(false);
+             console.log(loading, '67');
     }
     
   return (
@@ -108,7 +114,10 @@ const Login = () => {
                         </div>
                     </div>
                     <div className="login_submit">
-                        <p onClick={submitLogin}>Sign in</p>
+                    <button className={ loading == true ? 'loading' : '' } onClick={submitLogin}>
+                        {loading == true && <img className='load' src="/svg/loading.svg" alt="sendit" />}
+                        {loading == false && `Sign in`}
+                    </button>
                     </div>
                     <div className="login_sign_up flex_show_row">
                         <p>Dont have an account yet?</p><p onClick={switchUser}>Join now</p>

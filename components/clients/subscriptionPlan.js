@@ -1,9 +1,20 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { MainContext } from '../context/mainContext'
-import Image from 'next/image'
 
 const SubscriptionPlan = () => {
     const {subscriptionPopState, setSubscriptionPopState} = useContext(MainContext);
+    const [planIndex, setPlanIndex] = useState(0);
+    const plans = [
+            [
+                { name: 'Biannual', month: '6 months', amount: '$100', active: false },
+                 { name: 'Free', month: '1 month', amount: '$0', active: true },
+                 { name: 'Annual', month: '12 month', amount: '$200', active: false },
+            ],
+            [
+                { name: 'Biennial', month: '24 months', amount: '$350', active: false },
+                 { name: 'Triennial', month: '36 month', amount: '$600', active: false },
+            ]
+    ]
 
     const closeMainPop = (e) => {
         e.preventDefault();
@@ -13,6 +24,24 @@ const SubscriptionPlan = () => {
     const openCancelPop = (e) => {
         e.preventDefault();
         setSubscriptionPopState({...subscriptionPopState, cancelPop: !subscriptionPopState.cancelPop});
+    }
+
+    // move to next plan
+    const nextCtrl = () => {
+        if(planIndex !== plans.length - 1){
+            setPlanIndex(planIndex + 1);
+        }else{
+            setPlanIndex(0);
+        }
+    }
+
+    //move to previous plan
+    const prevCtrl = () => {
+        if(planIndex !== 0){
+            setPlanIndex(planIndex - 1);
+        }else{
+            setPlanIndex(plans.length - 1);
+        }
     }
 
   return (
@@ -33,65 +62,45 @@ const SubscriptionPlan = () => {
                     </div>
                     <div className="sub_inner_title sm10 sm-jsty-left flex_row">
                         <div className="sub_switch">
-                            <p>{"<"}</p>
+                            <p onClick={prevCtrl}>{"<"}</p>
                         </div>
                         <div className="sub_switch">
                             <p>Other plans</p>
                         </div>
                         <div className="sub_switch">
-                            <p>{">"}</p>
+                            <p onClick={nextCtrl}>{">"}</p>
                         </div>
                     </div>
                 </div>
                 <div className="sub_inner_con flex_row">
-                    <div className="flex_card sm10 sm-mg-tp10 flex_column">
-                        <div className="card_content">
-                            <p>Biannual plan</p>
-                        </div>
-                        <div className="card_content_middle">
-                            <p>6 months</p>
-                        </div>
-                        <div className="card_content">
-                            <p>$60</p>
-                        </div>
-                        <div className="card_button">
-                            <p>upgrade</p>
-                        </div>
-                    </div>
-                    <div className="flex_card sm10 sm-mg-tp10 active_card flex_column">
-                        <div className="card_content">
-                            <p>Free plan</p>
-                        </div>
-                        <div className="card_content_middle">
-                            <p>1 month</p>
-                        </div>
-                        <div className="card_content">
-                            <p>$0</p>
-                        </div>
-                        <div className="card_button active_button">
-                            <p>Your Plan</p>
-                        </div>
-                    </div>
-                    <div className="flex_card sm10 sm-mg-tp10 flex_column">
-                        <div className="card_content">
-                            <p>Annual plan</p>
-                        </div>
-                        <div className="card_content_middle">
-                            <p>12 months</p>
-                        </div>
-                        <div className="card_content">
-                            <p>$1000</p>
-                        </div>
-                        <div className="card_button">
-                            <p>Upgrade</p>
-                        </div>
-                    </div>
+                {
+                    plans[planIndex].map((plan, i)=>{
+                       const {name, month, amount, active} = plan;
+                        return (
+                            <div key={i} className={`flex_card sm10 sm-mg-tp10 flex_column  ${active? 'active_card': ''}`}>
+                                <div className="card_content">
+                                    <p>{name}</p>
+                                </div>
+                                <div className="card_content_middle">
+                                    <p>{month}</p>
+                                </div>
+                                <div className="card_content">
+                                    <p>{amount}</p>
+                                </div>
+                                <div className="card_button">
+                                    <p>{active? 'Your Plan': 'upgrade'}</p>
+                                </div>
+                            </div>
+                        )
+                    })
+                }
                 </div>
                 <div className="cancel_subscription">
                     <p onClick={openCancelPop}>Cancel My Subscription plan</p>
                 </div>
             </div>
         </div>
+        <div onClick={closeMainPop} className="wallet_pop"></div>
     </div>
   )
 }

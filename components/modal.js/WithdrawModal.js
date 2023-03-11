@@ -1,9 +1,11 @@
 import React from 'react'
+import ModalLayout from './modalLayout'
 
 const WithdrawModal = () => {
+
   return (
-    <div>
-                  <div className="wallet_body_layout">
+    <ModalLayout name="withdraw" headerName="Withdraw To Another Account">
+                <div className="wallet_body_layout">
                     <div className="wallet_row_input">
                         <p>Balance to withdraw from</p>
                         <select name="" id="">
@@ -13,8 +15,16 @@ const WithdrawModal = () => {
                         </select>
                     </div>
                     <div className="wallet_row_input">
+                        <p>Choose from Saved Recipient</p>
+                        <select name="" id="">
+                            <option value="">
+                                Main Balance
+                            </option>
+                        </select>
+                    </div>
+                    <div className="wallet_row_input">
                         <p>Amount to withdraw</p>
-                        <input type="text" name="" id="" />
+                        <input type="text" name="" id=""/>
                     </div>
                     <div className="wallet_row_input">
                         <p>Amount user will receive</p>
@@ -22,7 +32,7 @@ const WithdrawModal = () => {
                     </div>
                     <div className="wallet_row_input">
                         <p>Bank Account Number</p>
-                        <input type="text" name="" id="" placeholder="enter bank account number" />
+                        <input type="text" name="" id="" placeholder="enter bank account number"/>
                     </div>
                     <div className="wallet_row_input">
                         <p>Select Bank</p>
@@ -37,7 +47,7 @@ const WithdrawModal = () => {
                         <input type="text" name="" id="" placeholder="description" />
                     </div>
                     <div className="wallet_row_confirm flex_row">
-                        <input type="checkbox" name="" id="" />
+                        <input type="checkbox" name="" id=""/>
                         <p>I confirm to be debited $50 to send</p>
                     </div>
                 </div>
@@ -49,7 +59,7 @@ const WithdrawModal = () => {
                         <p>Continue</p>
                     </div>
                 </div>
-                  </div>
+    </ModalLayout>
   )
 }
 

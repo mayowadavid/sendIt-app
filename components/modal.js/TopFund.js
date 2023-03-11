@@ -1,8 +1,8 @@
-import React from 'react'
+import ModalLayout from './modalLayout'
 
 const TopFund = () => {
   return (
-    <div>
+    <ModalLayout name="deposit" headerName="Top-up Funds">
                 <div className="wallet_body_layout">
                     <div className="wallet_row_input">
                         <p>Balance to top-up</p>
@@ -37,7 +37,7 @@ const TopFund = () => {
                         <p>Continue</p>
                     </div>
                 </div>
-            </div>
+    </ModalLayout>
   )
 }
 

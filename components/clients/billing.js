@@ -2,37 +2,28 @@ import Header from '../general/header'
 import Sidebar from '../general/sidebar'
 import { useContext, useEffect, useState } from "react"
 import { MainContext } from "../context/mainContext";
+import { BillingForm } from './billingForm';
+import Wallet from './wallet';
 
 const Billing = () => {
     const { setSideState, subscriptionPopState, setSubscriptionPopState } = useContext(MainContext);
-
-    const initialState = {
-        zipCode: "",
-        cardName: "",
-        cardNumber: "",
-        expiryDate: "",
+    const tabState = {
+        billing: true,
+        wallet: false,
     }
-
-    const [billingData, setBillingData] = useState(initialState);
-
-    const [billingState, setBillingState] = useState(false);
+    const [controlTab, setControlTab] = useState(tabState);
 
     useEffect(()=> {
         setSideState({
-            wallet: true
+            billing: true
         });
     }, []);
 
-    const handleChange = (e) => {
-        e.preventDefault();
-        const {name, value} = e.target;
-        setBillingData({...billingData, [name]: value});
+    
+    const handleTab = (prop) => {
+        setControlTab({[prop]: !controlTab[prop]})
     }
-
-    const handleBilling = (e) => {
-        e.preventDefault();
-        setBillingState(!billingState);
-    }
+    
 
     const handleSubscription = (e) => {
         e.preventDefault();
@@ -46,60 +37,22 @@ const Billing = () => {
             <Header />
             <div className="inner_space xl-pad5">
                 <div className="settings_header">
-                    <p>Subscription</p>
+                    <p>Bill Settings</p>
                 </div>
                 <div className="subscription_wrap  l10">
                     <div className="subscription_header flex_row">
-                        <div onClick={handleSubscription} className="subscription_header_col m5">
-                            <p>My subscription plan</p>
-                        </div>
-                        <div className="subscription_header_col m5 active_sub">
+                        <div onClick={()=>handleTab('billing')} className={`subscription_header_col ${controlTab.billing ? 'active_sub': ''}`}>
                             <p>Billing info</p>
                         </div>
-                    </div>
-                    <div className="subscription_row flex_row">
-                        <div className="subscription_con m5">
-                            <p>Billing Zip Code</p>
+                        <div onClick={()=>handleTab('wallet')} className={`subscription_header_col ${controlTab.wallet ? 'active_sub': ''}`}>
+                            <p>Wallet</p>
                         </div>
-                        {billingState == true ? 
-                        <input className="subscription_con m5" type="number" onChange={handleChange} placeholder='zip code' name="zipCode"/> :
-                        <div className="subscription_con m5">
-                            <p>94115</p>
-                        </div>}
-                    </div>
-                    <div className="subscription_row flex_row">
-                        <div className="subscription_con m5">
-                            <p>Card Name</p>
+                        <div onClick={handleSubscription} className="subscription_header_col">
+                            <p>My subscription plan</p>
                         </div>
-                        {billingState == true ? 
-                        <input className="subscription_con m5" type="text" onChange={handleChange} placeholder='card name' name="cardName"/> :
-                        <div className="subscription_con m5">
-                            <p>John Doe</p>
-                        </div>}
                     </div>
-                    <div className="subscription_row flex_row">
-                        <div className="subscription_con m5">
-                            <p>Card Number</p>
-                        </div>
-                        {billingState == true ? 
-                        <input className="subscription_con m5" type="number" onChange={handleChange} placeholder='card number' name="cardNumber"/> :
-                        <div className="subscription_con m5">
-                            <p>xxxxxxxxx00005</p>
-                        </div>}
-                    </div>
-                    <div className="subscription_row flex_row">
-                        <div className="subscription_con m5">
-                            <p>Expiry Date</p>
-                        </div>
-                        {billingState == true ? 
-                        <input className="subscription_con m5" type="text" onChange={handleChange} placeholder='expiry date' name="expiryDate"/> :
-                        <div className="subscription_con m5">
-                            <p>07/21</p>
-                        </div>}
-                    </div>
-                    <div onClick={handleBilling} className="subscription_button">
-                        { billingState == true ? <p>Submit</p> : <p>Edit Data</p> }
-                    </div>
+                    {controlTab.billing && <BillingForm /> }
+                    {controlTab.wallet && <Wallet />}
                 </div>
             </div>
             

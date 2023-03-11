@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { MainContext } from '../context/mainContext';
 import CodeModal from './CodeModal';
+import ImagePreview from './imagePreview';
 import ShareModal from './ShareModal';
 import TopFund from './TopFund';
 import UpdateModal from './UpdateModal';
@@ -9,7 +10,13 @@ import WithdrawModal from './WithdrawModal';
 
 const GeneralPopup = () => {
 
-  const modalState = ["Update", "Share", "Wallet", "Code", "Withdraw", "Top-up"];
+  const modalState = ["Update", 
+  "Share", 
+  "Wallet", 
+  "Code", 
+  "Withdraw", 
+  "Top-up", 
+  "Image-preview"];
   const { 
     modalIndex, 
     modalControl, 
@@ -37,6 +44,8 @@ const GeneralPopup = () => {
               { modalState[modalIndex] == "Top-up" && <TopFund /> }
 
               { modalState[modalIndex] == "Withdraw" && <WithdrawModal /> }
+
+              { modalState[modalIndex] == "Image-preview" && <ImagePreview />}
       </div>
       <div onClick={()=> setModalControl(!modalControl)} className="wallet_pop"></div>
     </div>

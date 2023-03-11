@@ -7,13 +7,16 @@ import { authentication } from '../components/functions/function'
 import Header from '../components/general/header'
 import PackageStatus from '../components/general/packageStatus'
 import Sidebar from '../components/general/sidebar'
+import GeneralPopup from '../components/modal.js/general-pop'
 
 const Packages = () => {
 
   const {statusState, 
     setStatusState, 
     router,
-    createPackage} = useContext(MainContext);
+    createPackage,
+    modalControl
+  } = useContext(MainContext);
 
   useEffect(()=>{
     // user authentication
@@ -22,6 +25,7 @@ const Packages = () => {
 
   return (
     <div className="body_layout flex_row">
+    { modalControl == true && <GeneralPopup /> }
     <Sidebar />
     <div className="right_wrap xl10">
           <Header />

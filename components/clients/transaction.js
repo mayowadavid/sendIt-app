@@ -36,7 +36,7 @@ const Transaction = () => {
     ]);
     useEffect(()=> {
         setSideState({
-            wallet: true
+            transactions: true
         });
     }, []);
 

@@ -6,7 +6,15 @@ import { authentication } from "../functions/function";
 import axios from 'axios';
 
 const Profile = () => {
-    const { setSideState, router, userData, updateProfile, profileUrl } = useContext(MainContext);
+    const { 
+        setSideState, 
+        router, 
+        userData, 
+        updateProfile, 
+        profileUrl,
+        loading, 
+        setLoading
+    } = useContext(MainContext);
     const initialState = {
         userName: "",
         firstName: "",
@@ -39,8 +47,6 @@ const Profile = () => {
         setSideState({
             profile: true
         });
-
-        
         
         // user authentication
         authentication(router);
@@ -103,13 +109,14 @@ const Profile = () => {
             lastName,
             gender
         }
+        setLoading(!loading);
         //console.log(userProfile);
         const {data, error} = await updateProfile({
             variables: {
                 profileInput,
                 },
         });
-        console.log(data, error);
+        data || error !== undefined && setLoading(!loading);
         
     }
 
@@ -167,7 +174,10 @@ const Profile = () => {
                         </form>
                     </div>
                     <div className="user_submit_action">
-                        <p onClick={submitProfile}>Submit</p>
+                        <button className={ loading == true ? 'loading' : '' } onClick={submitProfile}>
+                            {loading == true && <img className='load' src="/svg/loading.svg" alt="sendit" />}
+                            {loading == false && `Submit`}
+                        </button>
                     </div>
                 </div>
             </div>

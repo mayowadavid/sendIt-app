@@ -4,6 +4,13 @@ import Sidebar from './sidebar'
 import Header from './header'
 
 const Inbox = () => {
+    const handleChange = (e) => {
+        let {name, value, style, scrollHeight} = e.target;
+        style.minHeight = '50px';
+        style.height = '50px';
+        style.height = `${scrollHeight}px`;
+    }
+
   return (
     <div className="body_layout flex_row">
         <Sidebar />
@@ -274,7 +281,7 @@ const Inbox = () => {
                             </div>
                             <div className="client_inbox_chat_footer">
                                 <div className="chat_inbox_input">
-                                    <textarea type="text" name="message" placeholder="write your message here" />
+                                    <textarea type="text" name="message" onChange={handleChange} placeholder="write your message here" />
                                     <div className="chat_submit">
                                         <p>Send</p>
                                     </div>

@@ -1,0 +1,222 @@
+/* POST */
+
+.primary {
+    background-color: #fff;
+}
+
+.post_header {
+    padding: 30px 0;
+}
+
+.post_header > p {
+    font-size: var(--font25-size);
+    font-weight: 600;
+}
+
+.post_column_wrap:nth-child(2) {
+    justify-content: flex-start;
+    padding-left: 5%;
+}
+
+.post_cards {
+    margin-bottom: 20px;
+}
+
+.post_cards {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 10px 10px hsl(0deg 0% 0% / 5%);
+    transition: .25s ease;
+}
+
+.post_cards:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 10px hsl(0deg 0% 0% / 10%);
+}
+
+.post_section {
+    background-color: var(--background-secondary);
+}
+
+.blog_post_space {
+    position: relative;
+} 
+
+.post_card_image {
+    width: clamp(150px, 22vw, 320px);
+    height: clamp(150px, 22vw, 320px);
+}
+
+.post_card_image > img {
+    width: clamp(150px, 22vw, 320px);
+    height: clamp(150px, 22vw, 320px);
+    border-radius: 10px;
+    object-fit: cover;
+    transition: 0.4s ease;
+}
+
+.post_card_image > img:hover {
+    -webkit-transform: scale(1.01);
+    transform: scale(1.01);
+}
+
+.blog_tag > p{
+    font-size: var(--font18-size);
+    padding: 10px 40px;
+    border-radius: 5px;
+    font-weight: 500;
+    color: var(--accent-color);
+    background-color: var(--foreground-secondary);
+}
+
+.blog_title > P {
+    font-size: var(--font24-size);
+    font-weight: 600;
+}
+
+.blog_content > p {
+    display: -webkit-box;
+    font-size: var(--font15-size);
+    font-weight: 300;
+    color: var(--font-grey-font);
+    line-clamp: 3;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.author_image > img {
+    width: clamp(40px, 10vw, 60px);
+    height: clamp(40px, 10vw, 60px);
+    border-radius: 50px;
+}
+
+.author_name {
+    padding: 0 20px;
+}
+
+.author_name > p:first-child {
+    font-weight: 700;
+}
+
+.author_name > p {
+    font-size: var(--font15-size);
+    color: var(--accent-color);
+}
+
+.post_topic_row {
+    background-color: #fff;
+    height: 60px;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    box-shadow: 0 5px 5px hsl(0deg 0% 0% / 5%);
+}
+
+.main {
+    background-color: var(--second-blue);
+}
+
+.topic_image {
+    height: 100%;
+}
+
+
+.topic_image > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px 0 0 10px;
+}
+
+.topic_content {
+    padding-left: 15px;
+}
+
+.topic_content > p {
+    font-size: var(--font18-size);
+    font-weight: 700;
+}
+
+.wrap {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 5px 5px hsl(0deg 0% 0% / 5%);
+}
+
+#sticky {
+    position: sticky;
+    position: -webkit-sticky;
+}
+
+.wrap > p {
+    color: var(--accent-color);
+    font-size: var(--font18-size);
+}
+
+.post_tags > p {
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    background-color: var(--foreground-secondary);
+}
+
+.news_form > input[type=text]{
+    background-color: var(--foreground-secondary);
+    border: 0;
+    margin: 20px 0;
+}
+
+.news_form button {
+    padding: 16px 25px;
+    border-radius: 8px;
+    color: #fff;
+    font-size: var(--font18-size);
+    font-weight: 500;
+    background-color: var(--primary-color);
+}
+
+/* Single post */
+.single-post-body {
+    margin-top: 50px;
+}
+.single-page-image > img {
+    width: 100%;
+    height: clamp(200px, 40vw, 60vh);
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.single-post-thumbnail > p {
+    padding: 10px 25px;
+    border: 1px solid var(--font-grey-font);
+    border-radius: 5px;
+    font-weight: 600;
+    margin-right: 15px;
+}
+
+.single-post-title > p {
+    font-size: var(--font36-size);
+    font-weight: 600;
+}
+
+.single-post-author > img {
+    height: 38px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.single-post-auth-con > p {
+    font-size: var(--font15-size);
+    font-weight: 400;
+}
+
+.single-post-auth-con > p:first-child {
+    font-weight: 600;
+}
+
+.single-post-content > p {
+    font-size: var(--font20-size);
+    font-weight: 300;
+}

@@ -11,63 +11,18 @@ const Sidebar = () => {
             profile: true
         });
         setMenu(!menu);
-        console.log(userData);
         router.push(`/${userData.userName}`);
     }
 
-    const handleWallet = (e) => {
+    const handleSideNav = (e, prop) => {
         e.preventDefault();
         setSideState({
-            wallet: true
+            [prop]: !sideState[prop]
         });
         setMenu(!menu);
-        router.push('/billing');
+        router.push(`${prop}`);
     }
 
-    const handleTransaction = (e) => {
-        e.preventDefault();
-        setSideState({
-            transaction: true
-        });
-        setMenu(!menu);
-        router.push('/transactions');
-    }
-
-    const handleSettings = (e) => {
-        e.preventDefault();
-        setSideState({
-            settings: true
-        });
-        setMenu(!menu);
-        router.push('/settings');
-    }
-
-    const handleTrack = (e) => {
-        e.preventDefault();
-        setSideState({
-            track: true
-        });
-        setMenu(!menu);
-        router.push('/track');
-    }
-
-    const handlePackage = (e) => {
-        e.preventDefault();
-        setSideState({
-            package: true
-        });
-        setMenu(!menu);
-        router.push('/packages');
-    }
-
-    const handleReferral = (e) => {
-        e.preventDefault();
-        setSideState({
-            referral: true
-        });
-        setMenu(!menu);
-        router.push('/referral');
-    }
 
     const handleLogout = (e) => {
         e.preventDefault();
@@ -99,31 +54,31 @@ const Sidebar = () => {
                         </div>
                         <p>Profile</p>
                     </div>
-                    <div onClick={handleTrack} className="icon_wrap xl-b-off l10 hide_wrap flex_row">
+                    <div onClick={(e)=>handleSideNav(e, 'track')} className="icon_wrap xl-b-off l10 hide_wrap flex_row">
                         <div className="side_row l3 flex_column">
                             <img  alt="sendit" className={sideState.track == true ? 'pulse': ''} src="svg/plane.svg" />
                         </div>
                         <p>Track</p>
                     </div>
-                    <div onClick={handlePackage} className="icon_wrap xl-b-off l10 hide_wrap flex_row">
+                    <div onClick={(e)=>handleSideNav(e, 'packages')} className="icon_wrap xl-b-off l10 hide_wrap flex_row">
                         <div className="side_row l3 flex_column">
-                            <img  alt="sendit" className={ sideState.package == true ? 'pulse': ''} src="svg/box.svg" />
+                            <img  alt="sendit" className={ sideState.packages == true ? 'pulse': ''} src="svg/box.svg" />
                         </div>
                         <p>Package</p>
                     </div>
-                    <div onClick={handleTransaction} className="icon_wrap xl-b-off l10 hide_wrap flex_row">
+                    <div onClick={(e)=>handleSideNav(e, 'transactions')} className="icon_wrap xl-b-off l10 hide_wrap flex_row">
                         <div className="side_row l3 flex_column">
-                            <img  alt="sendit" className={sideState.transaction == true ? 'pulse': ''} src="svg/transaction.svg" />
+                            <img  alt="sendit" className={sideState.transactions == true ? 'pulse': ''} src="svg/transaction.svg" />
                         </div>
                         <p>Transaction</p>
                     </div>
-                    <div onClick={handleWallet} className="icon_wrap xl-b-off l10 hide_wrap flex_row">
+                    <div onClick={(e)=>handleSideNav(e, 'billing')} className="icon_wrap xl-b-off l10 hide_wrap flex_row">
                         <div className="side_row l3 flex_column">
-                            <img  alt="sendit" className={sideState.wallet == true ? 'pulse': ''} src="svg/wallet.svg" />
+                            <img  alt="sendit" className={sideState.billing == true ? 'pulse': ''} src="svg/wallet.svg" />
                         </div>
                         <p>wallet</p>
                     </div>
-                    <div onClick={handleReferral} className="icon_wrap xl-b-off l10 hide_wrap flex_row">
+                    <div onClick={(e)=>handleSideNav(e, 'referral')} className="icon_wrap xl-b-off l10 hide_wrap flex_row">
                         <div className="side_row l3 flex_column">
                             <img  alt="sendit" className={sideState.referral == true ? 'pulse': ''} src="svg/referral.svg" />
                         </div>
@@ -131,7 +86,7 @@ const Sidebar = () => {
                     </div>
                 </div>
                 <div className="side_footer_wrap xl10">
-                    <div onClick={handleSettings} className="icon_wrap xl-b-off l10 hide_wrap flex_row">
+                    <div onClick={(e)=>handleSideNav(e, 'settings')} className="icon_wrap xl-b-off l10 hide_wrap flex_row">
                         <div className="side_row l3 flex_column">
                             <img  alt="sendit" className={sideState.settings == true ? 'pulse': ''} src="svg/setting.svg" />
                         </div>
@@ -161,10 +116,10 @@ const Sidebar = () => {
                         <img  alt="sendit" className={sideState.package == true ? 'pulse': ''} src="svg/box.svg" />
                     </div>
                     <div className="transaction_icon icon_wrap xl-b-off l10">
-                        <img  alt="sendit" className={sideState.transaction == true ? 'pulse': ''} src="svg/transaction.svg" />
+                        <img  alt="sendit" className={sideState.transactions == true ? 'pulse': ''} src="svg/transaction.svg" />
                     </div>
                     <div className="wallet_icon icon_wrap xl-b-off l10">
-                        <img  alt="sendit" className={sideState.wallet == true ? 'pulse': ''} src="svg/wallet.svg" />
+                        <img  alt="sendit" className={sideState.billing == true ? 'pulse': ''} src="svg/wallet.svg" />
                     </div>
                     <div className="wallet_icon icon_wrap xl-b-off l10">
                         <img  alt="sendit" className={sideState.referral == true ? 'pulse': ''} src="svg/referral.svg" />

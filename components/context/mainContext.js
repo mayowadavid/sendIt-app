@@ -17,12 +17,14 @@ const MainContextProvider = (props) => {
   //control dashboard sidebar
   const sideControl = {
     profile: true,
-    wallet: false,
-    transaction: false,
+    billing: false,
+    transactions: false,
     settings: false,
     track: false,
-    package: false,
-    referral: false
+    packages: false,
+    referral: false,
+    inbox: false,
+    notification: false
   };
 
   // control login/signup
@@ -67,6 +69,8 @@ const MainContextProvider = (props) => {
   const subscriptionPop = {
     default: true,
     mainPop: false,
+    deposit: false,
+    withdraw: false,
     cancelPop: false
   }
   
@@ -81,6 +85,25 @@ const MainContextProvider = (props) => {
   const [authState, setAuthState] = useState(authControl);
   const [err, setErr] = useState();
   const [profileUrl, setProfileUrl] = useState();
+  const [temporaryImage, setTemporaryImage] = useState([]);
+  const [liveImage, setLiveImage] = useState([]);
+  const [imgPreviewIndex, setImgPreviewIndex] = useState(0);
+  const [formError, setFormError] = useState({});
+  const [loading, setLoading] = useState(false);
+  const firstInitial = {
+    senderName: '',
+    senderPhoneNumber: '',
+    senderEmail: '',
+    senderGender: '',
+    receiverName: '',
+    receiverAddress: '',
+    receiverPhoneNumber: '',
+    receiverEmail: '',
+    receiverGender: '',
+    pickUp: '',
+    destination: ''
+}
+const [senderData, setSenderData] = useState(firstInitial);
 
 
 
@@ -124,15 +147,16 @@ const [usersLogin] = useLazyQuery(LOGIN, {
   fetchPolicy: "network-only",
   onCompleted: (data) => {
       if(data){
+        console.log(data);
       const { loginUser } = data;
       setUserData(loginUser);
       setErr();
       if(data !== undefined){
         const {userName, refreshTokenExp, refreshToken} = loginUser;
-          router.push(`/${userName}`);
           const token = refreshToken;
           window.localStorage.setItem("token", JSON.stringify(token));
           window.localStorage.setItem("session", JSON.stringify(refreshTokenExp));
+          router.push(`/${userName}`);
       }
       
       //console.log(data);
@@ -147,9 +171,12 @@ const [usersLogin] = useLazyQuery(LOGIN, {
 
 // current package to sent
 const [currentPackage] = useLazyQuery(CURRENT_PACKAGE, {
-  onCompleted: (data) => {
-      if(data){
-      console.log(data);
+  onCompleted: ({currentUserpackage}) => {
+    //const {currentUserpackage} = data;
+    console.log(currentUserpackage);
+      if(currentUserpackage){
+        //console.log(currentPackage);
+        setSenderData({...currentUserpackage});
       }
   },
   onError: (error) => {
@@ -216,12 +243,25 @@ useEffect(()=>{
     userFetch,
     usersLogin,
     err,
+    setErr,
     router,
     userData,
     updateProfile,
     profileUrl,
     createPackage,
-    currentPackage
+    currentPackage,
+    senderData, 
+    setSenderData,
+    temporaryImage, 
+    setTemporaryImage,
+    imgPreviewIndex, 
+    setImgPreviewIndex,
+    liveImage, 
+    setLiveImage,
+    formError, 
+    setFormError,
+    loading,
+    setLoading
     }}>
         {props.children}
     </MainContext.Provider>

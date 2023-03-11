@@ -6,9 +6,12 @@ export const authentication = (router) => {
     //console.log(res);
     const date = new Date();
     const today = date.getDate();
-    let expiry = res !== undefined && Math?.floor(res[2]);
-    //console.log(router);
-    if((today < expiry) == false){
+    const month = date.getMonth();
+    const expiredDay = res !== undefined && parseInt(res[2]);
+    const expiredMonth = res !== undefined && parseInt(res[1]);
+
+    //check login expired date and month
+    if((month >= expiredMonth) && (today > expiredDay)){
         router.push('/auth'); 
         localStorage.clear();
     }
@@ -21,4 +24,17 @@ export const clean = (obj) => {
         }
       }
       return obj;
+};
+
+export const formValidation = (obj, setFormError) => {
+  const errors = {};
+  for (const [key, value] of Object.entries(obj)) {
+    
+      if (value === null || value === undefined || value.length == 0) {
+        const errorMessage = `Can't be empty`;
+        errors = {...errors, [key]: errorMessage};
+      }
+    }
+    setFormError(errors);
+    return {errors};
 };

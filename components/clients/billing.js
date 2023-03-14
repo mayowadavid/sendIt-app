@@ -33,7 +33,7 @@ const Billing = () => {
   return (
     <div className="body_layout flex_row">
         <Sidebar />
-        {/* <div className="right_wrap xl10">
+        <div className="right_wrap xl10">
             <Header />
             <div className="inner_space xl-pad5">
                 <div className="settings_header">
@@ -56,7 +56,7 @@ const Billing = () => {
                 </div>
             </div>
             
-        </div> */}
+        </div>
     </div>
   )
 }

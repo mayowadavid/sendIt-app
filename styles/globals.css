@@ -134,9 +134,9 @@ svg rect{
 }
 
 
-  /**
-   * megerbran width measurement 
-   */
+
+   /* megerbran width measurement  */
+   
    .mbw-gp3 {
     gap: 3%;
 }
@@ -3840,7 +3840,7 @@ select {
     color: #fff;
 }
 
-/*Artisan table */
+/* Artisan table */
 .artisan_table_body {
     padding: 1% 1.8%;
     background-color: #fff;
@@ -4153,7 +4153,7 @@ select {
     color: #555BFF;
 }
 
-/*Blog writer */
+/* Blog writer */
 
 .admin_form_wrapper {
     background-color: #fff;
@@ -4902,7 +4902,6 @@ select {
 }
 
 /* POST */
-* Posts */
 .blog_header {
  margin-top: 30px;
 }
@@ -4964,7 +4963,7 @@ select {
     border-radius: 25px;
 }
 
-/* POST */
+/* BLOG */
 
 .primary {
     background-color: #fff;
@@ -5143,7 +5142,7 @@ select {
     background-color: var(--primary-color);
 }
 
-/* Single post */
+/* Single blog */
 .single-post-body {
     margin-top: 50px;
 }

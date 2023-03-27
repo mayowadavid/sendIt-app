@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { MainContext } from '../context/mainContext';
+import Button from './button';
 const Login = () => {
     let { setAuthState, 
         usersLogin, 
@@ -113,11 +114,8 @@ const Login = () => {
                             <label>Forget password?</label>  
                         </div>
                     </div>
-                    <div className="login_submit">
-                    <button className={ loading == true ? 'loading' : '' } onClick={submitLogin}>
-                        {loading == true && <img className='load' src="/svg/loading.svg" alt="sendit" />}
-                        {loading == false && `Sign in`}
-                    </button>
+                    <div onClick={submitLogin} className="login_submit">
+                    <Button loading={loading}>Sign in</Button>
                     </div>
                     <div className="login_sign_up flex_show_row">
                         <p>Dont have an account yet?</p><p onClick={switchUser}>Join now</p>

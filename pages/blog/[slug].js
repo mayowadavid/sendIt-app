@@ -3,46 +3,46 @@ import React from 'react'
  const SingleBlog = () => {
   return (
     <div>
-    <div class="container xl10 xl-pad5">
-        <nav class="blog_header mbw10 flex_row">
-            <div class="blog_logo remove_margin mbw-fc-s mbw6 xl5">
+    <div className="container xl10 xl-pad5">
+        <nav className="blog_header mbw10 flex_row">
+            <div className="blog_logo remove_margin mbw-fc-s mbw6 xl5">
                 <p>Sendit</p>
             </div>
-            <div class="blog_nav mbw-gp15 flex_row mbw-flx-rgt remove_margin mbw4 xl5">
+            <div className="blog_nav mbw-gp15 flex_row mbw-flx-rgt remove_margin mbw4 xl5">
                 <p>home</p>
                 <p>About Us</p>
                 <p>Contact</p>
             </div>
       </nav>
     </div>
-    <div class="single-post-body mbw10">
-        <div class="container xl10  flex_row">
-            <div class="post-body-con mbw1 xl-off">
+    <div className="single-post-body mbw10">
+        <div className="container xl10  flex_row">
+            <div className="post-body-con mbw1 xl-off">
 
             </div>
-            <div class="post-body-con mbw9 xl10 xl-pad5">
-                <div class="single-page-image flex_row mbw10">
-                    <img class="mb10" src={`${process.env.NEXT_SITE_URL}/img/blog-10.png`} alt=""/>
+            <div className="post-body-con mbw9 xl10 xl-pad5">
+                <div className="single-page-image flex_row mbw10">
+                    <img className="mb10" src={`${process.env.NEXT_SITE_URL}/img/blog-10.png`} alt=""/>
                 </div>
-                <div class="single-post-thumbnail flex_row">
+                <div className="single-post-thumbnail flex_row">
                     <p>Logistics</p>
                     <p>Homepage</p>
                 </div>
-                <div class="single-post-detail flex_row mbw-fi-s">
-                    <div class="single-post-title mbw8 xl10 remove_margin">
+                <div className="single-post-detail flex_row mbw-fi-s">
+                    <div className="single-post-title mbw8 xl10 remove_margin">
                         <p>Top 3 benefits of being a freelancer in the Philippines</p>
                     </div>
-                    <div class="single-post-author mbw-gp5 xl8 mbw2 flex_row">
-                        <div class="single-post-author">
+                    <div className="single-post-author mbw-gp5 xl8 mbw2 flex_row">
+                        <div className="single-post-author">
                             <img src={`${process.env.NEXT_SITE_URL}/img/blog-1.png`} alt=""/>
                         </div>
-                        <div class="single-post-auth-con remove_margin flex_column">
+                        <div className="single-post-auth-con remove_margin flex_column">
                             <p>Jen San Antonio</p>
                             <p>October 12, 2022</p>
                         </div>
                     </div>
                 </div>
-                <div class="single-post-content flex_column">
+                <div className="single-post-content flex_column">
                     <p>1. More Family Time
                         According to the Philippine Online Freelancing Industry Study of the Department of Information and Communications Technology (DICT) through the ICT Industry Development Bureau, 19% of Filipinos have enjoyed more time with their families. With freelancing’s flexible schedule and being able to have complete control of it, it gives you the best of both worlds by doing jobs in the comfort of your own home and earning from local and international clients. This means more time to support and be with your family.
                         <br/>

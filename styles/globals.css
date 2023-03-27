@@ -14,7 +14,7 @@ body{
 /* colors */
 
 :root {
-    --body-color: #F9FAFF;
+    --body-color: #F7F8FB;
     --primary-color: #1A39AE;
     --background-secondary: hsl(0, 0%, 97%);
     --secondary-color: #F0F3FF;
@@ -72,6 +72,11 @@ p {
 
 .off {
     display: none;
+}
+
+button:disabled, button[disabled] {
+        opacity: 0.5;
+        cursor: not-allowed; 
 }
 
 .container {
@@ -133,11 +138,76 @@ svg rect{
   font-weight: 700;
 }
 
+/**
+ * ==============================================
+ * Dot Flashing
+ * ==============================================
+ */
+ .loading-dot {
+    padding: 10px 35px !important;
+    background-color: rgb(220, 214, 214) !important;
+    border-color: rgb(205, 205, 209) !important;
+ }
+
+ .dot-flashing {
+    position: relative;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: #ffffff;
+    color: #fff;
+    animation: dot-flashing 1s infinite linear alternate;
+    animation-delay: 0.5s;
+  }
+  .dot-flashing::before, .dot-flashing::after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    top: 0;
+  }
+  .dot-flashing::before {
+    left: -15px;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #fff;
+    animation: dot-flashing 1s infinite alternate;
+    animation-delay: 0s;
+  }
+  .dot-flashing::after {
+    left: 15px;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #fff;
+    animation: dot-flashing 1s infinite alternate;
+    animation-delay: 1s;
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes dot-flashing {
+    0% {
+      background-color: #fff;
+    }
+    50%, 100% {
+      background-color: rgb(171, 176, 239);
+    }
+  }
 
 
    /* megerbran width measurement  */
    
-   .mbw-gp3 {
+.mbw-gp3 {
     gap: 3%;
 }
 
@@ -237,6 +307,10 @@ svg rect{
 
 .mbw-fc-s {
     align-content: flex-start !important;
+}
+
+.mbw-jsty-ctr {
+    justify-content: center !important;
 }
 
 .mbw-jsty-btw {
@@ -2276,6 +2350,7 @@ select {
     background-color: #fff;
     width: 100%;
     height: 100%;
+    padding-bottom: 100px;
     overflow-y: auto;
     border-width: 0;
     border-bottom-width: 2px;
@@ -2433,17 +2508,18 @@ select {
 .chat_submit {
     width: 15%;
     height: 40px;
-    background-color: #555BFF;
     border-radius: 4px;
     display: flex;
     align-items: center;
+    background-color: #555BFF;
 }
 
-.chat_submit > p{
+.chat_submit > button{
     font-weight: 400;
     margin: 0 auto;
     color: #fff;
     font-size: 16px;
+    background-color: #555BFF;
 }
 
 .chat_attachments {
@@ -2755,7 +2831,7 @@ select {
 
 .admin_category_sidebar {
     width: 18%;
-    background-color: #fff;
+    background-color: var(--secondary-color);
     padding-top: 35px;
     display: flex;
     flex-direction: column;
@@ -2778,7 +2854,26 @@ select {
 }
 
 .admin_category_top_row {
-    padding: 3%;
+    padding: 6% 3%;
+}
+
+.admin_category_top_row > img:first-child {
+    position: absolute;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.admin_category_top_row:hover > img:first-child {
+    opacity: 1;
+}
+
+.admin_category_top_row:hover {
+    background-color: blue;
+    border-radius: 6px;
+}
+
+.admin_category_top_row:hover > p{
+    color: #fff;
 }
 
 .admin_category_top_row > p{
@@ -2786,8 +2881,8 @@ select {
 }
 
 .admin_category_right {
-    width: 80%;
-    padding: 1%;
+    width: 82%;
+    padding: 2.5%;
     background-color: var(--body-color);
     align-items: flex-start!important;
 }
@@ -3001,18 +3096,18 @@ select {
 }
 
 .create_category_header_button {
-    width: 18%;
+    width: 20%;
     justify-content: space-between;
 }
 
-.create_category_header_button > p {
+.create_category_header_button > button {
     border: 1px solid #555BFF;
     margin-right: 5px;
     padding: 3% 12%;
     border-radius: 50px;
 }
 
-.create_category_header_button > p:last-child {
+.create_category_header_button > button:last-child {
     background-color: #555BFF;
     margin-right: 5px;
     padding: 3% 12%;
@@ -3071,7 +3166,7 @@ select {
 .list_category_create {
     background-color: #F7F8FB;
     text-align: center;
-    padding: 7%;
+    padding: 10% 3%;
     border-radius: 7px;
     color: #555BFF;
 }
@@ -3193,14 +3288,14 @@ select {
     justify-content: flex-end;
 }
 
-.submit_category > p{
+.submit_category > button{
     border: 1px solid #555BFF;
     margin-right: 5px;
     padding: 8px 22px;
     border-radius: 50px;
 }
 
-.submit_category > p:last-child{
+.submit_category > button:last-child{
     background-color: #555BFF;
     color: #fff;
 }
@@ -3457,7 +3552,7 @@ select {
 }
 
 .complaint_avatar {
-    width: 5%;
+    width: 6%;
 }
 
 .complaint_avatar > img {
@@ -3937,7 +4032,6 @@ select {
 /* Admin Blog */
 .admin_blog_body {
     margin: 0 1%;
-    padding: 1% 2.5%;
 }
 
 .admin_body_wrapper {
@@ -3959,13 +4053,13 @@ select {
     justify-content: flex-end;
 }
 
-.admin_blog_header_edit_button > p:first-child{
+.admin_blog_header_edit_button > button:first-child{
     border: 1px solid #C1C2CB;
     background-color: transparent;
     color: #53546D;
 }
 
-.admin_blog_header_edit_button > p{
+.admin_blog_header_edit_button > button{
     background-color: #555BFF;
     color: #fff;
     padding: 2% 8%;
@@ -3973,16 +4067,17 @@ select {
     margin-left: 10px;
 }
 
-.admin_blog_header_button > p {
+.admin_blog_header_button > button {
     background-color: #555BFF;
     color: #fff;
-    padding: 4%;
+    padding: 4% 7%;
     border-radius: 50px;
 }
 
 .admin_blog_card {
     width: 30%;
     background-color: #fff;
+    margin-bottom: 25px;
     border-radius: 5px;
     padding: 1%;
     box-shadow: rgb(0 0 0 / 7%) 0px 8px 10px;
@@ -4024,13 +4119,13 @@ select {
     align-items: center;
 }
 
-.blog_card_option > img {
+.blog_card_option_control > img {
     width: 17px;
 }
 
 .blog_card_option_drop {
     position: absolute;
-    width: 130px;
+    width: 150px;
     top: 35px;
     right: 0;
     background-color: #fff;
@@ -4041,6 +4136,10 @@ select {
 
 .blog_card_edit {
     padding: 5px;
+}
+
+.blog_card_edit:hover {
+    background-color: var(--background-secondary);
 }
 
 .blog_card_edit > p {
@@ -4082,7 +4181,7 @@ select {
 }
 
 .blog_publish {
-    width: 30%;
+    width: 35%;
     padding: 0.8% 3%;
     background-color: #F7F8FB;
     border-radius: 50px;
@@ -4321,13 +4420,13 @@ select {
     margin-top: 2%;
 }
 
-.admin_blog_footer_edit_button > p:first-child{
+.admin_blog_footer_edit_button > button:first-child{
     border: 1px solid #C1C2CB;
     background-color: transparent;
     color: #53546D;
 }
 
-.admin_blog_footer_edit_button > p{
+.admin_blog_footer_edit_button > button{
     background-color: #555BFF;
     color: #fff;
     padding: 2% 8%;
@@ -4834,6 +4933,15 @@ select {
     margin: 0;
     background-color: #555BFF;
     border-radius: 5px;
+}
+
+.loading-circle {
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    border: .25rem solid #e0e0e0f2;
+    border-top-color: rgb(255,255,255);
+    animation: spin 1s 750ms infinite linear;
 }
 
 .loading {

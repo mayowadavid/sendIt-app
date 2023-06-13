@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useContext, useEffect } from "react";
 import { MainContext } from "../context/mainContext";
-import { authentication } from "../functions/function";
 import ClientLayout from "../general/clientLayout";
 
 const PreviewTrack = () => {
@@ -12,7 +11,6 @@ const PreviewTrack = () => {
     setSideState({
       track: true,
     });
-    authentication(router);
   }, []);
 
   const submitTracking = (e) => {

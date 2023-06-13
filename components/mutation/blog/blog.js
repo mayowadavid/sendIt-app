@@ -8,7 +8,12 @@ mutation CREATE_BLOG ($blogInput: CreateBlogInput!){
       description
       descriptionMarkDown
       status
+      category {
+        id
+        name
+      }
       slug
+      type
       user {
         id
         userName
@@ -23,8 +28,10 @@ mutation CREATE_BLOG ($blogInput: CreateBlogInput!){
       id
       name
       description
+      categoryId
+      fileId
+      type
       descriptionMarkDown
-      createdAt
       slug
       status
     }
@@ -41,5 +48,22 @@ mutation CREATE_BLOG ($blogInput: CreateBlogInput!){
       createdAt
       slug
       status
+    }
+  }`
+
+  export const CREATE_COMMENT = gql `
+  mutation CREATE_COMMENT($commentData: CreateCommentInput!){
+    createComment(createCommentInput: $commentData){
+      id
+      description
+      name
+      email
+      child {
+        id
+        description
+      }
+      parentId
+      createdAt
+      updatedAt
     }
   }`

@@ -1,14 +1,21 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState, lazy, Suspense } from 'react'
 import AdminLayout from '../../components/admin/adminLayout'
-import CategoryButton from '../../components/admin/category-button';
-import CategoryEdit from '../../components/admin/category-edit';
+import { MainContext } from '../../components/context/mainContext';
+import Loading from '../../components/general/loading';
 
+const CategoryEdit = lazy(() => import('../../components/admin/category-edit'));
+const CategoryButton = lazy(() => import('../../components/admin/category-button'));
 const AdminCategory = () => {
 
-    const [displaySwitch, setSwitch] = useState({
-        display: true,
-        create: false
-    });
+    const [displaySwitch, setSwitch] = useState({});
+
+    const {router} = useContext(MainContext);
+
+    useEffect(()=>{
+        const {view} = router.query;
+        view && setSwitch({create: true, display: false});
+        !view && setSwitch({create: false, display: true});
+    }, [router.isReady]);
 
     const handleSwitch = () => {
         let {display, create} = displaySwitch;
@@ -16,12 +23,24 @@ const AdminCategory = () => {
             display: !display,
             create: !create
         });
+
+        create && router.push({
+            pathname: 'category',
+            query: {}
+        });
+
+        display && router.push({
+            pathname: 'category',
+            query: {view: 'create'}
+        })
     }
 
   return (
     <AdminLayout>
-        { displaySwitch.display && <CategoryButton handleSwitch={handleSwitch} /> }
-        { displaySwitch.create && <CategoryEdit handleSwitch={handleSwitch} /> }
+        <Suspense fallback={<Loading />}>
+            { displaySwitch.display && <CategoryButton handleSwitch={handleSwitch} /> }
+            { displaySwitch.create && <CategoryEdit handleSwitch={handleSwitch} /> }
+        </Suspense>
     </AdminLayout>
   )
 }

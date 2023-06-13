@@ -1,6 +1,13 @@
 import Sidebar from "./sidebar";
 import Header from "./header";
+import { useContext, useEffect } from "react";
+import { authentication } from "../functions/function";
+import { MainContext } from "../context/mainContext";
 const ClientLayout = (props) => {
+  const { router } = useContext(MainContext);
+  useEffect(()=>{
+    authentication(router);
+  }, [])
     return (
         <div className="body_layout flex_row">
         <Sidebar />

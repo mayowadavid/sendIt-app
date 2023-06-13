@@ -62,9 +62,7 @@ const Login = () => {
                         userInput,
                     }
                 });
-                console.log(loading, '65');
              (await data || await error) && setLoading(false);
-             console.log(loading, '67');
     }
     
   return (

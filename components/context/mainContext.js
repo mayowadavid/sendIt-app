@@ -1,11 +1,16 @@
 import React, { createContext, useState, useEffect } from 'react';
 import { useLazyQuery, useMutation } from '@apollo/client';
 import { CURRENT_USER, FETCH_USER_BY_NAME, LOGIN } from '../queries/user/user';
-import {Router, useRouter} from 'next/router';
+import { useRouter } from 'next/router';
 import { UPDATE_PROFILE } from '../mutation/profile/profile';
 import { clean } from '../functions/function';
 import { CREATE_PACKAGE } from '../mutation/package/package';
 import { CURRENT_PACKAGE } from '../queries/package/package';
+import { CREATE_CATEGORY, SUB_CATEGORY, UPDATE_CATEGORY } from '../mutation/categories/category';
+import { CREATE_BLOG, UPDATE_BLOG } from '../mutation/blog/blog';
+import axios from "axios";
+import { FIND_BLOG_BY_NAME } from '../queries/blog/blog';
+import { useDataQuery } from '../functions/customHook';
 
 
 export const MainContext = createContext();
@@ -152,8 +157,10 @@ const [usersLogin] = useLazyQuery(LOGIN, {
       setUserData(loginUser);
       setErr();
       if(data !== undefined){
-        const {userName, refreshTokenExp, refreshToken} = loginUser;
+        const {userName, profile, refreshTokenExp, refreshToken} = loginUser;
           const token = refreshToken;
+          const { role } = profile;
+          window.localStorage.setItem("role", JSON.stringify(role));
           window.localStorage.setItem("token", JSON.stringify(token));
           window.localStorage.setItem("session", JSON.stringify(refreshTokenExp));
           router.push(`/${userName}`);
@@ -186,6 +193,9 @@ const [currentPackage] = useLazyQuery(CURRENT_PACKAGE, {
   }
 });
 
+// find blog by name
+const { runQuery: findSingleBlog } = useDataQuery(FIND_BLOG_BY_NAME);
+
 //MUTATIONS
 const [updateProfile] = useMutation(UPDATE_PROFILE, {
   onCompleted: (data) => {
@@ -213,6 +223,46 @@ const [createPackage] = useMutation(CREATE_PACKAGE, {
   }
 });
 
+//create category
+const [createCategory] = useMutation(CREATE_CATEGORY, {
+  onCompleted: (data) => {
+      console.log(data);
+  },
+  onError: (error)=> {
+      console.log(error);
+  }
+})
+
+// create sub category
+const [createSubCategory] = useMutation(SUB_CATEGORY, {
+  onCompleted: (data) => {
+      console.log(data);
+  },
+  onError: (error)=> {
+      console.log(error);
+  }
+})
+
+//create blog
+const [createBlog] = useMutation(CREATE_BLOG, {
+  onCompleted: (data) => {
+      console.log(data);
+  },
+  onError: (error)=> {
+      console.log(error);
+  }
+})
+
+//create blog
+const [updateBlog] = useMutation(UPDATE_BLOG, {
+  onCompleted: (data) => {
+      console.log(data);
+  },
+  onError: (error)=> {
+      console.log(error);
+  }
+})
+
 //get login user details if token is not empty
 useEffect(()=>{
   const token = localStorage.getItem('token');
@@ -224,6 +274,7 @@ useEffect(()=>{
 
   return (
     <MainContext.Provider value={{
+      axios,
       sideState, 
     setSideState,
     statusState, 
@@ -261,7 +312,12 @@ useEffect(()=>{
     formError, 
     setFormError,
     loading,
-    setLoading
+    setLoading,
+    createCategory,
+    createSubCategory,
+    createBlog,
+    findSingleBlog,
+    updateBlog,
     }}>
         {props.children}
     </MainContext.Provider>

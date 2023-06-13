@@ -1,4 +1,17 @@
+import BlogListCard from "../../components/public_components/blog";
+import React, { useEffect, useState } from "react";
+import { useDataQuery } from "../../components/functions/customHook";
+import { FETCH_ALL_BLOG_POST } from "../../components/queries/blog/blog";
+
 const Blog = () => {
+    const [blogRow, setBlogRow] = useState([]);
+    const { runQuery: blogPostQuery, allBlogPost } = useDataQuery(FETCH_ALL_BLOG_POST);
+    useEffect(()=>{
+        blogPostQuery();
+        if(allBlogPost){
+            setBlogRow(allBlogPost);
+        }
+    }, [allBlogPost])
     return (
         <div>
             <header>
@@ -36,7 +49,6 @@ const Blog = () => {
                     </div>
             </div>
             </header>
-
             <main>
             <div className="post_section">
                 <div className="container xl10 xl-pad5">
@@ -46,312 +58,13 @@ const Blog = () => {
                             <p>Latest Blog Post</p>
                         </div>
                         <div className="post_card_column mbw10 flex_column">
-                            <div className="post_cards mbw-gp5 flex_row mbw-fi-c mbw10">
-                                <div className="post_card_image mbw4 m10">
-                                    <img className="m10" src={`${process.env.NEXT_SITE_URL}/img/blog-1.png`} alt="" />
-                                </div>
-                                <div className="blog_card_content m10 flex_row mbw55 mbw-fi-s">
-                                    <div className="blog_tag xl-off mbw-mbtm3 remove_margin">
-                                        <p>Database</p>
-                                    </div>
-                                    <div className="blog_title mbw-mbtm3 remove_margin">
-                                        <p>
-                                            Building microservices with Dropwizard, MongoDB & Docker
-                                        </p>
-                                    </div>
-                                    <div className="blog_content mbw-mbtm3 remove_margin">
-                                        <p>
-                                            This NoSQL database oriented to documents (by documents like JSON) combines some of the features from
-                                            relational
-                                            databases, easy to use and the multi-platform is the best option for scale up and have fault
-                                            tolerance, load balancing,
-                                            map reduce, etc.
-                                        </p>
-                                    </div>
-                                    <div className="blog_con_foot l-off mbw10 flex_row">
-                                        <div className="author_image mbw1">
-                                            <img src={`${process.env.NEXT_SITE_URL}/img/hero.png`} alt="" />
-                                        </div>
-                                        <div className="author_name mbw9 mbw remove_margin flex_column mbw-fi-s">
-                                            <p>Julia Walker</p>
-                                            <p>Jan 17, 2022 - 3 min</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div className="post_cards mbw-gp5 flex_row mbw-fi-c mbw10">
-                                <div className="post_card_image mbw4 m10">
-                                    <img className="m10" src={`${process.env.NEXT_SITE_URL}/img/blog-2.png`} alt="" />
-                                </div>
-                                <div className="blog_card_content m10 flex_row mbw55 mbw-fi-s">
-                                    <div className="blog_tag xl-off mbw-mbtm3 remove_margin">
-                                        <p>Database</p>
-                                    </div>
-                                    <div className="blog_title mbw-mbtm3 remove_margin">
-                                        <p>
-                                            Building microservices with Dropwizard, MongoDB & Docker
-                                        </p>
-                                    </div>
-                                    <div className="blog_content mbw-mbtm3 remove_margin">
-                                        <p>
-                                            This NoSQL database oriented to documents (by documents like JSON) combines some of the features from
-                                            relational
-                                            databases, easy to use and the multi-platform is the best option for scale up and have fault
-                                            tolerance, load balancing,
-                                            map reduce, etc.
-                                        </p>
-                                    </div>
-                                    <div className="blog_con_foot l-off mbw10 flex_row">
-                                        <div className="author_image mbw1">
-                                            <img src={`${process.env.NEXT_SITE_URL}/img/hero.png`} alt="" />
-                                        </div>
-                                        <div className="author_name mbw9 mbw remove_margin flex_column mbw-fi-s">
-                                            <p>Julia Walker</p>
-                                            <p>Jan 17, 2022 - 3 min</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div className="post_cards mbw-gp5 flex_row mbw-fi-c mbw10">
-                                <div className="post_card_image mbw4 m10">
-                                    <img className="m10" src={`${process.env.NEXT_SITE_URL}/img/blog-3.png`} alt="" />
-                                </div>
-                                <div className="blog_card_content m10 flex_row mbw55 mbw-fi-s">
-                                    <div className="blog_tag xl-off mbw-mbtm3 remove_margin">
-                                        <p>Database</p>
-                                    </div>
-                                    <div className="blog_title mbw-mbtm3 remove_margin">
-                                        <p>
-                                            Building microservices with Dropwizard, MongoDB & Docker
-                                        </p>
-                                    </div>
-                                    <div className="blog_content mbw-mbtm3 remove_margin">
-                                        <p>
-                                            This NoSQL database oriented to documents (by documents like JSON) combines some of the features from
-                                            relational
-                                            databases, easy to use and the multi-platform is the best option for scale up and have fault
-                                            tolerance, load balancing,
-                                            map reduce, etc.
-                                        </p>
-                                    </div>
-                                    <div className="blog_con_foot l-off mbw10 flex_row">
-                                        <div className="author_image mbw1">
-                                            <img src={`${process.env.NEXT_SITE_URL}/img/hero.png`} alt="" />
-                                        </div>
-                                        <div className="author_name mbw9 mbw remove_margin flex_column mbw-fi-s">
-                                            <p>Julia Walker</p>
-                                            <p>Jan 17, 2022 - 3 min</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div className="post_cards mbw-gp5 flex_row mbw-fi-c mbw10">
-                                <div className="post_card_image mbw4 m10">
-                                    <img className="m10" src={`${process.env.NEXT_SITE_URL}/img/blog-4.png`} alt="" />
-                                </div>
-                                <div className="blog_card_content m10 flex_row mbw55 mbw-fi-s">
-                                    <div className="blog_tag xl-off mbw-mbtm3 remove_margin">
-                                        <p>Database</p>
-                                    </div>
-                                    <div className="blog_title mbw-mbtm3 remove_margin">
-                                        <p>
-                                            Building microservices with Dropwizard, MongoDB & Docker
-                                        </p>
-                                    </div>
-                                    <div className="blog_content mbw-mbtm3 remove_margin">
-                                        <p>
-                                            This NoSQL database oriented to documents (by documents like JSON) combines some of the features from
-                                            relational
-                                            databases, easy to use and the multi-platform is the best option for scale up and have fault
-                                            tolerance, load balancing,
-                                            map reduce, etc.
-                                        </p>
-                                    </div>
-                                    <div className="blog_con_foot l-off mbw10 flex_row">
-                                        <div className="author_image mbw1">
-                                            <img src={`${process.env.NEXT_SITE_URL}/img/hero.png`} alt="" />
-                                        </div>
-                                        <div className="author_name mbw9 mbw remove_margin flex_column mbw-fi-s">
-                                            <p>Julia Walker</p>
-                                            <p>Jan 17, 2022 - 3 min</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div className="post_cards mbw-gp5 flex_row mbw-fi-c mbw10">
-                                <div className="post_card_image mbw4 m10">
-                                    <img className="m10" src={`${process.env.NEXT_SITE_URL}/img/blog-5.png`} alt="" />
-                                </div>
-                                <div className="blog_card_content m10 flex_row mbw55 mbw-fi-s">
-                                    <div className="blog_tag xl-off mbw-mbtm3 remove_margin">
-                                        <p>Database</p>
-                                    </div>
-                                    <div className="blog_title mbw-mbtm3 remove_margin">
-                                        <p>
-                                            Building microservices with Dropwizard, MongoDB & Docker
-                                        </p>
-                                    </div>
-                                    <div className="blog_content mbw-mbtm3 remove_margin">
-                                        <p>
-                                            This NoSQL database oriented to documents (by documents like JSON) combines some of the features from
-                                            relational
-                                            databases, easy to use and the multi-platform is the best option for scale up and have fault
-                                            tolerance, load balancing,
-                                            map reduce, etc.
-                                        </p>
-                                    </div>
-                                    <div className="blog_con_foot l-off mbw10 flex_row">
-                                        <div className="author_image mbw1">
-                                            <img src={`${process.env.NEXT_SITE_URL}/img/hero.png`} alt="" />
-                                        </div>
-                                        <div className="author_name mbw9 mbw remove_margin flex_column mbw-fi-s">
-                                            <p>Julia Walker</p>
-                                            <p>Jan 17, 2022 - 3 min</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div className="post_cards mbw-gp5 flex_row mbw-fi-c mbw10">
-                                <div className="post_card_image mbw4 m10">
-                                    <img className="m10" src={`${process.env.NEXT_SITE_URL}/img/blog-6.png`} alt="" />
-                                </div>
-                                <div className="blog_card_content m10 flex_row mbw55 mbw-fi-s">
-                                    <div className="blog_tag xl-off mbw-mbtm3 remove_margin">
-                                        <p>Database</p>
-                                    </div>
-                                    <div className="blog_title mbw-mbtm3 remove_margin">
-                                        <p>
-                                            Building microservices with Dropwizard, MongoDB & Docker
-                                        </p>
-                                    </div>
-                                    <div className="blog_content mbw-mbtm3 remove_margin">
-                                        <p>
-                                            This NoSQL database oriented to documents (by documents like JSON) combines some of the features from
-                                            relational
-                                            databases, easy to use and the multi-platform is the best option for scale up and have fault
-                                            tolerance, load balancing,
-                                            map reduce, etc.
-                                        </p>
-                                    </div>
-                                    <div className="blog_con_foot l-off mbw10 flex_row">
-                                        <div className="author_image mbw1">
-                                            <img src={`${process.env.NEXT_SITE_URL}/img/hero.png`} alt="" />
-                                        </div>
-                                        <div className="author_name mbw9 mbw remove_margin flex_column mbw-fi-s">
-                                            <p>Julia Walker</p>
-                                            <p>Jan 17, 2022 - 3 min</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div className="post_cards mbw-gp5 flex_row mbw-fi-c mbw10">
-                                <div className="post_card_image mbw4 m10">
-                                    <img className="m10" src={`${process.env.NEXT_SITE_URL}/img/blog-7.png`} alt="" />
-                                </div>
-                                <div className="blog_card_content m10 flex_row mbw55 mbw-fi-s">
-                                    <div className="blog_tag xl-off mbw-mbtm3 remove_margin">
-                                        <p>Database</p>
-                                    </div>
-                                    <div className="blog_title mbw-mbtm3 remove_margin">
-                                        <p>
-                                            Building microservices with Dropwizard, MongoDB & Docker
-                                        </p>
-                                    </div>
-                                    <div className="blog_content mbw-mbtm3 remove_margin">
-                                        <p>
-                                            This NoSQL database oriented to documents (by documents like JSON) combines some of the features from
-                                            relational
-                                            databases, easy to use and the multi-platform is the best option for scale up and have fault
-                                            tolerance, load balancing,
-                                            map reduce, etc.
-                                        </p>
-                                    </div>
-                                    <div className="blog_con_foot l-off mbw10 flex_row">
-                                        <div className="author_image mbw1">
-                                            <img src={`${process.env.NEXT_SITE_URL}/img/hero.png`} alt="" />
-                                        </div>
-                                        <div className="author_name mbw9 mbw remove_margin flex_column mbw-fi-s">
-                                            <p>Julia Walker</p>
-                                            <p>Jan 17, 2022 - 3 min</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div className="post_cards mbw-gp5 flex_row mbw-fi-c mbw10">
-                                <div className="post_card_image mbw4 m10">
-                                    <img className="m10" src={`${process.env.NEXT_SITE_URL}/img/blog-8.png`} alt="" />
-                                </div>
-                                <div className="blog_card_content m10 flex_row mbw55 mbw-fi-s">
-                                    <div className="blog_tag xl-off mbw-mbtm3 remove_margin">
-                                        <p>Database</p>
-                                    </div>
-                                    <div className="blog_title mbw-mbtm3 remove_margin">
-                                        <p>
-                                            Building microservices with Dropwizard, MongoDB & Docker
-                                        </p>
-                                    </div>
-                                    <div className="blog_content mbw-mbtm3 remove_margin">
-                                        <p>
-                                            This NoSQL database oriented to documents (by documents like JSON) combines some of the features from
-                                            relational
-                                            databases, easy to use and the multi-platform is the best option for scale up and have fault
-                                            tolerance, load balancing,
-                                            map reduce, etc.
-                                        </p>
-                                    </div>
-                                    <div className="blog_con_foot l-off mbw10 flex_row">
-                                        <div className="author_image mbw1">
-                                            <img src={`${process.env.NEXT_SITE_URL}/img/hero.png`} alt="" />
-                                        </div>
-                                        <div className="author_name mbw9 mbw remove_margin flex_column mbw-fi-s">
-                                            <p>Julia Walker</p>
-                                            <p>Jan 17, 2022 - 3 min</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div className="post_cards mbw-gp5 flex_row mbw-fi-c mbw10">
-                                <div className="post_card_image mbw4 m10">
-                                    <img className="m10" src={`${process.env.NEXT_SITE_URL}/img/blog-9.png`} alt="" />
-                                </div>
-                                <div className="blog_card_content m10 flex_row mbw55 mbw-fi-s">
-                                    <div className="blog_tag xl-off mbw-mbtm3 remove_margin">
-                                        <p>Database</p>
-                                    </div>
-                                    <div className="blog_title mbw-mbtm3 remove_margin">
-                                        <p>
-                                            Building microservices with Dropwizard, MongoDB & Docker
-                                        </p>
-                                    </div>
-                                    <div className="blog_content mbw-mbtm3 remove_margin">
-                                        <p>
-                                            This NoSQL database oriented to documents (by documents like JSON) combines some of the features from
-                                            relational
-                                            databases, easy to use and the multi-platform is the best option for scale up and have fault
-                                            tolerance, load balancing,
-                                            map reduce, etc.
-                                        </p>
-                                    </div>
-                                    <div className="blog_con_foot l-off mbw10 flex_row">
-                                        <div className="author_image mbw1">
-                                            <img src={`${process.env.NEXT_SITE_URL}/img/hero.png`} alt="" />
-                                        </div>
-                                        <div className="author_name mbw9 mbw remove_margin flex_column mbw-fi-s">
-                                            <p>Julia Walker</p>
-                                            <p>Jan 17, 2022 - 3 min</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
+                        { blogRow?.map((blog, k) => (
+                            <BlogListCard 
+                                blog={blog}
+                                key={k} 
+                            />
+                            ))
+                        }
                         </div>
                         
                         </div>

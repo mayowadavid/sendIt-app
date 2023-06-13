@@ -2,8 +2,6 @@ import { useContext, useState, useEffect } from "react";
 import Header from "../general/header";
 import Sidebar from "../general/sidebar";
 import { MainContext } from "../context/mainContext";
-import { authentication } from "../functions/function";
-import axios from "axios";
 import ClientLayout from "../general/clientLayout";
 
 const Profile = () => {
@@ -15,6 +13,7 @@ const Profile = () => {
     profileUrl,
     loading,
     setLoading,
+    axios
   } = useContext(MainContext);
   const initialState = {
     userName: "",
@@ -43,10 +42,6 @@ const Profile = () => {
     setSideState({
       profile: true,
     });
-
-    // user authentication
-    authentication(router);
-
     // hours of the day
     const hour = new Date().getHours();
     // check hours of the day to greet

@@ -52,11 +52,13 @@ const handleRoute = (e, props) => {
                 </div>
                 <div className="admin_category_bottom">
                         <div className="admin_category_top_row flex_row remove_margin">
-                            <img src="svg/Setting.svg" alt=""/>
+                            <img src="/svg/Setting.svg" alt=""/>
+                            <img src="/svg/Setting.svg" alt=""/>
                             <p>General settings</p>
                         </div>
                         <div className="admin_category_top_row flex_row remove_margin">
-                            <img src="svg/Logout.svg" alt=""/>
+                            <img src="/svg/Logout.svg" alt=""/>
+                            <img src="/svg/Logout.svg" alt=""/>
                             <p>Log Out</p>
                         </div>
                 </div>

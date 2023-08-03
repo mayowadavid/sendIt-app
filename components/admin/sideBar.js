@@ -4,9 +4,10 @@ import { MainContext } from '../context/mainContext';
 const AdminSideBar = () => {
 const {router} = useContext(MainContext);
 
-const handleRoute = (e, props) => {
+const handleRoute = async (e, props) => {
     e.preventDefault();
-    router.replace(`/${props}`);
+   await router.push(`/${props}`);
+   (props == 'dashboard/blog') && router.reload();
 }
 
   return (

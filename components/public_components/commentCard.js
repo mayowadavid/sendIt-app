@@ -3,11 +3,17 @@ import ReplyCard from "./replyCard";
 import { formatDate } from "../functions/function";
 import CommentInput from "./commentInput";
 
-const CommentCard = ({comments}) => {
+const CommentCard = ({comments, fetchComments}) => {
   const [reply, setReply] = useState(false);
+  const [comment, setComment] = useState(false);
   const inputDate = new Date(comments?.createdAt);
   const date = formatDate(inputDate);
-  //console.log(comments);
+
+  const handleNewComment = () => {
+    setReply(!reply);
+    setComment(!comment);
+  }
+  console.log(comments);
   return (
     <>
       <div className="comment_avatar flex_row mbw1">
@@ -24,15 +30,25 @@ const CommentCard = ({comments}) => {
           <div className="comment_text mbw10">
             <p>{comments?.description}</p>
           </div>
-          <div className="reply_button flex_row">
-            <p onClick={() => setReply(!reply)}>Reply</p>
+          <div className="flex_row mbw-fi-c comment_button">
+            <div className="reply_button flex_row">
+              <p onClick={() => setReply(!reply)}>Replies</p>
+            </div>
+            <div className="comment_icon flex_row">
+              <img onClick={() => setComment(!comment)} src="/svg/comment.svg"/>
+            </div>
           </div>
         </div>
+        {comment && (<CommentInput 
+        fetchComments={fetchComments} 
+        parentId={comments.id}
+        handleNewComment={handleNewComment} />)}
         {
             reply && (
-            comments?.child.map((child, k)=> <ReplyCard key={k} child={child} />))
+            comments?.child?.map((child, k)=> <ReplyCard 
+            fetchComments={fetchComments} 
+            key={k} child={child} />))
         }
-        {reply == true && (<CommentInput parentId={comments.id} />)}
       </div>
     </>
   );

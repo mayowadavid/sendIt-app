@@ -36,9 +36,10 @@ query findAllUserBlog {
   }`
 
   export const FETCH_ALL_BLOG_POST = gql`
-  query findAllUserBlogPost {
-      allBlogPost {
-        id
+  query FIND_ALL_BLOG_POST($data: CreateBlogInput){
+    allBlogPost(pagination: $data) {
+     		posts{
+           id
         name
         createdAt
         description
@@ -68,13 +69,17 @@ query findAllUserBlog {
             }
           }
         }
-      }
-  }`
+        }
+    hasNextPage
+    }
+  }
+  `
 
   export const FETCH_ALL_BLOG_PAGE = gql`
-  query findAllUserBlogPage {
-      allBlogPage {
-        id
+  query FIND_ALL_BLOG_PAGE($data: CreateBlogInput){
+    allBlogPage(pagination: $data) {
+     		pages{
+           id
         name
         createdAt
         description
@@ -104,8 +109,11 @@ query findAllUserBlog {
             }
           }
         }
-      }
-  }`
+        }
+    hasNextPage
+    }
+  }
+  `
 
 
   export const FIND_BLOG_BY_NAME = gql`
@@ -115,8 +123,8 @@ query findAllUserBlog {
     description
     createdAt
   }
-  query FIND_BLOG_BY_NAME($blogName: String!) {
-    findBlogByName(name: $blogName) {
+  query FIND_BLOG_BY_NAME($slugName: String!) {
+    findBlogBySlug(name: $slugName) {
       name
       id
       name
@@ -133,7 +141,7 @@ query findAllUserBlog {
         description
         createdAt
         child {
-          ...childFragment
+          ...childFragment,
         }
       }
       file {

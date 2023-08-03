@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState, lazy, Suspense } from "react";
+import React, { useContext, useEffect, useState, lazy, Suspense, useTransition } from "react";
 import AdminLayout from "../../components/admin/adminLayout";
 import { MainContext } from "../../components/context/mainContext";
 import Loading from "../../components/general/loading";
@@ -11,6 +11,7 @@ const AdminBlog = lazy(() => import("../../components/admin/admin-blog"));
 const BlogsLayout = () => {
   const [displaySwitch, setSwitch] = useState({});
   const { router } = useContext(MainContext);
+  const [startTransition] = useTransition();
 
   useEffect(() => {
     const { view, update } = router.query;
@@ -25,18 +26,21 @@ const BlogsLayout = () => {
       create: !create,
     });
 
-    create &&
-      router.push({
-        pathname: "blog",
-        query: {},
-      });
+    startTransition(() => {
+      create &&
+        router.push({
+          pathname: "blog",
+          query: {},
+        });
 
-    display &&
-      router.push({
-        pathname: "blog",
-        query: { view: "create" },
-      });
+      display &&
+        router.push({
+          pathname: "blog",
+          query: { view: "create" },
+        });
+    });
   };
+
   return (
     <AdminLayout>
       <Suspense fallback={<Loading />}>

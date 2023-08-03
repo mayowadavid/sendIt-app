@@ -1,10 +1,13 @@
 import React, { useContext, useState } from "react";
 import { MainContext } from "../context/mainContext";
-import { formatDate, removeSpecialCharacters } from "../functions/function";
+import { Toast, deleteMutation, formatDate, removeSpecialCharacters } from "../functions/function";
+import { useCreateMutation } from "../functions/customHook";
+import { DELETE_BLOG } from "../mutation/blog/blog";
 
-const AdminBlogCard = ({ blog, displaySwitch, setSwitch }) => {
+const AdminBlogCard = ({ blog, displaySwitch, setSwitch, removeData }) => {
   const { router } = useContext(MainContext);
   const [option, setOption] = useState(false);
+  const {create: deleteBlog, result} =useCreateMutation(DELETE_BLOG);
 
   const handleOPtion = (e) => {
     e.preventDefault();
@@ -20,17 +23,33 @@ const AdminBlogCard = ({ blog, displaySwitch, setSwitch }) => {
     });
   };
 
+  const handleDelete = async (e, id, type) => {
+    e.preventDefault();
+    const variableName = 'deleteBlogData';
+    const data = await deleteMutation(deleteBlog, variableName, id);
+      data?.data &&
+        (removeData(type, id),
+        Toast.fire({
+          icon: "success",
+          title: "Delete Successfull",
+        }));
+      data?.errors &&
+        (
+        Toast.fire({
+          icon: "error",
+          title: "Deletion Fail",
+        }));
+  }
+
   const plainDescription = removeSpecialCharacters(blog?.descriptionMarkDown);
   const inputDate = new Date(blog?.createdAt);
   const date = formatDate(inputDate);
 
-
   //preview function
   const preview = () => {
-    const url = `/blog/${blog.slug}`
+    const url = blog.type === 'post' ? `/blog/${blog.slug}` : `/page/${blog.slug}`;
     window.open(url, '_blank');
   }
-
 
   return (
     <div className="admin_blog_card l45 sm10 l-mg-tp10">
@@ -56,7 +75,9 @@ const AdminBlogCard = ({ blog, displaySwitch, setSwitch }) => {
                 <img src="/img/Edit Square.png" alt="" />
                 <p>Update blog</p>
               </div>
-              <div className="blog_card_edit flex_row remove_margin">
+              <div 
+              onClick={(e)=>handleDelete(e, blog?.id, blog?.type)}
+              className="blog_card_edit flex_row remove_margin">
                 <img src="/img/redDelete.png" alt="" />
                 <p>Delete blog</p>
               </div>
@@ -64,9 +85,11 @@ const AdminBlogCard = ({ blog, displaySwitch, setSwitch }) => {
           )}
         </div>
       </div>
-      <div className="display_blog_image">
+      {blog?.type !== "page" && (
+        <div className="display_blog_image">
         <img src={blog?.file?.image || "../../svg/no_caption.svg"} alt="" />
       </div>
+      )}
       <div className="blog_card_title">
         <p>{blog?.name || "--"}</p>
       </div>
@@ -82,9 +105,10 @@ const AdminBlogCard = ({ blog, displaySwitch, setSwitch }) => {
       <div className="blog_content_details remove_margin">
         <p>{plainDescription || "--"}</p>
       </div>
-      <div className="blog_tags flex_row">
+      {blog?.type !== "page" && (<div className="blog_tags flex_row">
         <p>{blog?.category?.name || "--"}</p>
       </div>
+      )}
       <div className="admin_blog_comments flex_row">
         {
           blog.type === 'post' &&

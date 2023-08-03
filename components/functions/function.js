@@ -31,9 +31,7 @@ export const clean = (obj) => {
   for (const prop in obj) {
     if (
       obj[prop] === null ||
-      obj[prop] === undefined ||
-      prop === "__typename" ||
-      obj[prop]
+      obj[prop] === undefined
     ) {
       delete obj[prop];
     }
@@ -84,6 +82,23 @@ export const Toast = Swal.mixin({
     toast.addEventListener("mouseleave", Swal.resumeTimer);
   },
 });
+
+//generate id
+export const generateId = () => {
+  const characters = `00000000abcdefghijklmnopqrstuvwxyz`;
+  let uniqueId = '';
+
+  while (uniqueId.length < 5) {
+    const randomIndex = Math.floor(Math.random() * characters.length);
+    const randomChar = characters[randomIndex];
+
+    if (!uniqueId.includes(randomChar)) {
+      uniqueId += randomChar;
+    }
+  }
+
+  return uniqueId;
+};
 
 // this is a helper function to get related data
 export const fetchDataQuery = (query, queryName) => {
@@ -173,6 +188,27 @@ export const createMutation = async (
   }
 };
 
+
+export const deleteMutation = async (
+  createName,
+  createVariable,
+  deleteData
+) => {
+  try {
+    return createName({
+      variables: {
+        [createVariable]: deleteData,
+      },
+    });
+  } catch (error) {
+    error &&
+      Toast.fire({
+        icon: "error",
+        title: `${error.message}`,
+      });
+  }
+};
+
 // update mutation
 // updateId will be passed as an object
 // updateVariableName is a string
@@ -204,6 +240,7 @@ export const updateQuery = async (
       console.log(e.message);
     }
   }
+  console.log('track', track);
   //when data update is successful
   track.length === updateData.length &&
     error == undefined &&
@@ -253,7 +290,7 @@ export const formatDate = (date) => {
 // method GET, PUT, DEL ...
 // url endpoint url
 // data if using a get or put request
-export const Axios = async (method, url, data) => {
+ export const Axios = async (method, url, data) => {
   // console.log(method, url, data)
     const token = localStorage.getItem("token") || '';
     const baseUrl = process.env.NEXT_PUBLIC_url;
@@ -284,4 +321,29 @@ export const Axios = async (method, url, data) => {
     }catch(e){
         console.log(e)
     }
+}
+
+//retrieve pagination data
+export const paginate = (items, currentPage, itemsPerPage) => {
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    return items.slice(startIndex, endIndex);
+}
+
+const isDecimalNumber = (value) => {
+  return Number.isFinite(value) && !Number.isInteger(value);
+}
+
+
+// pagination list
+export const retrievePaginateLength = (items, itemsPerPage) => {
+  let itemsLength = items?.length > 0 && items.length/itemsPerPage;
+  console.log('len', itemsLength);
+  itemsLength = isDecimalNumber(itemsLength) ? itemsLength + 1 : itemsLength;
+  console.log(itemsLength);
+  const pagniateArrayLength = [];
+  for(let x = 1; x <= itemsLength; x++){
+    pagniateArrayLength.push(x);
+  }
+  return pagniateArrayLength;
 }

@@ -33,9 +33,10 @@ const useCreateMutation = (mutationName) => {
       }
     },
     onError: (error)=> {
+      const message = (`${error}`).split('\n')[0].trim();
       error && Toast.fire({
         icon: 'error',
-        title: `${error.message}`
+        title: `${message}`
     })
     }
   })

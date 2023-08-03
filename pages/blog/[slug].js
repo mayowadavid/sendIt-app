@@ -11,9 +11,10 @@ import CommentCard from "../../components/public_components/commentCard";
         createdAt: '',
         file: {
             image: ''
-        }
+        },
     }
     const [blogData, setBlogData] = useState(initialState);
+    const [comments, setComments] = useState([]);
 
     const {
         router,
@@ -24,25 +25,24 @@ import CommentCard from "../../components/public_components/commentCard";
 
     useEffect(() => {
         if (slug) {
-          const name = slug.replace(/-/g, " ");
-          fetchSlugData(name);
+          fetchSlugData(slug);
         }
     }, [slug]);
 
 
     const fetchComments = async (blog) => {
-        const result = await Axios('get', 
-        `/comments/fetchComments?blogId=${blog.id}`);
-        setBlogData({...blog, comments: result.data});
+        const result = await Axios('get', `/comments/fetchComments?blogId=${blog?.id || blogData?.id}`);
         console.log(result);
+        result.data.length > 0 && setComments([...result?.data]);
     }
 
 const fetchSlugData = async (name) => {
-    const variable = "blogName";
+    const variable = "slugName";
     const result = await makeQuery(findSingleBlog, name, variable);
     if (result) {
-        const data = result.findBlogByName;
-        await setBlogData(data);
+        const data = result.findBlogBySlug;
+        setBlogData(data);
+        setComments([...data?.comments]);
         if(data){
             fetchComments(data);
         }
@@ -93,14 +93,20 @@ const fetchSlugData = async (name) => {
                 <div dangerouslySetInnerHTML={{ __html: blogData?.description }}></div>
                 </div>
             </div>
-            <div className="comment_box_wrapper flex_column mbw10">
-                    <CommentInput blogId={blogData?.id} />
+           {blogData?.id && ( <div className="comment_box_wrapper flex_column mbw10">
+                    <CommentInput 
+                    blogId={blogData?.id}
+                    fetchComments={()=>fetchComments(blogData)}
+                     />
                     {
-                        blogData?.comments?.length > 0 && (
+                        comments?.length > 0 && (
                         <div className="comment_box mbw-fi-s flex_row mbw7 xl10">
-                        {blogData?.comments.map((comments, k)=> <CommentCard key={k} comments={comments} />)}
+                        {comments?.map((comments, k)=> <CommentCard 
+                        key={k} 
+                        fetchComments={()=>fetchComments(blogData)}
+                        comments={comments} />)}
                         </div>)}
-            </div>
+            </div>)}
         </div>
     </div>
     </div>

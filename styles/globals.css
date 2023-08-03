@@ -30,6 +30,7 @@ body{
     --error-color: #FF5555;
     --font-color: #000;
     --font-grey-font: #7C7C7C;
+    --font12-size: clamp(12px, 1vw, 14px);
     --font15-size: clamp(14px, 1vw, 15px);
     --font16-size: clamp(14px, 1vw, 16px);
     --font18-size: clamp(12px, 2vw, 18px);
@@ -114,6 +115,26 @@ button:disabled, button[disabled] {
 
 .remove_margin > p {
     margin: 0;
+}
+
+.pagination > p {
+    padding: 12px;
+    border-radius: 3px;
+    margin-right: 10px;
+    color: #fff;
+    background-color: var(--second-blue);
+}
+
+.pagination > .active {
+    background-color: var(--secondary-color); 
+    color: var(--second-blue);
+    border: 1px solid var(--second-blue);
+}
+
+.pagination > p:hover {
+    background-color: var(--secondary-color); 
+    color: var(--second-blue);
+    border: 1px solid var(--second-blue);
 }
 
 button {
@@ -213,7 +234,7 @@ svg rect{
   }
 
 
-   /* megerbran width measurement  */
+/* megerbran width measurement  */
    
 .mbw-gp3 {
     gap: 3%;
@@ -4325,6 +4346,7 @@ body {
 
 .post-body-con {
     margin: 0 auto;
+    padding: 30px 0;
 }
 
 .blog_content_details {
@@ -4368,6 +4390,11 @@ body {
 
 .tab {
     margin-right: 20px;
+}
+
+.filter > p {
+    font-weight: 500;
+    font-size: clamp(6px, 6vw, 18px);
 }
 
 .tab > p {
@@ -5392,6 +5419,29 @@ body {
 .single-post-body {
     margin-top: 50px;
 }
+
+.page-background {
+    background-color: var(--secondary-color);
+    padding-bottom: 50px;
+}
+
+.inner-page {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: rgb(0 0 0 / 7%) 0px 8px 10px;
+}
+
+.page_title {
+    height: 25vh;
+    width: 100vw;
+}
+
+.page_title > p {
+    margin: 0 auto;
+    font-size: var(--font45-size);
+    font-weight: 500;
+}
+
 .single-page-image > img {
     width: 100%;
     height: clamp(200px, 40vw, 60vh);
@@ -5489,15 +5539,24 @@ body {
     font-size: var(--font18-size);
 }
 
+.comment_button {
+    gap: 15px;
+}
+
 .reply_text > p {
     font-size: var(--font15-size);
 }
 
+.comment_icon > img {
+    width: 30px;
+    height: 30px;
+}
+
 .reply_button > p {
-    padding: 8px 10px;
+    padding: 2px 5px;
     border: 2px solid gray;
     border-radius: 5px;
-    font-size: var(--font15-size);
+    font-size: var(--font12-size);
 }
 
 .comment_text > textarea {

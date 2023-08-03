@@ -4,31 +4,32 @@ import MdEditor from "react-markdown-editor-lite";
 import { MainContext } from "../context/mainContext";
 import {
   Toast,
+  clean,
   createMutation,
+  generateId,
   makeQuery,
   updateQuery,
   uploadImage,
 } from "../functions/function";
 import Button from "../general/button";
-import { useDataQuery } from "../functions/customHook";
+import { useDataQuery, useCreateMutation } from "../functions/customHook";
 import { GET_CATEGORIES } from "../queries/categories/categories";
+import { CREATE_BLOG, UPDATE_BLOG } from "../mutation/blog/blog";
 
 const AdminBlogEdit = ({ handleSwitch }) => {
   const [loading, setLoading] = useState(false);
   const [plainMarkDown, setPlainMarkDown] = useState("");
   const [categories, setCategories] = useState([]);
   const {
-    createBlog,
     findSingleBlog,
     axios,
     router,
-    updateBlog,
   } = useContext(MainContext);
   const initialState = {
     name: "",
     categoryId: "",
     slug: "",
-    status: "",
+    status: "draft",
     description: "",
     descriptionMarkDown: "",
     file: null,
@@ -40,6 +41,9 @@ const AdminBlogEdit = ({ handleSwitch }) => {
   const [temporaryImage, setTemporaryImage] = useState();
   const { slug } = router.query;
   const {runQuery, allCategories} = useDataQuery(GET_CATEGORIES);
+  const {create: createBlog, blogResult} = useCreateMutation(CREATE_BLOG);
+  const {create: updateBlog, blogUpdate} = useCreateMutation(UPDATE_BLOG);
+
   useEffect(() => {
     runQuery();
     allCategories && setCategories(allCategories);
@@ -47,20 +51,19 @@ const AdminBlogEdit = ({ handleSwitch }) => {
   
   useEffect(() => {
     if (slug) {
-      const name = slug.replace(/-/g, " ");
-      fetchSlugData(name);
+      fetchSlugData(slug);
     }
   }, [slug]);
 
-  const fetchSlugData = async (name) => {
-    const variable = "blogName";
-    const result = await makeQuery(findSingleBlog, name, variable);
+  const fetchSlugData = async (slug) => {
+    const variable = "slugName";
+    const result = await makeQuery(findSingleBlog, slug, variable);
     if (result) {
-      const result = result.findBlogByName;
-      const { descriptionMarkDown } = result;
+      const pageData = result?.findBlogBySlug;
+      const { descriptionMarkDown } =  pageData;
+      console.log('page', pageData);
       setPlainMarkDown(descriptionMarkDown);
-      //const data = clean({...result.findBlogByName});
-      setPostState({ ...result, category: result?.category?.name || "" });
+      setPostState({ ...pageData, category: pageData?.category?.name || "" });
     }
   };
 
@@ -105,7 +108,7 @@ const AdminBlogEdit = ({ handleSwitch }) => {
   const handleEditorChange = ({ html, text }) => {
     const newValue = text.replace(/\d/g, "");
     setPlainMarkDown(newValue);
-    console.log(postState);
+    //console.log(postState);
     setPostState({
       ...postState,
       description: html,
@@ -117,7 +120,9 @@ const AdminBlogEdit = ({ handleSwitch }) => {
   const handleChange = (e) => {
     e.preventDefault();
     const { name, value } = e.target;
-    const slug = value.replace(/\s/g, "-");
+    let slug = value.replace(/\s/g, "-");
+    const id = generateId();
+    slug = `${slug}-${id}`;
     setPostState({
       ...postState,
       [name]: value,
@@ -150,9 +155,18 @@ const AdminBlogEdit = ({ handleSwitch }) => {
       descriptionMarkDown,
     };
 
+    const pageData = {
+      name,
+      slug,
+      status,
+      type,
+      description,
+      descriptionMarkDown,
+    }
+
     // if there is an id, we need to update the post
     if (id) {
-      setLoading(!loading);
+      setLoading(true);
       // if there is a file attached to the post or page submit the file
       // then attach the id to the post or page
       const blogImage = file && (await uploadImage(axios, file));
@@ -172,8 +186,9 @@ const AdminBlogEdit = ({ handleSwitch }) => {
         updateBlog,
         updateData
       );
+      data?.errors !== undefined && setLoading(false);
       data &&
-        (setLoading(!loading),
+        (setLoading(false),
         handleSwitch(),
         Toast.fire({
           icon: "success",
@@ -181,19 +196,22 @@ const AdminBlogEdit = ({ handleSwitch }) => {
         }));
     } else {
       // create a post or page
-      setLoading(!loading);
+      setLoading(true);
       // if there is a file attached to the post or page submit the file
       // then attach the id to the post or page
-      const result = file && (await uploadImage(axios, file));
-      const fileId = result ? result?.data[0].id :  null;
+      const result = (file && type == 'post') && (await uploadImage(axios, file));
+      const fileId = (result && type == 'post') ? result?.data[0].id :  null;
       const createData = {
         ...mainData,
         fileId,
       };
       const variableName = "blogInput";
-      const data = await createMutation(createBlog, variableName, createData);
-      data &&
-        (setLoading(!loading),
+      const data = (type == 'blog') ? 
+      await createMutation(createBlog, variableName, createData)
+      : await createMutation(createBlog, variableName, pageData);
+      data?.errors !== undefined && setLoading(false);
+      data?.data &&
+        (setLoading(false),
         handleSwitch(),
         Toast.fire({
           icon: "success",
@@ -239,7 +257,7 @@ const AdminBlogEdit = ({ handleSwitch }) => {
                 placeholder="Enter the title here"
               />
             </div>
-            <div className="admin_blog_category m10">
+            {postState.type !== "page" && (<div className="admin_blog_category m10">
               <p>Category</p>
               <div className="blog_wrapper flex_show_row">
                 <div className="flex_show_row blog_category">
@@ -261,7 +279,7 @@ const AdminBlogEdit = ({ handleSwitch }) => {
                   </div>
                 </div>
               </div>
-            </div>
+            </div>)}
             <div className="admin_blog_title m10">
               <p>Slug</p>
               <input
@@ -284,7 +302,7 @@ const AdminBlogEdit = ({ handleSwitch }) => {
                   <option defaultValue hidden>
                     {postState?.status || "Change Status"}
                   </option>
-                  {status.map((s, i) => {
+                  {status?.map((s, i) => {
                     return <option key={i}>{s}</option>;
                   })}
                 </select>
@@ -301,7 +319,7 @@ const AdminBlogEdit = ({ handleSwitch }) => {
                   <option defaultValue hidden>
                     {postState?.type || "Choose Post type"}
                   </option>
-                  {postType.map((s, i) => {
+                  {postType?.map((s, i) => {
                     return <option key={i}>{s}</option>;
                   })}
                 </select>
@@ -315,7 +333,7 @@ const AdminBlogEdit = ({ handleSwitch }) => {
                 onChange={handleEditorChange}
               />
             </div>
-            <div className="admin_featured_image_widget flex_row">
+            {postState?.type !== "page" && (<div className="admin_featured_image_widget flex_row">
               <div className="feature_image_holder">
                 <img
                   src={
@@ -343,12 +361,12 @@ const AdminBlogEdit = ({ handleSwitch }) => {
                   </label>
                 </div>
               </div>
-            </div>
+            </div>)}
             <div className="admin_blog_footer_edit_button sm10 flex_row remove_margin">
-              <div onClick={(e) => handleAction(e)} className="button">
+              <div onClick={handleAction} className="button">
                 <Button>Save As Draft</Button>
               </div>
-              <div onClick={(e) => submit(e)} className="button">
+              <div onClick={submit} className="button">
                 <Button loading={loading}>Submit</Button>
               </div>
             </div>

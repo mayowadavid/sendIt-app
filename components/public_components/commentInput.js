@@ -4,7 +4,7 @@ import { createMutation } from '../functions/function'
 import { CREATE_COMMENT } from '../mutation/blog/blog'
 import { useCreateMutation } from '../functions/customHook'
 
-const CommentInput = ({blogId, parentId}) => {
+const CommentInput = ({blogId, parentId, fetchComments, handleNewComment}) => {
     const initialState = {
         name: '',
         email: '',
@@ -17,13 +17,10 @@ const CommentInput = ({blogId, parentId}) => {
     const submit = () => {
         createMutation(create, 'commentData', commentData);
         setCommentData(initialState);
+        fetchComments();
+        handleNewComment && handleNewComment();
     }
 
-    useEffect(()=>{
-        if(createComment){
-            console.log(createComment);
-        }
-    }, [createComment])
 
     const handleChange = ({target}) => {
         const {name, value} = target;

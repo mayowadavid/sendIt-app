@@ -61,7 +61,6 @@ const AdminBlogEdit = ({ handleSwitch }) => {
     if (result) {
       const pageData = result?.findBlogBySlug;
       const { descriptionMarkDown } =  pageData;
-      console.log('page', pageData);
       setPlainMarkDown(descriptionMarkDown);
       setPostState({ ...pageData, category: pageData?.category?.name || "" });
     }

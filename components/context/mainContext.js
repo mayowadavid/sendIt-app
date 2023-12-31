@@ -133,7 +133,6 @@ const [fetchUsers] = useLazyQuery(CURRENT_USER, {
   onCompleted: (data) => {
       if(data){
       const { currentUser } = data;
-      console.log(currentUser);
       let {profile} = currentUser;
       const res = clean({...currentUser});
       profile = clean({...profile});

@@ -1,11 +1,15 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { MainContext } from "../context/mainContext";
 import Button from "../general/button";
-import { createMutation, updateQuery } from "../functions/function";
+import { createMutation, updateQuery, makeQuery } from "../functions/function";
+import { useDataQuery } from "../functions/customHook";
+import { SINGLE_CATEGORY } from "../queries/categories/categories";
 
 const CategoryEdit = ({ handleSwitch }) => {
-  const { createCategory, createSubCategory } = useContext(MainContext);
+  const {runQuery, result} = useDataQuery(SINGLE_CATEGORY);
+  const { createCategory, createSubCategory, router } = useContext(MainContext);
   const [loading, setLoading] = useState(false);
+  const { id } = router.query;
   const subinitial = {
     name: "",
   };
@@ -20,6 +24,16 @@ const CategoryEdit = ({ handleSwitch }) => {
   const [categoryState, setCategoryState] = useState(initialState);
 
   const [subCategoryState, setSubCategoryState] = useState(subinitial);
+
+  useEffect(()=> {
+    id && (async()=> {
+      const variable = "id";
+      const result = await makeQuery(runQuery, id, variable);
+      if(result?.category){ 
+        result?.category?.status == 'active' ? setOpen(true): setOpen(false);
+        setCategoryState({categoryState, ...result?.category})};
+    })();
+  }, [])
 
   const handleAction = (e) => {
     e.preventDefault();
@@ -131,6 +145,7 @@ const CategoryEdit = ({ handleSwitch }) => {
               <input
                 type="text"
                 name="name"
+                value={categoryState?.name}
                 onChange={handleCategoryChange}
                 placeholder="Name for new category"
               />
@@ -140,6 +155,7 @@ const CategoryEdit = ({ handleSwitch }) => {
               <textarea
                 type="text"
                 name="description"
+                value={categoryState?.description}
                 onChange={handleCategoryChange}
                 placeholder="Category description"
               ></textarea>

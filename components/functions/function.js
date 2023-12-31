@@ -8,15 +8,16 @@ export const authentication = (router) => {
   let session = JSON.parse(localStorage.getItem("session"));
   let role = JSON.parse(localStorage.getItem("role"));
   let res = session?.split("/");
-  //console.log(res);
   const date = new Date();
   const today = date.getDate();
   const month = date.getMonth();
+  const year = date.getFullYear();
   const expiredDay = res !== undefined && parseInt(res[2]);
   const expiredMonth = res !== undefined && parseInt(res[1]);
+  const expiredYear = res !== undefined && parseInt(res[0]);
 
   //check login expired date and month
-  if (month >= expiredMonth && today > expiredDay) {
+  if (month >= expiredMonth && today > expiredDay && year > expiredYear) {
     router.push("/auth");
     localStorage.clear();
   }
@@ -338,9 +339,7 @@ const isDecimalNumber = (value) => {
 // pagination list
 export const retrievePaginateLength = (items, itemsPerPage) => {
   let itemsLength = items?.length > 0 && items.length/itemsPerPage;
-  console.log('len', itemsLength);
   itemsLength = isDecimalNumber(itemsLength) ? itemsLength + 1 : itemsLength;
-  console.log(itemsLength);
   const pagniateArrayLength = [];
   for(let x = 1; x <= itemsLength; x++){
     pagniateArrayLength.push(x);

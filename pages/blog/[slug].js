@@ -32,7 +32,6 @@ import CommentCard from "../../components/public_components/commentCard";
 
     const fetchComments = async (blog) => {
         const result = await Axios('get', `/comments/fetchComments?blogId=${blog?.id || blogData?.id}`);
-        console.log(result);
         result.data.length > 0 && setComments([...result?.data]);
     }
 

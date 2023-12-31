@@ -1,6 +1,20 @@
-import React from 'react'
+import React, { useEffect, useState, useContext } from 'react'
+import { useDataQuery } from "../functions/customHook";
+import { GET_CATEGORIES } from "../queries/categories/categories";
+import { MainContext } from '../../components/context/mainContext';
 
-const CategoryButton = ({handleSwitch}) => {
+const CategoryButton = ({handleSwitch, displaySwitch, setSwitch}) => {
+    const {runQuery, result} = useDataQuery(GET_CATEGORIES);
+    const [allCategory, setAllCategory] = useState([]);
+    const [option, setOption] = useState(false);
+    const {router} = useContext(MainContext);
+useEffect(() =>{
+    (async() => {
+        const res = await runQuery();
+        res?.data?.allCategories.length > 0 && setAllCategory([...res?.data?.allCategories])
+    })();
+}, []);
+
     
   return (
     <div>
@@ -19,161 +33,86 @@ const CategoryButton = ({handleSwitch}) => {
                     </div>
         </div>
         <div className="category_button_card_container">
-                <div className="category_button_card">
-                    <div className="category_button_card_header_row flex_row">
-                        <div className="category_button_card_header remove_margin">
-                            <p>Graphic Design</p>
-                        </div>
-                        <div className="category_button_card_edit remove_margin flex_row">
-                            <div className="category_edit_button">
-                                <p>Edit</p>
-                            </div>
-                            <div className="category_edit_more">
-                                <img src="/img/more_horizontal.png" alt=""/>
-                            </div>
-                        </div>
-                        <div className="category_button_card_body">
-                            <p>Logo Design</p> <p>Banners</p> <p>Overlay</p>  <p>panels</p>
-                            <p>Scenes</p> <p>Thumbnails</p> <p>Social Media Graphics</p>  <p>stinger Transitions</p>
-                        </div>
-                    </div>
-                </div>
-                <div className="category_button_card">
-                    <div className="category_button_card_header_row flex_row">
-                        <div className="category_button_card_header remove_margin">
-                            <p>illustration</p>
-                        </div>
-                        <div className="category_button_card_edit remove_margin flex_row">
-                            <div className="category_edit_button">
-                                <p>Edit</p>
-                            </div>
-                            <div className="category_edit_more">
-                                <img src="/img/more_horizontal.png" alt=""/>
-                            </div>
-                        </div>
-                        <div className="category_button_card_body">
-                            <p>Logo Design</p> <p>Banners</p> <p>Overlay</p>  <p>panels</p>
-                            <p>Scenes</p> <p>Thumbnails</p> <p>Social Media Graphics</p>  <p>stinger Transitions</p>
-                        </div>
-                    </div>
-                </div>
-                <div className="category_button_card">
-                    <div className="category_button_card_header_row flex_row">
-                        <div className="category_button_card_header remove_margin">
-                            <p>Vtubing</p>
-                        </div>
-                        <div className="category_button_card_edit remove_margin flex_row">
-                            <div className="category_edit_button">
-                                <p>Edit</p>
-                            </div>
-                            <div className="category_edit_more">
-                                <img src="/img/more_horizontal.png" alt=""/>
-                            </div>
-                        </div>
-                        <div className="category_button_card_body">
-                            <p>Logo Design</p> <p>Banners</p> <p>Overlay</p>  <p>panels</p>
-                            <p>Scenes</p> <p>Thumbnails</p> <p>Social Media Graphics</p>  <p>stinger Transitions</p>
-                        </div>
-                    </div>
-                </div>
-                <div className="category_button_card">
-                    <div className="category_button_card_header_row flex_row">
-                        <div className="category_button_card_header remove_margin">
-                            <p>Print Design</p>
-                        </div>
-                        <div className="category_button_card_edit remove_margin flex_row">
-                            <div className="category_edit_button">
-                                <p>Edit</p>
-                            </div>
-                            <div className="category_edit_more">
-                                <img src="/img/more_horizontal.png" alt=""/>
-                            </div>
-                        </div>
-                        <div className="category_button_card_body">
-                            <p>Logo Design</p> <p>Banners</p> <p>Overlay</p>  <p>panels</p>
-                            <p>Scenes</p> <p>Thumbnails</p> <p>Social Media Graphics</p>  <p>stinger Transitions</p>
-                        </div>
-                    </div>
-                </div>
-                <div className="category_button_card">
-                    <div className="category_button_card_header_row flex_row">
-                        <div className="category_button_card_header remove_margin">
-                            <p>3d Design</p>
-                        </div>
-                        <div className="category_button_card_edit remove_margin flex_row">
-                            <div className="category_edit_button">
-                                <p>Edit</p>
-                            </div>
-                            <div className="category_edit_more">
-                                <img src="/img/more_horizontal.png" alt=""/>
-                            </div>
-                        </div>
-                        <div className="category_button_card_body">
-                            <p>Logo Design</p> <p>Banners</p> <p>Overlay</p>  <p>panels</p>
-                            <p>Scenes</p> <p>Thumbnails</p> <p>Social Media Graphics</p>  <p>stinger Transitions</p>
-                        </div>
-                    </div>
-                </div>
-                <div className="category_button_card">
-                    <div className="category_button_card_header_row flex_row">
-                        <div className="category_button_card_header remove_margin">
-                            <p>Art & illustration</p>
-                        </div>
-                        <div className="category_button_card_edit remove_margin flex_row">
-                            <div className="category_edit_button">
-                                <p>Edit</p>
-                            </div>
-                            <div className="category_edit_more">
-                                <img src="/img/more_horizontal.png" alt=""/>
-                            </div>
-                        </div>
-                        <div className="category_button_card_body">
-                            <p>Logo Design</p> <p>Banners</p> <p>Overlay</p>  <p>panels</p>
-                            <p>Scenes</p> <p>Thumbnails</p> <p>Social Media Graphics</p>  <p>stinger Transitions</p>
-                        </div>
-                    </div>
-                </div>
-                <div className="category_button_card">
-                    <div className="category_button_card_header_row flex_row">
-                        <div className="category_button_card_header remove_margin">
-                            <p>packaging & Covers</p>
-                        </div>
-                        <div className="category_button_card_edit remove_margin flex_row">
-                            <div className="category_edit_button">
-                                <p>Edit</p>
-                            </div>
-                            <div className="category_edit_more">
-                                <img src="/img/more_horizontal.png" alt=""/>
-                            </div>
-                        </div>
-                        <div className="category_button_card_body">
-                            <p>Logo Design</p> <p>Banners</p> <p>Overlay</p>  <p>panels</p>
-                            <p>Scenes</p> <p>Thumbnails</p> <p>Social Media Graphics</p>  <p>stinger Transitions</p>
-                        </div>
-                    </div>
-                </div>
-                <div className="category_button_card">
-                    <div className="category_button_card_header_row flex_row">
-                        <div className="category_button_card_header remove_margin">
-                            <p>Social Media</p>
-                        </div>
-                        <div className="category_button_card_edit remove_margin flex_row">
-                            <div className="category_edit_button">
-                                <p>Edit</p>
-                            </div>
-                            <div className="category_edit_more">
-                                <img src="/img/more_horizontal.png" alt=""/>
-                            </div>
-                        </div>
-                        <div className="category_button_card_body">
-                            <p>Logo Design</p> <p>Banners</p> <p>Overlay</p>  <p>panels</p>
-                            <p>Scenes</p> <p>Thumbnails</p> <p>Social Media Graphics</p>  <p>stinger Transitions</p>
-                        </div>
-                    </div>
-                </div>
+        {
+            allCategory.length > 0 && allCategory?.map((tags, indx)=>{
+                return(
+                    <CategoryTag 
+                    key = {indx} 
+                    tags = {tags} 
+                    setSwitch = {setSwitch}
+                    displaySwitch = {displaySwitch} />
+                )
+            })
+        }
         </div>
     </div>
   )
 }
 
+const CategoryTag = ({tags, setSwitch, displaySwitch}) => {
+    const [option, setOption] = useState(false);
+    const {router} = useContext(MainContext);
+
+    const handleOPtion = (e, id) => {
+        e.preventDefault();
+        let { display, create } = displaySwitch;
+        setSwitch({
+          display: !display,
+          create: !create,
+        });
+        
+        router.replace({
+          pathname: "category",
+          query: { view: "update", id: id },
+        });
+    };
+    
+    const handleDelete = (e, indx) => {
+        e.preventDefault();
+    }
+
+    const {name, id, subCategory} = tags;
+    return (
+        <div className="category_button_card">
+                        <div className="category_button_card_header_row flex_row">
+                        <div className="flex_row mbw-jsty-btw mbw10">
+                            <div className="category_button_card_header mbw8 remove_margin">
+                                <p>{name}</p>
+                            </div>
+                            <div className="blog_card_option mbw-fi-e" onClick={() => setOption(!option)}>
+                                <div className="category_edit_more">
+                                    <img src="/img/more_horizontal.png" alt=""/>
+                                </div>
+                                {option && (
+                                    <div className="category_card_option_drop mbw7">
+                                    <div
+                                        onClick={(e)=>handleOPtion(e, id)}
+                                        className="blog_card_edit flex_row remove_margin"
+                                    >
+                                        <img src="/img/Edit Square.png" alt="" />
+                                        <p>Update Category</p>
+                                    </div>
+                                    <div 
+                                    onClick={(e)=>handleDelete(e, id)}
+                                    className="blog_card_edit flex_row remove_margin">
+                                        <img src="/img/redDelete.png" alt="" />
+                                        <p>Delete Category</p>
+                                    </div>
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+                        <div className="category_button_card_body flex_row mbw10">
+                        {subCategory?.length > 0 && subCategory?.map(({name}, i)=>{
+                            return (
+                                <p key={i}>{name}</p>
+                            )
+                        })}
+                        </div>
+                        </div>
+                    </div>
+    )
+}
+
 export default CategoryButton
+

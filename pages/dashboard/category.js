@@ -13,6 +13,7 @@ const AdminCategory = () => {
 
     useEffect(()=>{
         const {view} = router.query;
+        
         view && setSwitch({create: true, display: false});
         !view && setSwitch({create: false, display: true});
     }, [router.isReady]);
@@ -38,7 +39,10 @@ const AdminCategory = () => {
   return (
     <AdminLayout>
         <Suspense fallback={<Loading />}>
-            { displaySwitch.display && <CategoryButton handleSwitch={handleSwitch} /> }
+            { displaySwitch.display && <CategoryButton
+            displaySwitch={displaySwitch}
+            setSwitch={setSwitch}
+             handleSwitch={handleSwitch} /> }
             { displaySwitch.create && <CategoryEdit handleSwitch={handleSwitch} /> }
         </Suspense>
     </AdminLayout>

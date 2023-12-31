@@ -1,5 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
+import Button from './button';
 
 const HomePage = () => {
   return (
@@ -13,7 +14,9 @@ const HomePage = () => {
     </div>
     <div className="header_form sm9 m8 l8 smcol mcol flex_row">
         <input className="sm10 m10 l6 xl6" type="text" placeholder="Enter your email address" name="" id=""/>
-        <button className="sm5 m5 l3 xl3 m-mg-tp5 sm-mg-tp5">Start free trial</button>
+        <div className="sm5 home_button m5 l3 xl3 m-mg-tp5 sm-mg-tp5">
+        <Button>Start free trial</Button>
+        </div>
     </div>
     <div className="homePage_disclamer sm9 m69 l8">
         <p className="sm9 m69">30-days free trial, no credit card required. By entering your email you agreed to receive marketing emails
@@ -66,7 +69,9 @@ const HomePage = () => {
     </div>
     <div className="action_show_form sm9 m8 l8 smcol mcol flex_row">
         <input className="sm10 m10 l6 xl6" type="text" name="" id=""/>
-        <button className="sm5 m5 l3 xl3 m-mg-tp5 sm-mg-tp5">Start free trial</button>
+        <div className="sm5 m5 home_button l3 xl3 m-mg-tp5 sm-mg-tp5">
+            <Button>Start free trial</Button>
+        </div>
     </div>
     <div className="action_form_disclaim">
         <p>7 days free trial, no credit card required. By entering your email, uou agree to receive marketing emails from sendit. view terms and conditiions.</p>

@@ -13,7 +13,7 @@ const CommentCard = ({comments, fetchComments}) => {
     setReply(!reply);
     setComment(!comment);
   }
-  console.log(comments);
+  
   return (
     <>
       <div className="comment_avatar flex_row mbw1">

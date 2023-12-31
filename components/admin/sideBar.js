@@ -7,7 +7,7 @@ const {router} = useContext(MainContext);
 const handleRoute = async (e, props) => {
     e.preventDefault();
    await router.push(`/${props}`);
-   (props == 'dashboard/blog') && router.reload();
+   (props == 'dashboard/blog' || props == 'dashboard/category') && router.reload();
 }
 
   return (

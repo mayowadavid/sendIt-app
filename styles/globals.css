@@ -252,6 +252,10 @@ svg rect{
     gap: 15%;
 }
 
+.mbw-pd1 {
+    padding: 10px;
+}
+
 .mbw-mbtm3 {
     margin-bottom: 3%;
 }
@@ -302,6 +306,10 @@ svg rect{
 
 .mbw7 {
     width: 70%;
+}
+
+.mbw75 {
+    width: 75%;
 }
 
 .mbw8 {
@@ -526,6 +534,15 @@ body {
     width: 100%;
 }
 
+.home_button {
+    background-color: var(--body-color);
+    padding: 20px;
+    border-radius: 5px;
+    font-weight: 600;
+    border-radius: 5px;
+    font-size: 20px;
+}
+
 .show_front_content {
     display: block;
     width: 60%;
@@ -614,7 +631,7 @@ body {
 
 .action_show_form > button {
     width: 15%;
-    height: 65px;
+    height: 60px;
     border-radius: 5px;
     font-size: 20px;
     color: var(--second-blue);
@@ -623,7 +640,7 @@ body {
 
 .action_show_form > input[type=text] {
     width: 75%;
-    height: 65px;
+    height: 60px;
     border-radius: 5px;
 }
 
@@ -3132,7 +3149,7 @@ body {
 
 .category_button_card_edit {
     width: 25%;
-    justify-content: space-between;
+    justify-content: flex-end;
 }
 
 .category_edit_button {
@@ -3151,18 +3168,13 @@ body {
 }
 
 .category_edit_more {
-    width: 20px;
-    height: 20px;
-    padding: 4% 4%;
-    border-radius: 50px;
-    background-color: #F7F8FB;
     justify-content: center;
     display: flex;
     align-items: center;
 }
 
 .category_edit_more > img {
-    width: 12px;
+    width: 17px;
 }
 
 .category_button_card_body {
@@ -3274,6 +3286,7 @@ body {
 
 .create_category_container_row {
     width: 80%;
+    padding: 25px;
 }
 
 .create_category_top_header {
@@ -3404,6 +3417,7 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-end;
+    padding-top: 18px;
 }
 
 .submit_category > .button{
@@ -4252,6 +4266,17 @@ body {
 .blog_card_option_drop {
     position: absolute;
     width: 150px;
+    top: 35px;
+    right: 0;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #F7F8FB;
+}
+
+.category_card_option_drop {
+    position: absolute;
+    width: 200px;
     top: 35px;
     right: 0;
     background-color: #fff;
@@ -5724,7 +5749,7 @@ body {
 
 @media (max-width: 1000px) and (min-width: 60px) {
     .l-off {
-        display: none !important;
+        display: none;
     }
 
     .l-on {
@@ -5849,11 +5874,11 @@ body {
     }
 
     .m-on-blk {
-        display: block;
+        display: block !important;
     }
 
     .m-on-flex {
-        display: flex;
+        display: flex !important;
     }
 
     .mpad5 {

@@ -6,15 +6,27 @@ const Login = () => {
         usersLogin, 
         err,
         loading, 
-        setLoading
+        setLoading,
+        router,
      } = useContext(MainContext);
 
     let initialState = {
+        id: '',
         email: '',
         userName: '',
-        password: ''
+        password: '',
+        refreshToken: '',
+        refreshTokenExp: '',
+        profile: {
+            id: '',
+            file: {
+            image: '',
+            },
+            role: '',
+        }
     }
     const [userDetail, setUserDetail] = useState(initialState);
+    const [userData, setUserData] = useState(initialState);
     
     //transition user
     const switchUser = (e) => {
@@ -62,6 +74,20 @@ const Login = () => {
                         userInput,
                     }
                 });
+                if(data){
+                  const { loginUser } = data;
+                  setUserData(loginUser);
+                  if(data !== undefined){
+                    const {userName, profile, refreshTokenExp, refreshToken} = loginUser;
+                      const token = refreshToken;
+                      const { role } = profile;
+                      window.localStorage.setItem("role", JSON.stringify(role));
+                      window.localStorage.setItem("token", JSON.stringify(token));
+                      console.log(token);
+                      window.localStorage.setItem("session", JSON.stringify(refreshTokenExp));
+                      router.push(`/${userName}`);
+                  }
+                  }
              (await data || await error) && setLoading(false);
     }
     

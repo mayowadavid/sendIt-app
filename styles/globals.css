@@ -354,6 +354,10 @@ svg rect{
     justify-content: space-between !important;
 }
 
+.mbw-jsty-end {
+    justify-content: end !important;
+}
+
 .flex_row {
     display: flex;
     flex-wrap: wrap;
@@ -457,6 +461,25 @@ body {
   }
 
 /* Homepage Layout */
+.home-link-header {
+    padding: 5px 20px;
+    background-color: var(--second-blue);
+}
+
+.home-link-header > p {
+    color: #fff;
+    font-size: var(--font24-size);
+    font-weight: 600;
+}
+
+.home-link-header > .button-wrap > button {
+    width: 150px;
+    padding: 10px 15px;
+    border-radius: 20px;
+    color: var(--second-blue);
+    background-color: var(--background-secondary);
+}
+
 .homePage_top {
     background-color: var(--second-blue);
     width: 100vw;
@@ -475,6 +498,10 @@ body {
     color: #fff;
     margin: 0 auto;
     text-align: center;
+}
+
+.home-link-header {
+    background-color: v;
 }
 
 .homePage_content > p:last-child { 

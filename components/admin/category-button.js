@@ -8,12 +8,12 @@ const CategoryButton = ({handleSwitch, displaySwitch, setSwitch}) => {
     const [allCategory, setAllCategory] = useState([]);
     const [option, setOption] = useState(false);
     const {router} = useContext(MainContext);
-useEffect(() =>{
-    (async() => {
-        const res = await runQuery();
-        res?.data?.allCategories.length > 0 && setAllCategory([...res?.data?.allCategories])
-    })();
-}, []);
+    useEffect(() =>{
+        (async() => {
+            const res = await runQuery();
+            res?.data?.allCategories.length > 0 && setAllCategory([...res?.data?.allCategories])
+        })();
+    }, []);
 
     
   return (

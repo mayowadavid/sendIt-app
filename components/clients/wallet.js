@@ -9,8 +9,8 @@ const Wallet = () => {
     }
   return (
     <div>
-        <div className='wallet_container'>
-            <div className="wallet_wrap flex_row">
+        <div className='wallet_container mbw10'>
+            <div className="wallet_wrap mbw10 flex_row">
                 <div className="wallet_row flex_column">
                     <p>wallet amount</p>
                     <p>$1124.99</p>
@@ -45,9 +45,9 @@ const Wallet = () => {
             <div className="transaction_header">
                 <p>Wallet History</p>
             </div>
-            <div className="wallet_table">
-                <div className="transaction_table_header flex_row">
-                    <div className="main_transaction_row flex_row">
+            <div className="wallet_table mbw10">
+                <div className="transaction_table_header mbw10 flex_row">
+                    <div className="main_transaction_row mbw10 flex_row">
                         <div className="main_row">
                             <p>Date</p>
                         </div>

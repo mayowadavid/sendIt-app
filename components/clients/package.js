@@ -1,8 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { MainContext } from '../context/mainContext'
+import { DELETE_PACKAGE, UPDATE_PACKAGE } from '../mutation/package/package';
+import { useCreateMutation } from '../functions/customHook';
+import { packageUploadImage } from '../functions/function';
 
 const Package = () => {
     const {
+        axios,
         statusState, 
         setSideState, 
         setStatusState, 
@@ -15,15 +19,21 @@ const Package = () => {
         setModalControl,
         setImgPreviewIndex,
         liveImage, 
-        setLiveImage
+        setLiveImage,
+        loading, 
+        setLoading,
+        senderData, 
+        setSenderData
     } = useContext(MainContext);
+    const {create} = useCreateMutation(UPDATE_PACKAGE);
+    const deleteFile = useCreateMutation(DELETE_PACKAGE);
 
     const secondInitial = {
         worth: '',
         quantity: '',
         measurement: '',
         size: '',
-        serviceFee: 30,
+        serviceFee: '',
         description: ''
     };
 
@@ -34,17 +44,35 @@ const Package = () => {
         setSideState({
             track: true
         });
+        const {
+            worth,
+        quantity,
+        measurement,
+        size,
+        serviceFee,
+        description,
+        images
+        } = senderData;
+        setTemporaryImage([...temporaryImage, ...images]);
+        setDetail({worth,
+            quantity,
+            measurement,
+            size,
+            serviceFee,
+            description});
     }, []);
 
     // handle form change
-    const handleChange = (e) => {
+    const handleChange = async (e) => {
         e.preventDefault();
         const {name, value} = e.target;
+        console.log(value);
+        setLoading(false);
         setDetail({...detail, [name]: value});
     }
 
     // handle file change
-    const handleFile = (e) => {
+    const handleFile = async (e) => {
         e.preventDefault();
         const {name, files} = e.target;
         let types = ['image/jpeg', 'image/png'];
@@ -59,12 +87,19 @@ const Package = () => {
            result.length <= 0 && setErr("unsupported image type* accepted image jpg/png or file size is greater than 5mb");
            const temporaryUrl = result.length > 0 && result.map((f)=>{
                 let url = URL.createObjectURL(f);
-                return url;
+                const data = {
+                    image: url
+                }
+                return data;
            }); 
            result.length > 0 && setAllImages(result);
-           temporaryUrl.length > 0 && setTemporaryImage(temporaryUrl);
+           temporaryUrl.length > 0 && setTemporaryImage([...temporaryImage, ...temporaryUrl]);
         }
+        const {id} = senderData;
+        const {data} = await packageUploadImage(axios, files, id)
+        console.log(data);
     }
+
 
     // handle image drop and upload
     const handleImage = (e, i) => {
@@ -74,10 +109,38 @@ const Package = () => {
         setModalControl(true);
     }
 
-    const submit = (e) => {
+    const deleteImage = async (i) => {
+        
+        const packageData = {id: senderData.id, imagesId: i};
+        const result = temporaryImage.filter(({id})=> id != i);
+        setTemporaryImage(result);
+        const {data, error} = await deleteFile?.create({
+            variables: {
+                packageData,
+            }
+        });
+        console.log(data);
+    }
+
+    const submit = async (e) => {
         e.preventDefault();
-        setStatusState({preview: true});
-        setStatusStateCheck({...statusStateCheck, details: true});
+        const {id} = senderData;
+        setLoading(true);
+        const packageData = {id, ...detail};
+        console.log(packageData);
+        const {data, error} = await create({
+            variables: {
+                packageData,
+            }
+        });
+        console.log(data);
+        error !== undefined && setLoading(false);
+        const {updatePackage} = data;
+        data !== undefined && (
+            setSenderData({...updatePackage, ...senderData}),
+            setLoading(false),
+            setStatusState({preview: true}),
+        setStatusStateCheck({...statusStateCheck, details: true}));
     }
 
 
@@ -106,7 +169,7 @@ const Package = () => {
                             </div>
                             <div className="shipper_input_row sm10">
                                 <p>Service fee</p>
-                                <input type="text" onChange={handleChange} name="serviceFee" value={detail?.serviceFee} disabled={true} placeholder="fee" />
+                                <input type="text" onChange={handleChange} name="serviceFee" value={detail?.serviceFee} placeholder="fee" />
                             </div>
                             <div className="shipper_input_row sm10">
                                 <p>Service fee</p>
@@ -128,12 +191,13 @@ const Package = () => {
                                 </div>
                             </div>
                                 <div className='showcaseImage flex_row'>
-                                    {(temporaryImage.length > 0 || liveImage.length > 0) &&
-                                    (liveImage.length > 0 ? liveImage : temporaryImage)
+                                    {(temporaryImage.length > 0) &&
+                                    (temporaryImage)
                                     .map((url, i)=>{
                                         return (
-                                            <div onClick={(e)=>handleImage(e, i)} key={i} className="image_row">
-                                                <img src={url}  alt="sendit" />
+                                            <div key={i} className="image_row">
+                                                <div onClick={()=>deleteImage(url?.id)} className='delete'><img  src='svg/Delete.svg'  alt="sendit" /></div>
+                                                <img onClick={(e)=>handleImage(e, i)} src={url?.image}  alt="sendit" />
                                             </div>
                                             );
                                         })}
@@ -142,7 +206,10 @@ const Package = () => {
                     </div>
                 </div>
                 <div className="shipper_button l9 flex_row">
-                    { statusState.details == true && <p onClick={submit}>Continue</p>}
+                    { statusState.details == true && <button className={ loading == true ? 'loading' : '' } onClick={submit}>
+                    {loading == true && <img className='load' src="/svg/loading.svg" alt="sendit" />}
+                    {`  Save & Continue`}
+                    </button>}
                 </div>
             </>
   )

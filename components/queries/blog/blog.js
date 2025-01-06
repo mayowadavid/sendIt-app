@@ -1,7 +1,7 @@
 import { gql } from "@apollo/client"
 
 export const FETCH_ALL_BLOG = gql`
-query findAllUserBlog {
+query {
     allBlog {
       id
       name
@@ -35,44 +35,45 @@ query findAllUserBlog {
     }
   }`
 
-  export const FETCH_ALL_BLOG_POST = gql`
-  query FIND_ALL_BLOG_POST($data: CreateBlogInput){
-    allBlogPost(pagination: $data) {
-     		posts{
-           id
-        name
-        createdAt
-        description
-        descriptionMarkDown
-        status
-        slug
-        type
-        file {
-          image
+  export const ALL_BLOG_POST = gql`
+  query ALL_BLOG_POST($blogPage: BlogPageInput!){
+    allBlogByPage(blogPageInput: $blogPage) {
+            content { 
+                    id
+                    name
+                    createdAt
+                    description
+                    descriptionMarkDown
+                    status
+                    slug
+                    type
+                    file {
+                      image
+                    }
+                    commentId
+                    categoryId
+                    comments {
+                      description
+                    }
+                    category {
+                      id
+                      name
+                    }
+                    userId
+                    user {
+                      id
+                      userName
+                      profile {
+                        file {
+                          image
+                          }
+                        }
+                      }
+                    }
+            total
+            hasNextPage
         }
-        commentId
-        categoryId
-        comments {
-          description
-        }
-        category {
-          id
-          name
-        }
-        userId
-        user {
-          id
-          userName
-          profile {
-            file {
-              image
-            }
-          }
-        }
-        }
-    hasNextPage
     }
-  }
   `
 
   export const FETCH_ALL_BLOG_PAGE = gql`
@@ -114,7 +115,6 @@ query findAllUserBlog {
     }
   }
   `
-
 
   export const FIND_BLOG_BY_NAME = gql`
   fragment childFragment on Comment {

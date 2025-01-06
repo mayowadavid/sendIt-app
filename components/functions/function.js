@@ -54,7 +54,7 @@ export const formValidation = (obj, setFormError) => {
 };
 
 //upload image
-export const uploadImage = (axios, file) => {
+export const uploadImage = async (axios, file) => {
   try {
     if (!file[0]) return;
     let formData = new FormData();
@@ -63,6 +63,31 @@ export const uploadImage = (axios, file) => {
       `${process.env.NEXT_PUBLIC_url}/files/imageUpload`,
       formData
     );
+    
+  } catch (error) {
+    Toast.fire({
+      icon: "error",
+      title: `${error.message}`,
+    });
+  }
+};
+
+
+//upload image
+export const packageUploadImage = async (axios, file, id) => {
+  try {
+    if (!file[0]) return;
+    let formData = new FormData();
+    for(let x = 0; x < file.length; x++){
+      formData.append("file", file[x]);
+    }
+    
+    formData.append("id", id)
+    return axios.post(
+      `${process.env.NEXT_PUBLIC_url}/package/imageUpload`,
+      formData
+    );
+    
   } catch (error) {
     Toast.fire({
       icon: "error",
@@ -235,13 +260,12 @@ export const updateQuery = async (
         },
       });
       track.push(data);
-      console.log(data);
     } catch (e) {
       error = e.message;
       console.log(e.message);
     }
   }
-  console.log('track', track);
+  
   //when data update is successful
   track.length === updateData.length &&
     error == undefined &&
@@ -308,7 +332,14 @@ export const formatDate = (date) => {
                 method,
                 headers
             };
-            return axios(config);
+            const result = await axios(config);
+            result.statusText == "Created" && (Toast.fire({
+              icon: "success",
+              title: "Successfull",
+            }));
+            
+            return result;
+
         }else {
             const config = {
                 url,
@@ -316,11 +347,19 @@ export const formatDate = (date) => {
                 data,
                 headers
             };
-            return await axios(config);
+            const result = await axios(config);
+            result.statusText == "Created" && (Toast.fire({
+              icon: "success",
+              title: "Successfull",
+            }));
+            return result;
         }
         
-    }catch(e){
-        console.log(e)
+    }catch(error){
+      Toast.fire({
+        icon: "error",
+        title: `${error}`,
+      });
     }
 }
 
@@ -339,6 +378,18 @@ const isDecimalNumber = (value) => {
 // pagination list
 export const retrievePaginateLength = (items, itemsPerPage) => {
   let itemsLength = items?.length > 0 && items.length/itemsPerPage;
+  itemsLength = isDecimalNumber(itemsLength) ? itemsLength + 1 : itemsLength;
+  const pagniateArrayLength = [];
+  for(let x = 1; x <= itemsLength; x++){
+    pagniateArrayLength.push(x);
+  }
+  return pagniateArrayLength;
+}
+
+
+// pagination list with length
+export const retrieveLength = (total, limit) => {
+  let itemsLength = total/limit;
   itemsLength = isDecimalNumber(itemsLength) ? itemsLength + 1 : itemsLength;
   const pagniateArrayLength = [];
   for(let x = 1; x <= itemsLength; x++){

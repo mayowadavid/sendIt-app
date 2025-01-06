@@ -1,15 +1,19 @@
 import ClientLayout from "../general/clientLayout";
 import { useContext, useState, useEffect } from "react";
 import { MainContext } from "../context/mainContext";
+import { useCreateMutation } from "../functions/customHook";
+import { UPDATE_PASSWORD } from "../mutation/user/user";
 
 const Settings = () => {
-  const { setSideState } = useContext(MainContext);
+  const { setSideState, userData, loading, setLoading } = useContext(MainContext);
 
   const initialState = {
     currentPassword: "",
     newPassword: "",
     confirmPassword: "",
   };
+
+  const {create} = useCreateMutation(UPDATE_PASSWORD);
 
   const [settingsData, setSettingsData] = useState(initialState);
 
@@ -37,6 +41,7 @@ const Settings = () => {
   const handleChange = (e) => {
     e.preventDefault();
     const { name, value } = e.target;
+    setLoading(false);
     setSettingsData({ ...settingsData, [name]: value });
   };
 
@@ -46,6 +51,26 @@ const Settings = () => {
       phoneVerification: !verificationData.phoneVerification,
     });
   };
+
+  const submit = (e) => {
+    e.preventDefault();
+    const {id} = userData;
+    const {currentPassword, newPassword} = settingsData;
+    const userDatas = {
+      id,
+      password: currentPassword, 
+      newPassword
+    };
+    setLoading(true);
+   const {data, error} = create({
+      variables: {
+          userDatas,
+      }
+  });
+  (data != undefined || error != undefined) && (
+  setLoading(false), 
+  setSettingsData(initialState));
+  }
 
   useEffect(() => {
     setSideState({
@@ -71,9 +96,8 @@ const Settings = () => {
               <input
                 type="text"
                 onChange={handleChange}
-                name=""
+                name="currentPassword"
                 placeholder="Current Password"
-                id=""
               />
             </div>
           </div>
@@ -85,9 +109,8 @@ const Settings = () => {
               <input
                 type="text"
                 onChange={handleChange}
-                name=""
+                name="newPassword"
                 placeholder="New password"
-                id=""
               />
             </div>
           </div>
@@ -99,14 +122,16 @@ const Settings = () => {
               <input
                 type="text"
                 onChange={handleChange}
-                name=""
+                name="confirmPassword"
                 placeholder="Confirm password"
-                id=""
               />
             </div>
           </div>
-          <div className="settings_row_button flex_row">
-            <p>Save Changes</p>
+          <div onClick={submit} className="settings_row_button flex_row">
+            <button className={ loading == true ? 'loading' : '' }>
+            {loading == true && <img className='load' src="/svg/loading.svg" alt="sendit" />}
+            {'Save Changes'}
+            </button>
           </div>
         </div>
         <div className="settings_column">

@@ -20,7 +20,7 @@ const PreviewTrack = () => {
   return (
     <ClientLayout>
       <div className="transaction_track m-mg-tp10 xl-mg-tp10 flex_row">
-        <div className="track_input">
+        <div className="track_input mbw4 l6">
           <input
             type="text"
             placeholder="Tracking number"

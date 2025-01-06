@@ -2,6 +2,7 @@ import { useContext, useState, useEffect } from "react";
 import { MainContext } from "../context/mainContext";
 import Image from "next/image";
 import ClientLayout from "../general/clientLayout";
+import { Axios } from "../functions/function";
 
 const Referral = () => {
   const { setSideState } = useContext(MainContext);
@@ -29,6 +30,15 @@ const Referral = () => {
       setCopySuccess("failed");
     }
   };
+
+  const submit = async () => {
+    const data = {
+      receiver: email,
+      subject: 'New Invite'
+    }
+    const res = email != "" && await Axios('post', '/email-settings/sendMail', data);
+    res != undefined && setEmail("");
+  }
 
   return (
     <ClientLayout>
@@ -95,11 +105,12 @@ const Referral = () => {
             Sendit.
           </p>
           <div className="referel_form flex_row m-mg-tp10">
-            <div className="referral_form_button flex_row">
+            <div onClick={submit} className="referral_form_button flex_row">
               <img alt="sendit" src="/svg/w-plane.svg" />
             </div>
             <input
               type="text"
+              value={email}
               onChange={handleEmail}
               placeholder="Email address"
             />

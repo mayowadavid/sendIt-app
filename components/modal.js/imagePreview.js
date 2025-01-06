@@ -3,6 +3,7 @@ import { MainContext } from '../context/mainContext'
 
 const ImagePreview = () => {
     const {temporaryImage, 
+      liveImage,
       imgPreviewIndex, 
       setImgPreviewIndex
     } = useContext(MainContext);
@@ -39,7 +40,9 @@ const ImagePreview = () => {
                 <img onClick={increaseIndex} src='/img/arrow_right.png' alt="sendit"/>
           </div>
         </div>
-        <img src={temporaryImage[imgPreviewIndex]} alt="sendit"/>
+        <img src={
+          temporaryImage[imgPreviewIndex]?.image
+          } alt="sendit"/>
     </div>
   )
 }

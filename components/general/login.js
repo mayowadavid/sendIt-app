@@ -50,6 +50,7 @@ const Login = () => {
         let emailVerify = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]/g;
         value = name == 'email' ? value.toLowerCase().trim(): value.trim();
         let result = name == 'email' && emailVerify.test(value);
+        setLoading(false);
         setUserDetail({
             ...userDetail, 
             [name]: result == true ? value : '',
@@ -59,7 +60,7 @@ const Login = () => {
 
     //submit userDetails
     const submitLogin = async (e) => {
-        e.preventDefault();
+       // e.preventDefault();
         const { email, userName, password } = userDetail;
         // login parameters
             const userInput = {
@@ -67,6 +68,7 @@ const Login = () => {
                 email,
                 password
             };
+        
             setLoading(!loading);
             //login query
                 const {data, error} = await usersLogin({
@@ -74,21 +76,23 @@ const Login = () => {
                         userInput,
                     }
                 });
-                if(data){
-                  const { loginUser } = data;
-                  setUserData(loginUser);
-                  if(data !== undefined){
-                    const {userName, profile, refreshTokenExp, refreshToken} = loginUser;
-                      const token = refreshToken;
-                      const { role } = profile;
-                      window.localStorage.setItem("role", JSON.stringify(role));
-                      window.localStorage.setItem("token", JSON.stringify(token));
-                      console.log(token);
-                      window.localStorage.setItem("session", JSON.stringify(refreshTokenExp));
-                      router.push(`/${userName}`);
-                  }
-                  }
-             (await data || await error) && setLoading(false);
+                error && console.log(data, error);
+                // if(data){
+                //   const { loginUser } = data;
+                //   setUserData(loginUser);
+                //   console.log(loginUser);
+                //   if(data !== undefined){
+                //     const {userName, profile, refreshTokenExp, refreshToken} = loginUser;
+                //       const token = refreshToken;
+                //       const { role } = profile;
+                //       window.localStorage.setItem("role", JSON.stringify(role));
+                //       window.localStorage.setItem("token", JSON.stringify(token));
+                //       window.localStorage.setItem("session", JSON.stringify(refreshTokenExp));
+                //       router.push(`/${userName}`);
+                //   }
+                //   }
+                //   console.log(error);
+            // (await data || await error) && setLoading(false);
     }
     
   return (

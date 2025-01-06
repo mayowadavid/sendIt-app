@@ -7,3 +7,13 @@ export const SignUp = gql `mutation userSignUp($userSignUp: CreateUserInput!){
       createdAt
     }
   }`
+
+  export const UPDATE_PASSWORD = gql`mutation UPDATE_PASSWORD($userDatas: UpdateUserInput!){
+    updatePassword(updateUserInput: $userDatas){
+      id
+      userName
+      password
+      userName
+      id
+    }
+  }`

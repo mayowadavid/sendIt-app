@@ -4,7 +4,7 @@ import { CURRENT_USER, FETCH_USER_BY_NAME, LOGIN } from '../queries/user/user';
 import { useRouter } from 'next/router';
 import { UPDATE_PROFILE } from '../mutation/profile/profile';
 import { clean } from '../functions/function';
-import { CREATE_PACKAGE } from '../mutation/package/package';
+import { CREATE_PACKAGE, UPDATE_PACKAGE } from '../mutation/package/package';
 import { CURRENT_PACKAGE } from '../queries/package/package';
 import { CREATE_CATEGORY, SUB_CATEGORY, UPDATE_CATEGORY } from '../mutation/categories/category';
 import { CREATE_BLOG, UPDATE_BLOG } from '../mutation/blog/blog';
@@ -119,7 +119,6 @@ const [userFetch] = useLazyQuery(FETCH_USER_BY_NAME, {
       if(data){
       const { findUserByName } = data;
       setUserData(findUserByName);
-      console.log(data);
       }
   },
   onError: (error) => {
@@ -151,7 +150,6 @@ const [usersLogin] = useLazyQuery(LOGIN, {
   fetchPolicy: "network-only",
   onCompleted: (data) => {
       if(data){
-        console.log(data);
       const { loginUser } = data;
       setUserData(loginUser);
       setErr();
@@ -162,10 +160,9 @@ const [usersLogin] = useLazyQuery(LOGIN, {
           window.localStorage.setItem("role", JSON.stringify(role));
           window.localStorage.setItem("token", JSON.stringify(token));
           window.localStorage.setItem("session", JSON.stringify(refreshTokenExp));
-          router.push(`/${userName}`);
+         router.push(`/${userName}`);
       }
       
-      //console.log(data);
       }
   },
   onError: (error) => {
@@ -179,7 +176,6 @@ const [usersLogin] = useLazyQuery(LOGIN, {
 const [currentPackage] = useLazyQuery(CURRENT_PACKAGE, {
   onCompleted: ({currentUserpackage}) => {
     //const {currentUserpackage} = data;
-    console.log(currentUserpackage);
       if(currentUserpackage){
         //console.log(currentPackage);
         setSenderData({...currentUserpackage});
@@ -197,6 +193,19 @@ const { runQuery: findSingleBlog } = useDataQuery(FIND_BLOG_BY_NAME);
 
 //MUTATIONS
 const [updateProfile] = useMutation(UPDATE_PROFILE, {
+  onCompleted: (data) => {
+      if(data){
+      console.log(data);
+      }
+  },
+  onError: (error) => {
+    //setErr(error);
+    const message = error.message;
+    setErr(message);
+  }
+});
+
+const [updatePackage] = useMutation(UPDATE_PACKAGE, {
   onCompleted: (data) => {
       if(data){
       console.log(data);
@@ -317,6 +326,7 @@ useEffect(()=>{
     createBlog,
     findSingleBlog,
     updateBlog,
+    updatePackage
     }}>
         {props.children}
     </MainContext.Provider>

@@ -7,6 +7,7 @@ mutation UPDATE_PROFILE($profileInput: UpdateProfileInput!){
     firstName
     lastName
     gender
+    phoneNumber
     language
     }
   }`

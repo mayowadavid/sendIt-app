@@ -45,6 +45,7 @@ const Profile = () => {
     // hours of the day
     const hour = new Date().getHours();
     // check hours of the day to greet
+    setLoading(false);
     if (hour < 12) {
       setGreetIndex(0);
     } else if (hour < 18) {
@@ -57,6 +58,7 @@ const Profile = () => {
   const handleChange = (e) => {
     e.preventDefault();
     const { name, value } = e.target;
+    setLoading(false);
     setUserProfile({ ...userProfile, [name]: value });
   };
 
@@ -83,6 +85,7 @@ const Profile = () => {
     e.preventDefault();
     const { files } = e.target;
     setProfileImage(files);
+    setLoading(false);
     const token = localStorage.getItem("token");
     const headers = {
       authorization: token ? `Bearer ${JSON.parse(token)}` : "",
@@ -100,14 +103,15 @@ const Profile = () => {
       lastName,
       gender,
     };
-    setLoading(!loading);
-    //console.log(userProfile);
+    setLoading(true);
+    //console.log(profileInput);
     const { data, error } = await updateProfile({
       variables: {
         profileInput,
       },
     });
-    data || (error !== undefined && setLoading(!loading));
+    console.log(data);
+    data && setLoading(false);
   };
 
   return (
@@ -205,7 +209,7 @@ const Profile = () => {
             {loading == true && (
               <img className="load" src="/svg/loading.svg" alt="sendit" />
             )}
-            {loading == false && `Submit`}
+            { `  Submit`}
           </button>
         </div>
       </div>

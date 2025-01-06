@@ -12,7 +12,7 @@ const HomeHeader = () => {
 
   return (
         <div className="home-link-header mbw-jsty-btw mbw10 flex_row">
-            <p>Sendit</p>
+            <p>Seamless Send</p>
             <div onClick={handleAuth} className="button-wrap">
                 <Button>Sign Up/ Login</Button>
             </div>

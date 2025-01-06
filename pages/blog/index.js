@@ -1,17 +1,94 @@
 import BlogListCard from "../../components/public_components/blog";
 import React, { useEffect, useState } from "react";
 import { useDataQuery } from "../../components/functions/customHook";
-import { FETCH_ALL_BLOG_POST } from "../../components/queries/blog/blog";
+import { ALL_BLOG_POST } from "../../components/queries/blog/blog";
+import { makeQuery, retrieveLength } from "../../components/functions/function";
+import { useRouter } from "next/router";
 
 const Blog = () => {
+    const router = useRouter();
     const [blogRow, setBlogRow] = useState([]);
-    const { runQuery: blogPostQuery, allBlogPost } = useDataQuery(FETCH_ALL_BLOG_POST);
-    useEffect(()=>{
-        blogPostQuery();
-        if(allBlogPost){
-            setBlogRow(allBlogPost);
-        }
-    }, [allBlogPost])
+    const [pages, setPages] = useState([]);
+    const [blogPage, setBlogPage] = useState({
+        page: 1,
+        limit: 3
+    });
+    const currentQuery = router.query;
+    const { runQuery, result } = useDataQuery(ALL_BLOG_POST);
+   
+    // useEffect(()=> {
+    //         (async() => {
+    //             const {data, error} = await runQuery(
+    //                 {
+    //                     variables: {
+    //                         blogPage,
+    //                     }
+    //                 }
+    //             );
+    //             data?.allBlogByPage?.content.length > 0 && 
+    //             setBlogRow([...data?.allBlogByPage?.content]);
+    //             setPages(retrieveLength(data?.allBlogByPage?.total, blogPage.limit));
+    //         })();
+    //   }, [])
+    
+      useEffect(()=>{
+        const {index} = router.query;
+            index !== undefined ? reFetchData(index): fetchData();
+            console.log(index);
+      }, [])
+
+    const fetchData = async() => {
+        const {data, error} = await runQuery(
+            {
+                variables: {
+                    blogPage,
+                }
+            }
+        );
+        data?.allBlogByPage?.content.length > 0 && 
+        setBlogRow([...data?.allBlogByPage?.content]);
+        setPages(retrieveLength(data?.allBlogByPage?.total, blogPage.limit));
+    }
+
+    const reFetchData = async(page) => {
+        blogPage = {...blogPage, page}
+        const {data, error} = await runQuery(
+            {
+                variables: {
+                    blogPage,
+                }
+            }
+        );
+        data?.allBlogByPage?.content.length > 0 && 
+        setBlogRow([...data?.allBlogByPage?.content]);
+        setPages(retrieveLength(data?.allBlogByPage?.total, blogPage.limit));
+    }
+
+      const nextPage = async(num) => {
+        blogPage = {...blogPage, page: num}
+        setBlogPage(blogPage);
+            const {data: { allBlogByPage }, 
+            error} = await runQuery(
+                {
+                    variables: {
+                        blogPage,
+                    }
+                }
+            );
+            const newQuery = {
+                ...currentQuery,
+                index: blogPage.page
+            };
+            allBlogByPage?.content.length > 0 && 
+            setBlogRow([...allBlogByPage?.content]);
+            setPages(retrieveLength(allBlogByPage?.total, blogPage.limit));
+            router.push({
+                pathname: router.pathname,
+                query: newQuery,
+            });
+            
+      }
+
     return (
         <div>
             <header>
@@ -66,7 +143,8 @@ const Blog = () => {
                             ))
                         }
                         </div>
-                        
+                        <div className="mbw10 paginate flex_row">{pages?.map((d, k)=>
+                        <button onClick={()=>nextPage(d)} className="btn" key={k}>{d}</button>)}</div>
                         </div>
                         <div className="post_column_wrap xl10 flex_row mbw3 mbw-fi-s mbw-jsty-btw xl-pad-u aside">
                             <div className="post_side_wrap mbw-fc-s m10 flex_column mbw10 xl45  ">

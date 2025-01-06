@@ -1,6 +1,9 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { MainContext } from '../context/mainContext';
-import { formValidation } from '../functions/function';
+import { createMutation, updateQuery, makeQuery, formValidation, Toast } from '../functions/function';
+import { useCreateMutation } from '../functions/customHook';
+import { country } from '../country/countries';
+import { UPDATE_PACKAGE } from '../mutation/package/package';
 
 const Sender = () => {
     const { 
@@ -16,10 +19,11 @@ const Sender = () => {
         formError, 
         setFormError,
         loading, 
-        setLoading
+        setLoading,
      } = useContext(MainContext);
+     const {create} = useCreateMutation(UPDATE_PACKAGE);
     
-
+     
     useEffect(()=> {
         setSideState({
             package: true
@@ -31,12 +35,14 @@ const Sender = () => {
     const handleChange = (e) => {
         e.preventDefault();
         const {name, value} = e.target;
+        setLoading(false);
         setSenderData({...senderData, [name]: value});
     }
 
     const submit = async (e) => {
         e.preventDefault();
-        const {senderName,
+        const {
+            senderName,
         senderPhoneNumber,
         senderEmail,
         senderGender,
@@ -61,7 +67,6 @@ const Sender = () => {
         receiverGender,
         pickUp,
         destination,
-        setErr
         };
         setLoading(!loading);
         const {data, error} = await createPackage({
@@ -76,15 +81,57 @@ const Sender = () => {
         error!== undefined && console.log(error.message)
     };
 
-    const update = (e) => {
+    const update = async (e) => {
         e.preventDefault();
+        const {
+            id,
+            senderName,
+        senderPhoneNumber,
+        senderEmail,
+        senderGender,
+        receiverName,
+        receiverAddress,
+        receiverPhoneNumber,
+        receiverEmail,
+        receiverGender,
+        pickUp,
+        destination} = senderData;
+
+        //package data
+        const packageData = {
+        senderName,
+        senderPhoneNumber,
+        senderEmail,
+        senderGender,
+        receiverName,
+        receiverAddress,
+        receiverPhoneNumber,
+        receiverEmail,
+        receiverGender,
+        pickUp,
+        destination,
+        id
+        };
         const {errors} = formValidation(senderData, setFormError);
-        console.log(errors);
-        //Object.keys(errors).length > 0 && 
-        // setStatusState({details: true});
-        // setStatusStateCheck({...statusStateCheck, overview: true});
+        Object.keys(errors).length > 0 && 
+        Toast.fire({
+            icon: "error",
+            title: `All Field Required`,
+          });
+        console.log(packageData);
+        setLoading(true);
+        const {data, error} = await create({
+            variables: {
+                packageData,
+            }
+        });
+        error !== undefined && setLoading(false);
+        data !== undefined && (
+            setLoading(false),
+            setStatusState({details: true}),
+        setStatusStateCheck({...statusStateCheck, overview: true}));
     };
-    console.log(formError?.senderName !== undefined ? "yay men": '');
+    
 
   return (
         <>
@@ -108,11 +155,22 @@ const Sender = () => {
                         </div>
                         <div className={`shipper_input_row sm10 ${formError?.senderGender !== undefined ? 'error' : ''}`}>
                             <p>Gender</p>
-                            <input type="text" name="senderGender" onChange={handleChange} value={senderData?.senderGender} placeholder="Gender" />
+                            <select name="senderGender" onChange={handleChange} value={senderData?.senderGender}>
+                                <option defaultValue hidden>
+                                        {senderData?.senderGender || "Select Gender"}
+                                </option>
+                                <option>Male</option>
+                                <option>Female</option>
+                            </select>
                         </div>
                         <div className={`shipper_input_row sm10 ${formError?.pickUp !== undefined ? 'error' : ''}`}>
                             <p>Pick up</p>
-                            <input type="text" name="pickUp" onChange={handleChange} value={senderData?.pickUp} placeholder="pick up country" />
+                            <select name="pickUp"  value={senderData?.pickUp} onChange={handleChange}>
+                            <option defaultValue hidden>
+                                    {senderData?.pickup || "Select pick up"}
+                            </option>
+                            {country.map((d,k)=> <option key={k}>{d}</option>)}
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -141,25 +199,36 @@ const Sender = () => {
                         </div>
                         <div className={`shipper_input_row sm10 ${formError?.receiverGender !== undefined ? 'error' : ''}`}>
                             <p>Gender</p>
-                            <input type="text" name="receiverGender" onChange={handleChange} value={senderData?.receiverGender} placeholder="Gender" />
+                            <select name="receiverGender" onChange={handleChange} value={senderData?.receiverGender}>
+                                <option defaultValue hidden>
+                                    {senderData?.receiverGender || "Select Gender"}
+                                </option>
+                                <option>Male</option>
+                                <option>Female</option>
+                            </select>
                         </div>
                         <div className={`shipper_input_row sm10 ${formError?.destination !== undefined ? 'error' : ''}`}>
                             <p>Destination</p>
-                            <input type="text" name="destination" onChange={handleChange} value={senderData?.destination} placeholder="Destination" />
+                            <select name="destination"  value={senderData?.destination} onChange={handleChange}>
+                                <option defaultValue hidden>
+                                    {senderData?.destination || "Select Destination"}
+                                </option>
+                            {country.map((d,k)=> <option key={k}>{d}</option>)}
+                            </select>
                         </div>
                     </div>
                 </div>
             </div>
-            {Object.keys(formError).length > 0 && <p className='error'>all field is required</p>}
             <div className="shipper_button l9 flex_row">
                 {senderData?.id == undefined && 
                 <button className={ loading == true ? 'loading' : '' } onClick={submit}>
                     {loading == true && <img className='load' src="/svg/loading.svg" alt="sendit" />}
                     {loading == false && `Continue`}
                 </button>}
-                {senderData?.id !== undefined && <button onClick={update}>
+                {senderData?.id !== undefined && 
+                <button onClick={update}>
                 {loading == true && <img className='load' src="/svg/loading.svg" alt="sendit" />}
-                {loading == false && `Save & Continue`}
+                {`  Save & Continue`}
                 </button>}
             </div>
         </>

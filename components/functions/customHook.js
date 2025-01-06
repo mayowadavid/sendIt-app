@@ -8,6 +8,10 @@ const useDataQuery = (queryName) => {
       onCompleted: (data) => {
         if (data) {
           setResult(data);
+          Toast.fire({
+            icon: "success",
+            title: "Successfull",
+          });
         }
       },
       onError: (error) => {
@@ -30,6 +34,10 @@ const useCreateMutation = (mutationName) => {
     onCompleted: (data) => {
       if (data) {
         setResult(data);
+        Toast.fire({
+          icon: "success",
+          title: "Successfull",
+        });
       }
     },
     onError: (error)=> {

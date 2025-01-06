@@ -15,6 +15,17 @@ query CURRENT_PACKAGE{
         receiverGender
         destination
         pickUp
+        images {
+          id
+          image 
+          name
+        }
+        worth
+        quantity
+        measurement
+        size
+        serviceFee
+        description
         createdAt
         updatedAt
           status
